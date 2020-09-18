@@ -1,5 +1,53 @@
 body {
   font: 100% Helvetica, sans-serif;
-  color: #444; }
-  body * {
-    box-sizing: border-box; }
+  color: #000000; }
+
+h1, h2, h2, h4, h5 {
+  font-family: Inter, sans-serif; }
+
+h1, h5 {
+  font-weight: 600; }
+
+h2, h2, h4 {
+  font-weight: 500; }
+
+.display {
+  font-family: Inter, sans-serif;
+  font-size: 120px;
+  font-weight: 500;
+  line-height: 120px;
+  letter-spacing: -6px; }
+
+h1 {
+  font-size: 72px;
+  line-height: 80px;
+  letter-spacing: -4.5px; }
+
+h2 {
+  font-size: 60px;
+  line-height: 65px;
+  letter-spacing: -2.5px; }
+
+h3 {
+  font-size: 48px;
+  line-height: 54px;
+  letter-spacing: -1.6px; }
+
+h4 {
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -1.2px; }
+
+h5 {
+  font-size: 28px;
+  line-height: 34px;
+  letter-spacing: -0.8px; }
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  min-height: 100vh; }
+  .wrap .content {
+    flex-grow: 1;
+    padding: 0 155px; }

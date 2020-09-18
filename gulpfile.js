@@ -68,6 +68,7 @@ function browserSync(cb) {
     });
 
     watch('views/**.ejs', generateHTML);
+    watch('views/partials/**.ejs', generateHTML);
     watch('sass/**.scss', generateCSS);
     watch("./public/**.html").on('change', sync.reload);
 }
