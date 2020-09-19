@@ -1,0 +1,25 @@
+.card_hero {
+  display: flex; }
+  .card_hero img {
+    width: 50%;
+    max-height: 630px;
+    max-width: 550px;
+    object-fit: cover; }
+  .card_hero__body {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column; }
+  .card_hero__author, .card_hero__description {
+    color: rgba(0, 0, 0, 0.5); }
+  .card_hero__info {
+    display: flex;
+    margin-top: auto;
+    color: rgba(0, 0, 0, 0.3); }
+    .card_hero__info * {
+      border-radius: 20px;
+      padding: 3px 10px;
+      border: 1px solid rgba(0, 0, 0, 0.04); }
+  .card_hero__category {
+    background-color: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0);
+    margin-right: 10px; }

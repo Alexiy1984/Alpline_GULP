@@ -1,0 +1,16 @@
+<div class="card_hero">
+  <img src="images/card_hero_1.jpg" alt="">
+
+  <div class="card_hero__body">
+    <p class="card_hero__author"><%= author %></p>
+    <h3 class="card_hero__title"><%= title %></h3> 
+    <p class="body_large card_hero__description"><%= text %></p>
+    <div class="card_hero__info">
+      <% categories.forEach(function(category){ %>
+        <p class="body_small card_hero__category"><%= category %></p>
+      <% }); %>
+      <p class="body_small"><%= ttr %></p>
+      <p class="body_small"><%= views %></p>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-$font-stack:    Helvetica, sans-serif;
+$font-stack: Inter, sans-serif;
 $primary-color: #000000;
 
 body {
@@ -6,16 +6,19 @@ body {
   color: $primary-color;
 }
 
-h1,h2,h2,h4,h5 {
-  font-family: Inter, sans-serif;
-}  
-
-h1,h5 {
+h1,
+h5 {
   font-weight: 600;
 }
 
 h2,h2,h4 {
   font-weight: 500;
+}
+
+.body_21,
+.body_17,
+.body_15 {
+  font-weight: 400;
 }
 
 .display {
@@ -56,6 +59,30 @@ h5 {
   letter-spacing: -0.8px;
 }
 
+p {
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: -0.4px;
+}
+
+.body_large {
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: -0.6px;
+}
+
+.body_normal {
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: -0.5px;
+}
+
+.body_small {
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: -0.4px;
+}
+
 .wrap {
   display: flex;
   flex-direction: column;
@@ -64,6 +91,54 @@ h5 {
 
   .content {
     flex-grow: 1;
-    padding: 0 155px;
+    padding: 0 30px;
+  }
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    .content {
+      padding: 0 80px;
+    }
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: -0.5px;
+  }
+
+  .body_large {
+    font-size: 21px;
+    line-height: 30px;
+    letter-spacing: -0.8px;
+  }
+  
+  .body_normal {
+    font-size: 17px;
+    line-height: 25px;
+    letter-spacing: -0.7px;
+  }
+  
+  .body_small {
+    font-size: 15px;
+    line-height: 23px;
+    letter-spacing: -0.6px;
+  }
+}
+
+@media (min-width: 992px) {
+  .wrap {
+    .content {
+      padding: 0 100px;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .wrap {
+    .content {
+      padding: 0 155px;
+    }
   }
 }

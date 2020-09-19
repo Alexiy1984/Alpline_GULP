@@ -19,9 +19,28 @@ function generateCSS(cb) {
 
 function generateHTML(cb) {
     src("./views/index.ejs")
-        .pipe(ejs({
-            title: "Hello Semaphore CI!",
-        }))
+        .pipe(ejs({ data: {
+          title: "Some cool title",
+          text: "Some text",
+          heroCards: [
+            {
+              author: 'Jane Cooper',  
+              title: 'You Don’t Need a Compass to Tell You Where You Are', 
+              text: 'Peter yanked the curtain back, eager to see the dawn. Grace pulled the covers over her head.',
+              categories: ['Fiction', 'Relationships', 'Hiking'],
+              ttr: 7,
+              views: '12,851'
+            },
+            {
+              author: 'Jane Cooper',  
+              title: 'You Don’t Need a Compass to Tell You Where You Are', 
+              text: 'Peter yanked the curtain back, eager to see the dawn. Grace pulled the covers over her head.',
+              categories: ['Fiction', 'Relationships', 'Hiking'],
+              ttr: 7,
+              views: '12,851'
+            },
+          ]
+        }}))
         .pipe(rename({
             extname: ".html"
         }))
@@ -52,7 +71,6 @@ function runTests(cb) {
         });
 }
 
-
 function watchFiles(cb) {
     watch('views/**.ejs', generateHTML);
     watch('sass/**.scss', generateCSS);
@@ -67,6 +85,7 @@ function browserSync(cb) {
         }
     });
 
+    watch('gulpfile.js', generateHTML);
     watch('views/**.ejs', generateHTML);
     watch('views/partials/**.ejs', generateHTML);
     watch('sass/**.scss', generateCSS);
