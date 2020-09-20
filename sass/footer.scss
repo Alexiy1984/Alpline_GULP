@@ -3,6 +3,11 @@
   color: #ffffff;
   padding: 45px 30px 30px;
 
+  &__inner {
+    max-width: 1290px;
+    margin: auto;
+  }
+
   &__logocolumn {
     display: flex;
     flex-grow: 1;
@@ -207,7 +212,7 @@
 
 @media (min-width: 1200px) {
   .footer {
-    padding: 60px 155px 30px;
+    padding: 60px 30px 30px;
   }
 }
 

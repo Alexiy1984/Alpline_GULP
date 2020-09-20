@@ -7,13 +7,16 @@
     <link rel='stylesheet' href='stylesheets/style.css' />
     <link rel='stylesheet' href='stylesheets/footer.css' />
     <link rel='stylesheet' href='stylesheets/card_hero.css' />
+    <link rel='stylesheet' href='stylesheets/card_small.css' />
   </head>
   <body>
     <div class="wrap">
       <div class="content">
         <% data.heroCards.forEach(function(heroCard){ %>
           <%- include('partials/card_hero', { 
+            imgUrl: heroCard.imgUrl,
             author: heroCard.author,
+            date: heroCard.date,
             title: heroCard.title, 
             text: heroCard.text,
             categories: heroCard.categories,
@@ -21,6 +24,20 @@
             views: heroCard.views
           }); %>
         <% }); %>
+        <div class="flex-container">
+          <% data.smallCards.forEach(function(smallCard){ %>
+            <%- include('partials/card_small', { 
+              imgUrl: smallCard.imgUrl,
+              author: smallCard.author,
+              date: smallCard.date,
+              title: smallCard.title, 
+              text: smallCard.text,
+              categories: smallCard.categories,
+              ttr: smallCard.ttr,
+              views: smallCard.views
+            }); %>
+          <% }); %>
+        </div>
         <h1><%= data.title %></h1>
         <h2><%= data.text %></h1>
         <h3><%= data.title %></h1>

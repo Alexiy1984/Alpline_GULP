@@ -6,12 +6,16 @@ h1,
 h5 {
   font-weight: 600; }
 
-h2, h2, h4 {
+h2,
+h3,
+h4,
+.lead_medium {
   font-weight: 500; }
 
-.body_21,
-.body_17,
-.body_15 {
+.body_large,
+.body_normal,
+.body_small,
+.lead {
   font-weight: 400; }
 
 .display {
@@ -22,29 +26,35 @@ h2, h2, h4 {
   letter-spacing: -6px; }
 
 h1 {
-  font-size: 72px;
-  line-height: 80px;
-  letter-spacing: -4.5px; }
+  font-size: 54px;
+  line-height: 60px;
+  letter-spacing: -3.5px; }
 
 h2 {
-  font-size: 60px;
-  line-height: 65px;
-  letter-spacing: -2.5px; }
+  font-size: 40px;
+  line-height: 46px;
+  letter-spacing: -1.8px; }
 
 h3 {
-  font-size: 48px;
-  line-height: 54px;
-  letter-spacing: -1.6px; }
+  font-size: 32px;
+  line-height: 36px;
+  letter-spacing: -1.1px; }
 
 h4 {
-  font-size: 36px;
-  line-height: 44px;
-  letter-spacing: -1.2px; }
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -0.8px; }
 
 h5 {
-  font-size: 28px;
-  line-height: 34px;
-  letter-spacing: -0.8px; }
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: -0.55px; }
+
+.lead,
+.lead_medium {
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.5px; }
 
 p {
   font-size: 15px;
@@ -73,11 +83,40 @@ p {
   min-height: 100vh; }
   .wrap .content {
     flex-grow: 1;
-    padding: 0 30px; }
+    padding: 0 30px;
+    max-width: 1290px;
+    margin: auto; }
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap; }
 
 @media (min-width: 768px) {
-  .wrap .content {
-    padding: 0 80px; }
+  h1 {
+    font-size: 72px;
+    line-height: 80px;
+    letter-spacing: -4.5px; }
+  h2 {
+    font-size: 60px;
+    line-height: 65px;
+    letter-spacing: -2.5px; }
+  h3 {
+    font-size: 48px;
+    line-height: 54px;
+    letter-spacing: -1.6px; }
+  h4 {
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -1.2px; }
+  h5 {
+    font-size: 28px;
+    line-height: 34px;
+    letter-spacing: -0.8px; }
+  .lead,
+  .lead_medium {
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -1px; }
   p {
     font-size: 16px;
     line-height: 18px;
@@ -93,7 +132,9 @@ p {
   .body_small {
     font-size: 15px;
     line-height: 23px;
-    letter-spacing: -0.6px; } }
+    letter-spacing: -0.6px; }
+  .wrap .content {
+    padding: 0 80px; } }
 
 @media (min-width: 992px) {
   .wrap .content {
@@ -101,4 +142,8 @@ p {
 
 @media (min-width: 1200px) {
   .wrap .content {
-    padding: 0 155px; } }
+    padding: 30px; } }
+
+@media (min-width: 1320px) {
+  .wrap .content {
+    padding: 0; } }
