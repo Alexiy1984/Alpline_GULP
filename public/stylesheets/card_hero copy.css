@@ -59,8 +59,7 @@
   .card_hero__bookmark {
     height: 21px;
     margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: 5px; }
+    margin-left: auto; }
     .card_hero__bookmark svg {
       height: 100%;
       width: auto; }
@@ -69,6 +68,11 @@
     .card_hero__bookmark:hover svg path {
       fill-opacity: 1;
       fill: #e11d74; }
+
+@media (min-width: 680px) {
+  .card_hero img {
+    max-width: 600px;
+    margin: auto; } }
 
 @media (min-width: 678px) {
   .card_hero__body {

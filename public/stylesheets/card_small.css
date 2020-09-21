@@ -25,7 +25,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center; }
+      object-position: center;
+      border-radius: 5px; }
       .card_small__img img:hover {
         cursor: pointer; }
   .card_small__header {
@@ -81,7 +82,8 @@
   .card_small__bookmark {
     height: 21px;
     margin-bottom: 10px;
-    margin-left: auto; }
+    margin-left: auto;
+    margin-right: 5px; }
     .card_small__bookmark svg {
       height: 100%;
       width: auto; }

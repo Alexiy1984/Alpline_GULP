@@ -1,0 +1,15 @@
+.carousel {
+  overflow-x: hidden;
+
+  &__inner {
+    white-space: nowrap;
+
+    * > {
+      display: inline-block;
+    }
+
+    // * {
+    //   white-space: normal;
+    // }
+  }
+}

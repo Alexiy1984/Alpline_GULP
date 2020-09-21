@@ -8,6 +8,8 @@
     <link rel='stylesheet' href='stylesheets/footer.css' />
     <link rel='stylesheet' href='stylesheets/card_hero.css' />
     <link rel='stylesheet' href='stylesheets/card_small.css' />
+    <link rel='stylesheet' href='stylesheets/card_medium.css' />
+    <link rel='stylesheet' href='stylesheets/carousel.css' />
   </head>
   <body>
     <div class="wrap">
@@ -37,6 +39,34 @@
               views: smallCard.views
             }); %>
           <% }); %>
+        </div> 
+        <% data.mediumCards.forEach(function(mediumCard){ %>
+          <%- include('partials/card_medium', { 
+            imgUrl: mediumCard.imgUrl,
+            author: mediumCard.author,
+            date: mediumCard.date,
+            title: mediumCard.title, 
+            text: mediumCard.text,
+            categories: mediumCard.categories,
+            ttr: mediumCard.ttr,
+            views: mediumCard.views
+          }); %>
+        <% }); %>
+        <div class="carousel">
+          <div class="carousel__inner">
+            <% data.smallCards.forEach(function(smallCard){ %>
+              <%- include('partials/card_small', { 
+                imgUrl: smallCard.imgUrl,
+                author: smallCard.author,
+                date: smallCard.date,
+                title: smallCard.title, 
+                text: smallCard.text,
+                categories: smallCard.categories,
+                ttr: smallCard.ttr,
+                views: smallCard.views
+              }); %>
+            <% }); %>
+          </div>
         </div>
         <h1><%= data.title %></h1>
         <h2><%= data.text %></h1>
