@@ -1,26 +1,37 @@
-const { src, dest, watch, parallel, series } = require("gulp");
+const { src, dest, watch, parallel, series } = require('gulp');
 
 const sass = require('gulp-sass');
-const ejs = require("gulp-ejs");
-const rename = require("gulp-rename");
-const eslint = require("gulp-eslint");
-const mocha = require("gulp-mocha");
-const sync = require("browser-sync").create();
+const autoprefixer = require('gulp-autoprefixer');
+const ejs = require('gulp-ejs');
+const rename = require('gulp-rename');
+const eslint = require('gulp-eslint');
+const mocha = require('gulp-mocha');
+const sync = require('browser-sync').create();
 const htmlmin = require('gulp-htmlmin');
+var uglify = require('gulp-uglify');
+
+var prefixerOptions = {
+  browserlist: ['last 3 versions']
+};
+
+var sassOptions = {
+  outputStyle: 'expanded'
+};
 
 function generateCSS(cb) {
     src('./sass/**/*.scss')
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass(sassOptions).on('error', sass.logError))
+        .pipe(autoprefixer(prefixerOptions))
         .pipe(dest('public/stylesheets'))
         .pipe(sync.stream());
     cb();
 }
 
 function generateHTML(cb) {
-    src("./views/index.ejs")
+    src('./views/index.ejs')
         .pipe(ejs({ data: {
-          title: "Some cool title",
-          text: "Some text",
+          title: 'Some cool title',
+          text: 'Some text',
           heroCards: [
             {
               imgUrl: 'images/card_hero_1.jpg',
@@ -157,11 +168,53 @@ function generateHTML(cb) {
               views: '12,851'
             },
           ],
+          bigCards : [
+            {
+              imgUrl: 'images/card_big_1.jpg',
+              author: 'Annette Black',  
+              date: '3 Aug 20',
+              title: 'How Marketing Made ‘Oil-Free’ A Thing', 
+              text: 'Experts say “oil-free” skincare is scam that benefits beauty brands more than it benefits your skin.',
+              categories: ['Art', 'Design'],
+              ttr: 12,
+              views: '12,851'
+            },
+            {
+              imgUrl: 'images/card_big_2.jpg',
+              author: 'Dianne Russell',  
+              date: '3 Aug 20',
+              title: '7 Hip-Hop Fashion Brands That Make Us Most Nostalgic, Ranked', 
+              text: 'It’s a ’90s streetwear time capsule — back when sizing started at XXXL Tall',
+              categories: ['Food', 'Health'],
+              ttr: 8,
+              views: '12,851'
+            },
+            {
+              imgUrl: 'images/card_big_3.jpg',
+              author: 'Michael Thompson',  
+              date: '3 Aug 20',
+              title: '11 Things Socially Aware People Don’t Say', 
+              text: 'What we choose not to say is just as important as what we decide to say',
+              categories: ['Life', 'Relationships'],
+              ttr: 5,
+              views: '12,851'
+            },
+            {
+              imgUrl: 'images/card_big_4.jpg',
+              author: 'Michael Thompson',  
+              date: '3 Aug 20',
+              title: '11 Things Socially Aware People Don’t Say', 
+              text: 'What we choose not to say is just as important as what we decide to say',
+              categories: ['Life', 'Relationships'],
+              ttr: 5,
+              views: '12,851'
+            },
+          ],
         }}))
         .pipe(rename({
-            extname: ".html"
+            extname: '.html'
         }))
-        .pipe(dest("public"));
+        .pipe(dest('public'));
     cb();
 }
 
@@ -169,6 +222,14 @@ function minifyHTML(cb) {
   src('public/*.html')
       .pipe(htmlmin({ collapseWhitespace: true }))
       .pipe(dest('public'));
+  cb();
+};
+
+function uglifyJS(cb) {
+  src('./scripts/*.js')
+    .pipe(uglify())
+    .pipe(dest('public/javascripts'))
+    .pipe(sync.stream());
   cb();
 };
 
@@ -202,7 +263,7 @@ function watchFiles(cb) {
 function browserSync(cb) {
     sync.init({
         server: {
-            baseDir: "./public"
+            baseDir: './public'
         }
     });
 
@@ -210,16 +271,18 @@ function browserSync(cb) {
     watch('views/**.ejs', generateHTML);
     watch('views/partials/**.ejs', generateHTML);
     watch('sass/**.scss', generateCSS);
-    watch("./public/**.html").on('change', sync.reload);
+    watch('scripts/*.js', uglifyJS);
+    watch('./public/**.html').on('change', sync.reload);
 }
 
 
 exports.css = generateCSS;
 exports.html = generateHTML;
+exports.js = uglifyJS;
 exports.htmlMin = minifyHTML;
 exports.lint = runLinter;
 exports.test = runTests;
 exports.watch = watchFiles;
 exports.sync = browserSync;
 
-exports.default = series(runLinter,parallel(generateCSS,generateHTML),runTests);
+exports.default = series(runLinter,parallel(generateCSS,generateHTML, uglifyJS),runTests);

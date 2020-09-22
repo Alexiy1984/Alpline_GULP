@@ -9,10 +9,15 @@
     <link rel='stylesheet' href='stylesheets/card_hero.css' />
     <link rel='stylesheet' href='stylesheets/card_small.css' />
     <link rel='stylesheet' href='stylesheets/card_medium.css' />
+    <link rel='stylesheet' href='stylesheets/card_big.css' />
     <link rel='stylesheet' href='stylesheets/carousel.css' />
+    <link rel='stylesheet' href='stylesheets/menu_main.css' />
+
+    <script src='javascripts/menu_main.js'></script>
   </head>
   <body>
     <div class="wrap">
+      <%- include('partials/header') %>
       <div class="content">
         <% data.heroCards.forEach(function(heroCard){ %>
           <%- include('partials/card_hero', { 
@@ -52,22 +57,20 @@
             views: mediumCard.views
           }); %>
         <% }); %>
-        <div class="carousel">
-          <div class="carousel__inner">
-            <% data.smallCards.forEach(function(smallCard){ %>
-              <%- include('partials/card_small', { 
-                imgUrl: smallCard.imgUrl,
-                author: smallCard.author,
-                date: smallCard.date,
-                title: smallCard.title, 
-                text: smallCard.text,
-                categories: smallCard.categories,
-                ttr: smallCard.ttr,
-                views: smallCard.views
-              }); %>
-            <% }); %>
-          </div>
-        </div>
+        <div class="flex-container">
+          <% data.bigCards.forEach(function(bigCard){ %>
+            <%- include('partials/card_big', { 
+              imgUrl: bigCard.imgUrl,
+              author: bigCard.author,
+              date: bigCard.date,
+              title: bigCard.title, 
+              text: bigCard.text,
+              categories: bigCard.categories,
+              ttr: bigCard.ttr,
+              views: bigCard.views
+            }); %>
+          <% }); %>
+        </div> 
         <h1><%= data.title %></h1>
         <h2><%= data.text %></h1>
         <h3><%= data.title %></h1>

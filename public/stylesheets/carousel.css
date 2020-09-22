@@ -1,6 +1,11 @@
 .carousel {
-  overflow-x: hidden; }
-  .carousel__inner {
-    white-space: nowrap; }
-    .carousel__inner * > {
-      display: inline-block; }
+  overflow-x: hidden;
+}
+
+.carousel__inner {
+  white-space: nowrap;
+}
+
+.carousel__inner * > {
+  display: inline-block;
+}

@@ -175,6 +175,58 @@ p {
     letter-spacing: -0.6px;
   }
 
+  .caption_1 {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.6px;
+    text-align: left;
+
+    &_med {
+      @extend .caption_1;
+      font-weight: 500;
+    }
+  }
+
+  .caption_2 {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    text-align: left;
+
+    &_med {
+      @extend .caption_2;
+      font-weight: 500;
+    }
+  }
+
+  .caption_3 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -0.5px;
+    text-align: left;
+
+    &_med {
+      @extend .caption_3;
+      font-weight: 500;
+    }
+  }
+
+  .caption_4 {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: -0.2px;
+    text-align: left;
+
+    &_med {
+      @extend .caption_4;
+      font-weight: 500;
+    }
+  }
+
   .wrap {
     .content {
       padding: 0 80px;
