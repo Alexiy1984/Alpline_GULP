@@ -210,6 +210,36 @@ function generateHTML(cb) {
               views: '12,851'
             },
           ],
+          menuCol1: [ 
+            {
+              title: 'Entertainment',
+              items: ['Music', 'Nonfiction', 'Photography', 'Sports', 'Style', 'Gaming', 'Humor']
+            },
+            {
+              title: 'Society',
+              items: ['Cities', 'Education', 'Environment', 'Future', 'History', 'Language', 'Media']
+            },
+          ],
+          menuCol2: [ 
+            {
+              title: 'Industry',
+              items: ['Business','Design','Economy','Freelancing','Leadership','Marketing','Productivity']
+            },
+            {
+              title: 'Life',
+              items: ['Astrology','Creativity','Family','Fitness','Health','Lifestyle','Mindfulness']
+            },
+          ],    
+          menuCol3: [ 
+            {
+              title: 'Tech',
+              items: ['Cryptocurrency', 'Cybersecurity', 'Data Science', 'Digital Life', 'Gadgets', 'Machine Learning', 'Math']
+            },
+            {
+              title: 'Top authors',
+              items: ['Jacob Jones', 'Eleanor Pena', 'Robert Fox', 'Jane Cooper', 'Bessie Cooper', 'Guy Hawkins']
+            },
+          ],     
         }}))
         .pipe(rename({
             extname: '.html'
@@ -234,7 +264,7 @@ function uglifyJS(cb) {
 };
 
 function runLinter(cb) {
-    return src(['**/*.js', '!node_modules/**'])
+    return src(['**/*.js', '!node_modules/**', '!public/**'])
         .pipe(eslint())
         .pipe(eslint.format()) 
         .pipe(eslint.failAfterError())
