@@ -40,4 +40,21 @@ document.addEventListener('DOMContentLoaded', function(){
       collapseSection(section);
     }
   });
+
+  var main_menu_buttons = document.querySelectorAll('.menu_main__main-section .menu_main__list-title');
+
+  [].forEach.call(main_menu_buttons, function(m_btn) {
+    m_btn.onclick = function(e) {
+      var curr_elt = e.currentTarget;
+      var children = e.currentTarget.parentElement.children;
+      elts = document.getElementsByClassName('menu_main__list');
+      [].forEach.call(elts, function(elt) {
+        if (!elt.isSameNode(children[1])) {
+          elt.classList.remove('open');
+        }
+      });
+      children[1].classList.toggle('open');
+    };
+  });
+
 }, false);

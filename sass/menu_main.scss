@@ -1,4 +1,10 @@
 $hover-color: rgba(225, 29, 116, 1);
+$ligth-text: rgba(0, 0, 0, 0.5);
+
+@mixin  text-hover-effect {
+  cursor: pointer;
+  color: $hover-color;
+}
 
 @mixin svg-hover-effect {
   cursor: pointer;
@@ -10,7 +16,7 @@ $hover-color: rgba(225, 29, 116, 1);
 
 @mixin for-collapsed-content {
   overflow:hidden;
-  transition:height 0.3s ease-out;
+  transition:height 0.15s ease-out;
 }
 
 @mixin delimiter {
@@ -24,7 +30,6 @@ $hover-color: rgba(225, 29, 116, 1);
   background: rgba(0, 0, 0, 0.05);
   border-radius: 2px;
 }
-
 
 .menu_main {
   top: 0;
@@ -62,7 +67,7 @@ $hover-color: rgba(225, 29, 116, 1);
       margin-right: 10px;
 
       path {
-        transition: fill 0.3s ease-in;
+        transition: fill 0.15s ease-in;
       }
 
       &:hover {
@@ -87,7 +92,7 @@ $hover-color: rgba(225, 29, 116, 1);
       }
 
       path {
-        transition: fill 0.3s ease-in;
+        transition: fill 0.15s ease-in;
       }
 
       &:hover {
@@ -123,7 +128,8 @@ $hover-color: rgba(225, 29, 116, 1);
     .row {
       width: 100%;
       display: flex;
-      margin-bottom: 20px;
+      flex-direction: column;
+      margin-bottom: 0;
 
       &:last-child {
         margin-bottom: 0;
@@ -131,8 +137,7 @@ $hover-color: rgba(225, 29, 116, 1);
     }
 
     .col {
-      width: calc(33.33% - 20px);
-      margin-right: 30px;
+      position: relative;
 
       &:last-child {
         margin-right: 0;
@@ -145,29 +150,40 @@ $hover-color: rgba(225, 29, 116, 1);
   }
 
   &__list-title {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     position: relative;
+    cursor: pointer;
+
+    &:hover {
+      color: $hover-color;
+    }
 
     &:after {
       @include delimiter;
       left: 0;
-      bottom: -10px;
+      bottom: -5px;
     }
   }
 
   ul#{&}__list {
     padding: 0;
     list-style: none;
-    margin-bottom: 0;
+    margin-bottom: 0px;
+    height: 0;
+    overflow: hidden;
+
+    &.open {
+      height: auto;
+    }
   
     li {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 400;
-      line-height: 20px;
-      letter-spacing: -0.5px;
+      line-height: 18px;
+      letter-spacing: -0.3px;
       color: rgba(0, 0, 0, 0.8);
       margin-bottom: 5px;
-      transition: color 0.3s ease-in;
+      transition: color 0.15s ease-in;
 
       &:hover {
         cursor: pointer;
@@ -185,6 +201,10 @@ $hover-color: rgba(225, 29, 116, 1);
     position: relative;
     margin-bottom: 20px;
 
+    &:first-of-type {
+      margin-top: 20px;
+    }
+
     &:after {
       @include delimiter;
       left: 0;
@@ -192,17 +212,35 @@ $hover-color: rgba(225, 29, 116, 1);
     }
 
     img {
-      display: none;
+      display: block;
       width: 80px;
       height: 60px;
       margin-right: 20px;
       border-radius: 5px;
     }
 
+    &-header {
+      color: $ligth-text;
+    }
+
+    &-header,
     &-body {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-body {
+      margin-top: 12px;
       svg {
         display: none;
       }
+    }
+
+    &-title {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 25px;
+      letter-spacing: -0.3px;
     }
   }
 }
@@ -211,6 +249,29 @@ $hover-color: rgba(225, 29, 116, 1);
   .menu_main {
     &__dropdown {
       padding: 0 80px;
+
+      &_inner {
+        flex-direction: row;
+      }
+    }
+
+    &__main-section {
+      width: calc(50% - 15px);
+      margin-right: 30px;
+    }
+
+    &__articles-section {
+      width: calc(50% - 15px);
+    }
+
+    &__article {
+      &:first-of-type {
+        margin-top: 0;
+      }
+
+      img {
+        display: none;
+      }
     }
 
     &__list-title {
@@ -234,6 +295,36 @@ $hover-color: rgba(225, 29, 116, 1);
       width: calc(80% - 30px);
       margin-right: 30px;
     }
+
+    &__list-title {
+      cursor: auto;
+
+      &:hover {
+        color: inherit;
+      }
+    }
+
+    .row {
+      flex-direction: row;
+      margin-bottom: 20px;
+    }
+
+    .col {
+      width: calc(33.33% - 20px);
+      margin-right: 30px;
+    }
+
+    ul#{&}__list {
+      height: auto;
+      margin-bottom: 20px;
+      margin-bottom: 0;
+
+      li {
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: -0.5px;
+      }
+    }
   }
 }
 
@@ -247,6 +338,8 @@ $hover-color: rgba(225, 29, 116, 1);
 
     &__list-title {
       margin-bottom: 48.5px;
+      font-size: 24px;
+      line-height: 30px;
 
       &:after {
         bottom: -25px

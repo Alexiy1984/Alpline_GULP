@@ -8,7 +8,9 @@ const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
 const sync = require('browser-sync').create();
 const htmlmin = require('gulp-htmlmin');
-var uglify = require('gulp-uglify');
+const uglify = require('gulp-uglify');
+const concat = require('gulp-concat');
+const del = require('del');
 
 var prefixerOptions = {
   browserlist: ['last 3 versions']
@@ -18,10 +20,25 @@ var sassOptions = {
   outputStyle: 'expanded'
 };
 
+function cleanCSS() {
+  return del(['public/stylesheets/**', '!public/stylesheets']);
+}
+
 function generateCSS(cb) {
-    src('./sass/**/*.scss')
+    src([ 
+          './sass/styles-reset.scss',
+          './sass/style.scss',
+          './sass/card_small.scss', 
+          './sass/card_medium.scss',
+          './sass/card_big.scss',
+          './sass/card_hero.scss',
+          './sass/footer.scss',
+          './sass/menu_main.scss',
+        ])
         .pipe(sass(sassOptions).on('error', sass.logError))
         .pipe(autoprefixer(prefixerOptions))
+        .pipe(concat('index.css'))
+        // .pipe(uglify().on('error', console.error))
         .pipe(dest('public/stylesheets'))
         .pipe(sync.stream());
     cb();
@@ -306,7 +323,7 @@ function browserSync(cb) {
 }
 
 
-exports.css = generateCSS;
+exports.css =  series(cleanCSS,generateCSS);
 exports.html = generateHTML;
 exports.js = uglifyJS;
 exports.htmlMin = minifyHTML;
@@ -314,5 +331,6 @@ exports.lint = runLinter;
 exports.test = runTests;
 exports.watch = watchFiles;
 exports.sync = browserSync;
+exports.clean = cleanCSS;
 
 exports.default = series(runLinter,parallel(generateCSS,generateHTML, uglifyJS),runTests);

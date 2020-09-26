@@ -1,9 +1,105 @@
 $font-stack: Inter, sans-serif;
 $primary-color: #000000;
+$hover-color: rgba(225, 29, 116, 1);
+
+$breakpoints: (
+  small: 768px,
+);
+
+$h1-font-sizes: (
+  null: (54px, 60px, -3.5px),
+  small: (72px, 80px, -4.5px),
+);
+
+$h2-font-sizes: (
+  null: (40px, 46px, -1.8px),
+  small: (60px, 65px, -2.5px),
+);
+
+$h3-font-sizes: (
+  null: (32px, 36px, -1.1px),
+  small: (48px, 54px, -1.6px),
+);
+
+$h4-font-sizes: (
+  null: (24px, 28px, -0.8px),
+  small: (36px, 44px, -1.2px),
+);
+
+$h5-font-sizes: (
+  null: (22px, 26px, -0.55px),
+  small: (28px, 34px, -0.8px),
+);
+
+$caption_1-font-sizes: (
+  null: (18px, 20px, -0.5px),
+  small: (20px, 24px, -0.6px),
+);
+
+$caption_2-font-sizes: (
+  null: (17px, 18px, -0.3px),
+  small: (18px, 20px, -0.3px),
+);
+
+$caption_3-font-sizes: (
+  null: (15px, 18px, -0.3px),
+  small: (16px, 18px, -0.5px),
+);
+
+$caption_4-font-sizes: (
+  null: (12px, 14px, -0.3px),
+  small: (13px, 15px, -0.3px),
+);
+
+@mixin font-size($fs-map, $fs-breakpoints: $breakpoints) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      @include make-font-size($fs-font-size);
+    }
+    @else {
+      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+      }
+      @media screen and (min-width: $fs-breakpoint) {
+        @include make-font-size($fs-font-size);
+      }
+    }
+  }
+}
+
+@mixin make-font-size($fs-font-size) {
+  @if type-of($fs-font-size) == "list" {
+    font-size: nth($fs-font-size, 1);
+    @if (length($fs-font-size) > 1) {
+      line-height: nth($fs-font-size, 2);
+    }
+    @if (length($fs-font-size) > 2) {
+      letter-spacing: nth($fs-font-size, 3);
+    }
+  }
+  @else {
+    font-size: $fs-font-size;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   font: 100% $font-stack;
   color: $primary-color;
+
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+  &:visited,
+  &active {
+    color: inherit;
+  }
 }
 
 h1,
@@ -34,33 +130,23 @@ h4,
 }
 
 h1 {
-  font-size: 54px;
-  line-height: 60px;
-  letter-spacing: -3.5px;
+  @include font-size($h1-font-sizes);
 }
 
 h2 {
-  font-size: 40px;
-  line-height: 46px;
-  letter-spacing: -1.8px;
+  @include font-size($h2-font-sizes);
 }
 
 h3 {
-  font-size: 32px;
-  line-height: 36px;
-  letter-spacing: -1.1px;
+  @include font-size($h3-font-sizes);
 }
 
 h4 {
-  font-size: 24px;
-  line-height: 28px;
-  letter-spacing: -0.8px;
+  @include font-size($h4-font-sizes);
 }
 
 h5 {
-  font-size: 22px;
-  line-height: 26px;
-  letter-spacing: -0.55px;
+  @include font-size($h5-font-sizes);
 }
 
 .lead,
@@ -94,6 +180,46 @@ p {
   letter-spacing: -0.4px;
 }
 
+.caption_1 {
+  @include font-size($caption_1-font-sizes);
+  font-weight: 400;
+
+  &_med {
+    @extend .caption_1;
+    font-weight: 500;
+  }
+}
+
+.caption_2 {
+  @include font-size($caption_2-font-sizes);
+  font-weight: 400;
+
+  &_med {
+    @extend .caption_2;
+    font-weight: 500;
+  }
+}
+
+.caption_3 {
+  @include font-size($caption_3-font-sizes);
+  font-weight: 400;
+
+  &_med {
+    @extend .caption_3;
+    font-weight: 500;
+  }
+}
+
+.caption_4 {
+  @include font-size($caption_4-font-sizes);
+  font-weight: 400;
+
+  &_med {
+    @extend .caption_4;
+    font-weight: 500;
+  }
+}
+
 .wrap {
   display: flex;
   flex-direction: column;
@@ -114,36 +240,6 @@ p {
 }
 
 @media (min-width: 768px) {
-  h1 {
-    font-size: 72px;
-    line-height: 80px;
-    letter-spacing: -4.5px;
-  }
-  
-  h2 {
-    font-size: 60px;
-    line-height: 65px;
-    letter-spacing: -2.5px;
-  }
-  
-  h3 {
-    font-size: 48px;
-    line-height: 54px;
-    letter-spacing: -1.6px;
-  }
-  
-  h4 {
-    font-size: 36px;
-    line-height: 44px;
-    letter-spacing: -1.2px;
-  }
-  
-  h5 {
-    font-size: 28px;
-    line-height: 34px;
-    letter-spacing: -0.8px;
-  }
-
   .lead,
   .lead_medium {
     font-size: 24px;
@@ -173,58 +269,6 @@ p {
     font-size: 15px;
     line-height: 23px;
     letter-spacing: -0.6px;
-  }
-
-  .caption_1 {
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: -0.6px;
-    text-align: left;
-
-    &_med {
-      @extend .caption_1;
-      font-weight: 500;
-    }
-  }
-
-  .caption_2 {
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: -0.3px;
-    text-align: left;
-
-    &_med {
-      @extend .caption_2;
-      font-weight: 500;
-    }
-  }
-
-  .caption_3 {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 18px;
-    letter-spacing: -0.5px;
-    text-align: left;
-
-    &_med {
-      @extend .caption_3;
-      font-weight: 500;
-    }
-  }
-
-  .caption_4 {
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 15px;
-    letter-spacing: -0.2px;
-    text-align: left;
-
-    &_med {
-      @extend .caption_4;
-      font-weight: 500;
-    }
   }
 
   .wrap {

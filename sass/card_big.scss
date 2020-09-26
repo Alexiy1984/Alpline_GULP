@@ -55,11 +55,11 @@
   &__date,
   &__description  {
     color: rgba(0, 0, 0, 0.5);
-    transition: color 0.3s ease-in;
+    transition: color 0.15s ease-in;
   }
 
   &__author {
-    transition: color 0.3s ease-in;
+    transition: color 0.15s ease-in;
 
     &:hover {
       cursor: pointer;
@@ -91,7 +91,7 @@
     border: 1px solid rgba(0, 0, 0, 0.04);
     margin-right: 10px;
     margin-bottom: 10px;
-    transition: background-color 0.3s ease-in, color 0.3s ease-in;
+    transition: background-color 0.15s ease-in, color 0.15s ease-in;
 
     svg {
       margin-right: 4.5px;
@@ -105,7 +105,7 @@
     border: 1px solid rgba(0, 0, 0, 0);   
     margin-right: 10px;
     margin-bottom: 10px;
-    transition: background-color 0.3s ease-in, color 0.3s ease-in;
+    transition: background-color 0.15s ease-in, color 0.15s ease-in;
 
     &:hover {
       cursor: pointer;
@@ -125,7 +125,7 @@
       width: auto;
 
       path {
-        transition: fill-opacity 0.3s ease-in, color 0.3s ease-in;
+        transition: fill-opacity 0.15s ease-in, color 0.15s ease-in;
       }
     }
 
