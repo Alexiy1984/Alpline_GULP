@@ -37,6 +37,10 @@ $menu-mian-text: (
   &__open-button {
     display: flex;
     align-items: center;
+    
+    p {
+      display: none;
+    }
 
     svg {
       margin-right: 10px;
@@ -52,6 +56,10 @@ $menu-mian-text: (
   }
   
   &__logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 24px;
     font-weight: 600;
     line-height: 30px;
@@ -59,19 +67,80 @@ $menu-mian-text: (
   }
   
   &__user-block {
-    svg {
+    display: flex;
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 50px;
       margin-right: 27px;
 
       &:last-child {
         margin-right: 0;
+        padding-right: 0;
+      }
+      
+    &-search {
+      position: relative;
+      display: flex;
+      @extend .menu_main__user-block-item;
+      border-radius: 30px;
+      border: 1.5px solid rgba(0, 0, 0, 0); 
+      padding-right: 34px;
+      overflow: show;
+      width: 0;
+      max-width: 100%;
+      transition: width 0.3s ease-in-out, border-color 0.3s ease-in-out;
+
+      input {
+        color: rgba(0, 0, 0, 0.3);
+        border: none;
+        width: 0;
+        padding: 0;
+        opacity: 0;
+
+        &::placeholder {
+          color: rgba(0, 0, 0, 0.3);
+        }
       }
 
-      path {
-        transition: fill 0.15s ease-in;
+      svg {
+        position: absolute;
+        top: 50%;
+        left: 17px;
+        transform: translateY(-50%);
       }
 
-      &:hover {
-        @include svg-hover-effect;
+      &.open {
+        border: 1.5px solid rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        width: 360px;
+        max-width: 100%;
+        background-color: #fff;
+
+        svg {
+          path {
+            color: rgba(0, 0, 0, 0.3);
+          }
+        }
+
+        input {
+          width: 100%;
+          padding: 0 0 0 47px;
+          opacity: 1;
+        }
+      }
+    }
+
+      svg {
+        path {
+          transition: fill 0.15s ease-in;
+        }
+  
+        &:hover {
+          @include svg-hover-effect;
+        }
       }
     }
   }
@@ -263,6 +332,12 @@ $menu-mian-text: (
 
       &_inner {
         flex-direction: row;
+      }
+    }
+
+    &__open-button {
+      p {
+        display: block;
       }
     }
 

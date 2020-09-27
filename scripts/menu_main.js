@@ -84,4 +84,37 @@ document.addEventListener('DOMContentLoaded', function(){
     };
   });
 
+  var menu_search = document.getElementById('main_menu__search');
+  var menu_search_input = document.getElementById('main_menu__search-input');
+
+  menu_search.addEventListener('click', function(e) {
+    e.target.closest('#main_menu__search').classList.add('open');
+  });
+
+  menu_search_input.addEventListener('change', function(e) {
+    e.target.closest('#main_menu__search').classList.remove('open');
+  });
+
+  window.addEventListener('click', function(e) {
+    var is_search =  document.getElementById('main_menu__search-input');
+
+    if(!is_search.isSameNode(e.target)) {
+      document.getElementById('main_menu__search').classList.remove('open');
+    }
+  });
+
+  var login_button = document.getElementById('main_menu__login');
+  var user_window = document.getElementById('user_window');
+
+  login_button.addEventListener('click', function () {
+    // var user = window.localStorage.getItem('user');
+    // console.log('user is ' + user);
+
+    // if (user == null || user == undefined) {
+    //   window.localStorage.setItem('user', 'Alex');
+    // }
+
+    user_window.classList.add('open');
+  });
+
 }, false);

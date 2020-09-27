@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><% data.title %></title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel='stylesheet' href='stylesheets/index.css' />
+
+  <script src='javascripts/menu_main.js'></script>
+</head>
+<body>
+  <div class="wrap">
+    <%- include('partials/header', { 
+      menuCol1Title1: data.menuCol1[0].title,
+      menuCol1Items1: data.menuCol1[0].items,
+      menuCol1Title2: data.menuCol1[1].title,
+      menuCol1Items2: data.menuCol1[1].items,
+      menuCol2Title1: data.menuCol2[0].title,
+      menuCol2Items1: data.menuCol2[0].items,
+      menuCol2Title2: data.menuCol2[1].title,
+      menuCol2Items2: data.menuCol2[1].items,
+      menuCol3Title1: data.menuCol3[0].title,
+      menuCol3Items1: data.menuCol3[0].items,
+      menuCol3Title2: data.menuCol3[1].title,
+      menuCol3Items2: data.menuCol3[1].items,
+      articles: [
+        [
+          data.smallCards[0].imgUrl,
+          data.smallCards[0].author,
+          data.smallCards[0].date,
+          data.smallCards[0].title, 
+        ],
+        [
+          data.smallCards[1].imgUrl,
+          data.smallCards[1].author,
+          data.smallCards[1].date,
+          data.smallCards[1].title, 
+        ],
+        [
+          data.smallCards[2].imgUrl,
+          data.smallCards[2].author,
+          data.smallCards[2].date,
+          data.smallCards[2].title, 
+        ],
+        [
+          data.smallCards[3].imgUrl,
+          data.smallCards[3].author,
+          data.smallCards[3].date,
+          data.smallCards[3].title, 
+        ],
+      ]
+    }) %>
+    <div class="content">
+
+    </div>
+    <%- include('partials/footer') %>
+  </div>
+</body>
+</html>

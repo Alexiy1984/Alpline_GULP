@@ -29,4 +29,11 @@ describe('test', function() {
             .expect('respond with a resource', done);
     });
 
+    it('Test /post response', function(done) {
+      request(app)
+          .get('/post')
+          .expect(200)
+          .expect('respond with a resource', done);
+  });
+
 });

@@ -1,0 +1,18 @@
+@import '_variables.scss';
+
+.user_window {
+  position: fixed;
+  top: 75px;
+  right: 30px;
+  width: 278px;
+  height: 245px;
+  z-index: 1001;
+  background-color: #fff;
+  border: $ligth-border;
+  box-shadow: 0px 30px 100px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+
+  &.open {
+    opacity: 1;
+  }
+}  
