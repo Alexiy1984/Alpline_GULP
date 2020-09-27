@@ -1,35 +1,10 @@
-$hover-color: rgba(225, 29, 116, 1);
-$ligth-text: rgba(0, 0, 0, 0.5);
+@import '_mixins.scss';
+@import '_variables.scss';
 
-@mixin  text-hover-effect {
-  cursor: pointer;
-  color: $hover-color;
-}
-
-@mixin svg-hover-effect {
-  cursor: pointer;
-
-  path {
-    fill: $hover-color;
-  }
-}
-
-@mixin for-collapsed-content {
-  overflow:hidden;
-  transition:height 0.15s ease-out;
-}
-
-@mixin delimiter {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  display: block;
-  content: '';
-  width: 100%;
-  height: 1.5px;
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 2px;
-}
+$menu-mian-text: (
+  null: (16px, 20px, -0.5px),
+  small: (16px, 20px, -0.5px),
+);
 
 .menu_main {
   top: 0;
@@ -145,17 +120,32 @@ $ligth-text: rgba(0, 0, 0, 0.5);
     }
   }
 
-  &__articles-section {
-    flex-grow: 1;
-  }
+  &__articles {
+    &-section {
+      flex-grow: 1;
+      margin-top: 10px;
+    }
 
+    &-link {
+      display: inline-block;
+      color: $ligth-text;
+      width: 100%;
+      text-align: center;
+      @include font-size($menu-mian-text);
+
+      &:hover {
+        @include text-hover-effect;
+      }
+    }
+  }
+  
   &__list-title {
     margin-bottom: 10px;
     position: relative;
-    cursor: pointer;
 
-    &:hover {
+    &:not(.disable):hover {
       color: $hover-color;
+      cursor: pointer;
     }
 
     &:after {
@@ -174,16 +164,28 @@ $ligth-text: rgba(0, 0, 0, 0.5);
 
     &.open {
       height: auto;
+      
+      li {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
   
     li {
-      font-size: 14px;
+      @include font-size($menu-mian-text);
       font-weight: 400;
-      line-height: 18px;
-      letter-spacing: -0.3px;
-      color: rgba(0, 0, 0, 0.8);
+      color: $grey-dark;
       margin-bottom: 5px;
       transition: color 0.15s ease-in;
+      transform: translateX(-100px);
+      transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+      opacity: 0;
+
+      @for $i from 1 through 15 {
+        &:nth-child(1n + #{$i}) {
+          transition-delay: #{(0.025 * $i)}s;
+        }
+      }
 
       &:hover {
         cursor: pointer;
@@ -231,8 +233,13 @@ $ligth-text: rgba(0, 0, 0, 0.5);
 
     &-body {
       margin-top: 12px;
+
       svg {
         display: none;
+
+        &:hover {
+          @include svg-hover-effect;
+        }
       }
     }
 
@@ -241,6 +248,10 @@ $ligth-text: rgba(0, 0, 0, 0.5);
       font-weight: 500;
       line-height: 25px;
       letter-spacing: -0.3px;
+
+      &:hover {
+        @include text-hover-effect;
+      }
     }
   }
 }
@@ -262,6 +273,7 @@ $ligth-text: rgba(0, 0, 0, 0.5);
 
     &__articles-section {
       width: calc(50% - 15px);
+      margin-top: 0;
     }
 
     &__article {
@@ -299,8 +311,9 @@ $ligth-text: rgba(0, 0, 0, 0.5);
     &__list-title {
       cursor: auto;
 
-      &:hover {
+      &:not(.disable):hover {
         color: inherit;
+        cursor: auto;
       }
     }
 
@@ -316,13 +329,14 @@ $ligth-text: rgba(0, 0, 0, 0.5);
 
     ul#{&}__list {
       height: auto;
+      opacity: 1;
       margin-bottom: 20px;
       margin-bottom: 0;
 
       li {
-        font-size: 16px;
-        line-height: 20px;
-        letter-spacing: -0.5px;
+        transition: unset;
+        transform: translateX(0);
+        opacity: 1;
       }
     }
   }
@@ -359,6 +373,13 @@ $ligth-text: rgba(0, 0, 0, 0.5);
         bottom: -22px;
       }
 
+      &:last-of-type {
+        margin-bottom: 40px;
+        &:after {
+          bottom: -23px;
+        }
+      }
+
       &-content {
         display: flex;
         flex-direction: column;
@@ -375,6 +396,8 @@ $ligth-text: rgba(0, 0, 0, 0.5);
         margin-top: 12px;
 
         svg {
+          margin-left: 5px;
+          min-width: 14px;
           display: block;
         }
       }

@@ -1,0 +1,60 @@
+@mixin font-size($fs-map, $fs-breakpoints: $breakpoints) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      @include make-font-size($fs-font-size);
+    }
+    @else {
+      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+      }
+      @media screen and (min-width: $fs-breakpoint) {
+        @include make-font-size($fs-font-size);
+      }
+    }
+  }
+}
+
+@mixin make-font-size($fs-font-size) {
+  @if type-of($fs-font-size) == "list" {
+    font-size: nth($fs-font-size, 1);
+    @if (length($fs-font-size) > 1) {
+      line-height: nth($fs-font-size, 2);
+    }
+    @if (length($fs-font-size) > 2) {
+      letter-spacing: nth($fs-font-size, 3);
+    }
+  }
+  @else {
+    font-size: $fs-font-size;
+  }
+}
+
+@mixin  text-hover-effect {
+  cursor: pointer;
+  color: $hover-color;
+}
+
+@mixin svg-hover-effect {
+  cursor: pointer;
+
+  path {
+    fill: $hover-color;
+  }
+}
+
+@mixin for-collapsed-content {
+  overflow:hidden;
+  transition:height 0.15s ease-out;
+}
+
+@mixin delimiter {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 1.5px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 2px;
+}

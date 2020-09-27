@@ -9,8 +9,11 @@ const mocha = require('gulp-mocha');
 const sync = require('browser-sync').create();
 const htmlmin = require('gulp-htmlmin');
 const uglify = require('gulp-uglify');
+const uglifycss = require('gulp-uglifycss');
 const concat = require('gulp-concat');
 const del = require('del');
+const removeEmptyLines = require('gulp-remove-empty-lines');
+const formatHtml = require('gulp-format-html');
 
 var prefixerOptions = {
   browserlist: ['last 3 versions']
@@ -18,6 +21,7 @@ var prefixerOptions = {
 
 var sassOptions = {
   outputStyle: 'expanded'
+  // outputStyle: 'compressed'
 };
 
 function cleanCSS() {
@@ -38,7 +42,7 @@ function generateCSS(cb) {
         .pipe(sass(sassOptions).on('error', sass.logError))
         .pipe(autoprefixer(prefixerOptions))
         .pipe(concat('index.css'))
-        // .pipe(uglify().on('error', console.error))
+        // .pipe(uglifycss().on('error', console.error))
         .pipe(dest('public/stylesheets'))
         .pipe(sync.stream());
     cb();
@@ -261,6 +265,8 @@ function generateHTML(cb) {
         .pipe(rename({
             extname: '.html'
         }))
+        .pipe(removeEmptyLines())
+        .pipe(formatHtml())
         .pipe(dest('public'));
     cb();
 }

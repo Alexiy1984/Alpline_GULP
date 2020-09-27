@@ -19,7 +19,7 @@
             <p class="lead_medium menu_main__list-title"><%= menuCol1Title1 %></p>
             <ul class="menu_main__list">
               <% menuCol1Items1.forEach(function(item){ %>
-                <li><%= item %></li>
+                <li><a href="#"><%= item %></a></li>
               <% }); %>
             </ul>
           </div>
@@ -27,7 +27,7 @@
             <p class="lead_medium menu_main__list-title"><%= menuCol2Title1 %></p>
             <ul class="menu_main__list">
               <% menuCol2Items1.forEach(function(item){ %>
-                <li><%= item %></li>
+                <li><a href="#"><%= item %></a></li>
               <% }); %>
             </ul>
           </div>
@@ -35,7 +35,7 @@
             <p class="lead_medium menu_main__list-title"><%= menuCol3Title1 %></p>
             <ul class="menu_main__list">
               <% menuCol3Items1.forEach(function(item){ %>
-                <li><%= item %></li>
+                <li><a href="#"><%= item %></a></li>
               <% }); %>
             </ul>
           </div>
@@ -45,7 +45,7 @@
             <p class="lead_medium menu_main__list-title"><%= menuCol1Title2 %></p>
             <ul class="menu_main__list">
               <% menuCol1Items2.forEach(function(item){ %>
-                <li><%= item %></li>
+                <li><a href="#"><%= item %></a></li>
               <% }); %>
             </ul>
           </div>
@@ -53,7 +53,7 @@
             <p class="lead_medium menu_main__list-title"><%= menuCol2Title2 %></p>
             <ul class="menu_main__list">
               <% menuCol2Items2.forEach(function(item){ %>
-                <li><%= item %></li>
+                <li><a href="#"><%= item %></a></li>
               <% }); %>
             </ul>
           </div>
@@ -61,14 +61,14 @@
             <p class="lead_medium menu_main__list-title"><%= menuCol3Title2 %></p>
             <ul class="menu_main__list">
               <% menuCol3Items2.forEach(function(item){ %>
-                <li><%= item %></li>
+                <li><a href="#"><%= item %></a></li>
               <% }); %>
             </ul>
           </div>
         </div>
       </div>
       <div class="menu_main__articles-section">
-        <p class="lead_medium menu_main__list-title">Popular articles</p>
+        <p class="lead_medium menu_main__list-title disable">Popular articles</p>
         <% for (var i = 0; i < 4; i++) { %>
           <div class="menu_main__article">
             <img src="<%= articles[i][0] %>" alt="">
@@ -82,12 +82,15 @@
                 </div>
               </div>
               <div class="menu_main__article-body">
-                <div class="menu_main__article-title"><%= articles[i][3] %></div>
+                <a href="#" class="menu_main__article-title"><%= articles[i][3] %></a>
                 <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 0H3.00001C2.20436 0 1.4413 0.316071 0.878688 0.87868C0.316078 1.44129 7.88292e-06 2.20435 7.88292e-06 3V19C-0.000691684 19.1762 0.0451825 19.3495 0.132986 19.5023C0.220789 19.655 0.347404 19.7819 0.500008 19.87C0.652027 19.9578 0.824471 20.004 1.00001 20.004C1.17554 20.004 1.34799 19.9578 1.50001 19.87L7.00001 16.69L12.5 19.87C12.6524 19.9564 12.8248 20.0012 13 20C13.1752 20.0012 13.3476 19.9564 13.5 19.87C13.6526 19.7819 13.7792 19.655 13.867 19.5023C13.9548 19.3495 14.0007 19.1762 14 19V3C14 2.20435 13.6839 1.44129 13.1213 0.87868C12.5587 0.316071 11.7957 0 11 0ZM12 17.27L7.50001 14.67C7.34799 14.5822 7.17554 14.536 7.00001 14.536C6.82447 14.536 6.65203 14.5822 6.50001 14.67L2.00001 17.27V3C2.00001 2.73478 2.10536 2.48043 2.2929 2.29289C2.48044 2.10536 2.73479 2 3.00001 2H11C11.2652 2 11.5196 2.10536 11.7071 2.29289C11.8947 2.48043 12 2.73478 12 3V17.27Z" fill="black"/></svg>
               </div>
             </div>
           </div>
         <% } %>
+        <a href="#" class="menu_main__articles-link">
+          Explore all
+        </a>
       </div>
     </div>
   </div>

@@ -45,15 +45,42 @@ document.addEventListener('DOMContentLoaded', function(){
 
   [].forEach.call(main_menu_buttons, function(m_btn) {
     m_btn.onclick = function(e) {
-      var curr_elt = e.currentTarget;
+
       var children = e.currentTarget.parentElement.children;
-      elts = document.getElementsByClassName('menu_main__list');
+      var elts = document.getElementsByClassName('menu_main__list');
       [].forEach.call(elts, function(elt) {
         if (!elt.isSameNode(children[1])) {
           elt.classList.remove('open');
         }
       });
       children[1].classList.toggle('open');
+    };
+  });
+
+  (function() {
+    var throttle = function(type, name, obj) {
+        obj = obj || window;
+        var running = false;
+        var func = function() {
+            if (running) { return; }
+            running = true;
+             requestAnimationFrame(function() {
+                obj.dispatchEvent(new CustomEvent(name));
+                running = false;
+            });
+        };
+        obj.addEventListener(type, func);
+    };
+
+    throttle("resize", "optimizedResize");
+  })();
+
+  window.addEventListener("optimizedResize", function() {
+    if (window.innerWidth > 991) {
+      var elts = document.getElementsByClassName('menu_main__list');
+      [].forEach.call(elts, function(elt) {
+          elt.classList.remove('open');
+      });
     };
   });
 

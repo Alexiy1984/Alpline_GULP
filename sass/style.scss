@@ -1,10 +1,5 @@
-$font-stack: Inter, sans-serif;
-$primary-color: #000000;
-$hover-color: rgba(225, 29, 116, 1);
-
-$breakpoints: (
-  small: 768px,
-);
+@import '_mixins.scss';
+@import '_variables.scss';
 
 $h1-font-sizes: (
   null: (54px, 60px, -3.5px),
@@ -50,37 +45,6 @@ $caption_4-font-sizes: (
   null: (12px, 14px, -0.3px),
   small: (13px, 15px, -0.3px),
 );
-
-@mixin font-size($fs-map, $fs-breakpoints: $breakpoints) {
-  @each $fs-breakpoint, $fs-font-size in $fs-map {
-    @if $fs-breakpoint == null {
-      @include make-font-size($fs-font-size);
-    }
-    @else {
-      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
-        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
-      }
-      @media screen and (min-width: $fs-breakpoint) {
-        @include make-font-size($fs-font-size);
-      }
-    }
-  }
-}
-
-@mixin make-font-size($fs-font-size) {
-  @if type-of($fs-font-size) == "list" {
-    font-size: nth($fs-font-size, 1);
-    @if (length($fs-font-size) > 1) {
-      line-height: nth($fs-font-size, 2);
-    }
-    @if (length($fs-font-size) > 2) {
-      letter-spacing: nth($fs-font-size, 3);
-    }
-  }
-  @else {
-    font-size: $fs-font-size;
-  }
-}
 
 html {
   scroll-behavior: smooth;
