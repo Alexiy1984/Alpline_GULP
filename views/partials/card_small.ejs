@@ -1,6 +1,10 @@
 <div class="card_small">
   <a href="#" class="card_small__img">
-    <img src="<%= imgUrl %>" alt="">
+    <picture>
+      <% var bigUrl = imgUrl.split('.').join('@2.') %>
+      <source srcset="<%= bigUrl %> 2x, <%= imgUrl %> 1x" />
+      <img src="<%= imgUrl %>" alt="<%= title %>">
+    </picture>
   </a>
   <div class="card_small__body">
     <div class="card_small__header">

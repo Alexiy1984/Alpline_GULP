@@ -14,6 +14,22 @@
   }
 }
 
+@mixin element-padding($pad-map, $fs-breakpoints: $breakpoints) {
+  @each $fs-breakpoint, $padding in $pad-map {
+    @if $fs-breakpoint == null {
+      @include make-element-paddigs($padding);
+    }
+    @else {
+      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+      }
+      @media screen and (min-width: $fs-breakpoint) {
+        @include make-element-paddigs($padding);
+      }
+    }
+  }
+}
+
 @mixin make-font-size($fs-font-size) {
   @if type-of($fs-font-size) == "list" {
     font-size: nth($fs-font-size, 1);
@@ -26,6 +42,23 @@
   }
   @else {
     font-size: $fs-font-size;
+  }
+}
+
+@mixin make-element-paddigs($elt-padding) {
+  @if type-of($elt-padding) == "list" {
+    @if (length($elt-padding) == 2) {
+      padding: nth($elt-padding, 1) nth($elt-padding, 2);
+    }
+    @if (length($elt-padding) == 3) {
+      padding: nth($elt-padding, 1) nth($elt-padding, 2) nth($elt-padding, 3);
+    }
+    @if (length($elt-padding) == 4) {
+      padding: nth($elt-padding, 1) nth($elt-padding, 2) nth($elt-padding, 3) nth($elt-padding, 4);
+    }
+  }
+  @else {
+    padding: nth($elt-padding, 1);
   }
 }
 

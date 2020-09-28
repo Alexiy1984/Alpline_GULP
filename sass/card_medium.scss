@@ -5,11 +5,21 @@
   margin: 0 auto 40px;
   overflow: hidden;
 
-  img {
+  &__img {
+    position: relative;
     width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 5px;
+    height: 0;
+    padding-top: 63%;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 5px;
+    }
   }
 
   &__body {
@@ -125,9 +135,11 @@
   .card_medium {
     flex-wrap: nowrap;
 
-    img {
-      width: 40.31%;
+    &__img {
+      min-width: 50%;
+      width: 50%;
       height: auto;
+      padding-top: 0;
     }
 
     &__body {
@@ -144,9 +156,10 @@
   .card_medium {
     flex-wrap: nowrap;
 
-    img {
+    &__img {
+      min-width: 40.31%;
       width: 40.31%;
-      height: auto;
+      padding-top: 27.1%;
     }
 
     &__body {
@@ -157,10 +170,9 @@
 
 @media (min-width: 1320px) {
   .card_medium {
-    img {
-      width: 40.31%;
-      max-height: 340px;
-      max-width: 520px;
+    &__img {
+      width: 520px;
+      padding-top: 340px;
     }
   }
 }

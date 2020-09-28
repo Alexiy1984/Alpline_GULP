@@ -22,6 +22,10 @@
         menuCol3Items1: data.menuCol3[0].items,
         menuCol3Title2: data.menuCol3[1].title,
         menuCol3Items2: data.menuCol3[1].items,
+        userImg: data.user[0].img,
+        userFirstName: data.user[0].firstname,
+        userSurname: data.user[0].surname,
+        userEmail: data.user[0].email,
         articles: [
           [
             data.smallCards[0].imgUrl,
@@ -47,7 +51,7 @@
             data.smallCards[3].date,
             data.smallCards[3].title, 
           ],
-        ]
+        ],
       }) %>
       <div class="content">
         <% data.heroCards.forEach(function(heroCard){ %>
@@ -106,7 +110,7 @@
         <h2><%= data.text %></h1>
         <h3><%= data.title %></h1>
         <h4><%= data.text %></h1>
-        <h5><%= data.title %></h1>
+        <h5><%= data.user[0].img %></h1>
         <p>Welcome to <%= data.title %></p>
         <p>Some new</p>
       </div>

@@ -1,5 +1,11 @@
 <div class="card_medium">
-  <img src="<%= imgUrl %>" alt="<%= title %>">
+  <a href="#" class="card_medium__img">
+    <picture>
+      <% var bigUrl = imgUrl.split('.').join('@2.') %>
+      <source srcset="<%= bigUrl %> 2x, <%= imgUrl %> 1x" />
+      <img src="<%= imgUrl %>" alt="<%= title %>">
+    </picture>
+  </a>
   <div class="card_medium__body">
     <div class="card_medium__header">
       <a href="#" class="card_medium__author"><%= author %></a>

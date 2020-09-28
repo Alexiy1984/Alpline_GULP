@@ -7,9 +7,14 @@
   border: 1px solid rgba(0, 0, 0, 0.05);
   overflow: hidden;
 
-  img {
+  picture {
     width: 100%;
     height: auto;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
   }
 
@@ -120,8 +125,8 @@
   .card_hero {
     flex-wrap: nowrap;
 
-    img {
-      width: 50%;
+    picture {
+      min-width: 50%;
       height: auto;
     }
   }
@@ -129,10 +134,10 @@
 
 @media (min-width: 1320px) {
   .card_hero {
-    img {
+    picture {
       width: 50%;
-      max-height: 550px;
-      max-width: 630px;
+      min-height: 550px;
+      min-width: 630px;
     }
   }
 }

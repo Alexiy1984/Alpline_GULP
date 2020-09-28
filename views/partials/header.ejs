@@ -102,4 +102,20 @@
     </div>
   </div>
 </header>
-<div class="user_window" id="user_window"></div>
+<div class="user_window" id="user_window">
+  <picture>
+    <% var bigUrl = userImg.split('.').join('@2.') %>
+    <source srcset="<%= bigUrl %> 2x, <%= userImg %> 1x" />
+    <img class="user_window__avatar" src="<%= userImg %>" alt="<%= userFirstName %>">
+  </picture>
+  <p class="user_window__name">
+    <%= userFirstName %> <%= userSurname %>
+  </p>
+  <p class="user_window__email caption_4">
+    <%= userEmail %>
+  </p>
+  <div class="user_window__delimiter"></div>
+  <a href="#" class="user_window__login" id="user_window__login">
+    Logout
+  </a>
+</div>

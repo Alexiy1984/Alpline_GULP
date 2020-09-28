@@ -95,14 +95,6 @@ document.addEventListener('DOMContentLoaded', function(){
     e.target.closest('#main_menu__search').classList.remove('open');
   });
 
-  window.addEventListener('click', function(e) {
-    var is_search =  document.getElementById('main_menu__search-input');
-
-    if(!is_search.isSameNode(e.target)) {
-      document.getElementById('main_menu__search').classList.remove('open');
-    }
-  });
-
   var login_button = document.getElementById('main_menu__login');
   var user_window = document.getElementById('user_window');
 
@@ -114,7 +106,24 @@ document.addEventListener('DOMContentLoaded', function(){
     //   window.localStorage.setItem('user', 'Alex');
     // }
 
-    user_window.classList.add('open');
+    user_window.classList.toggle('open');
+  });
+
+  window.addEventListener('click', function(e) {
+    var is_search =  document.getElementById('main_menu__search-input');
+
+    if(!is_search.isSameNode(e.target)) {
+      document.getElementById('main_menu__search').classList.remove('open');
+    }
+
+    if(!e.target.closest('#main_menu__login') && !e.target.closest('#user_window')) {
+      user_window.classList.remove('open');
+    }
+    
+  });
+
+  window.addEventListener('scroll', function(e) {
+    user_window.classList.remove('open');
   });
 
 }, false);

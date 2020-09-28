@@ -27,9 +27,17 @@ var sassOptions = {
 var pages_data = {
   title: 'Some cool title',
   text: 'Some text',
+  user: [
+    {
+      img: 'images/users/user_1.jpg',
+      firstname: 'Leslie',
+      surname: 'Alexander',
+      email: 'lesliealexandro@gmail.com',
+    },
+  ], 
   heroCards: [
     {
-      imgUrl: 'images/card_hero_1.jpg',
+      imgUrl: 'images/cards/card_hero_1.jpg',
       author: 'Jane Cooper',  
       date: '3 Aug 20',
       title: 'You Don’t Need a Compass to Tell You Where You Are', 
@@ -41,7 +49,7 @@ var pages_data = {
   ],
   smallCards: [
     {
-      imgUrl: 'images/small_image_1.jpg',
+      imgUrl: 'images/cards/small_image_1.jpg',
       author: 'Theresa Webb',  
       date: '3 Aug 20',
       title: 'Making Peace With Your Body Is a Mighty Act of Revolution', 
@@ -51,7 +59,7 @@ var pages_data = {
       views: '12,851'
     },
     {
-      imgUrl: 'images/small_image_2.jpg',
+      imgUrl: 'images/cards/small_image_2.jpg',
       author: 'Devon Lane',  
       date: '3 Aug 20',
       title: 'Imperfection is Perfect', 
@@ -61,7 +69,7 @@ var pages_data = {
       views: '12,851'
     },
     {
-      imgUrl: 'images/small_image_3.jpg',
+      imgUrl: 'images/cards/small_image_3.jpg',
       author: 'Kathryn Murphy',  
       date: '3 Aug 20',
       title: 'China Ends Animal-Testing But It Won’t Help Cruelty-Free Brands', 
@@ -71,7 +79,7 @@ var pages_data = {
       views: '12,851'
     },
     {
-      imgUrl: 'images/small_image_4.jpg',
+      imgUrl: 'images/cards/small_image_4.jpg',
       author: 'Theresa Webb',  
       date: '3 Aug 20',
       title: 'Making Peace With Your Body Is a Mighty Act of Revolution', 
@@ -81,7 +89,7 @@ var pages_data = {
       views: '12,851'
     },
     {
-      imgUrl: 'images/small_image_5.jpg',
+      imgUrl: 'images/cards/small_image_5.jpg',
       author: 'Devon Lane',  
       date: '3 Aug 20',
       title: 'Imperfection is Perfect', 
@@ -91,7 +99,7 @@ var pages_data = {
       views: '12,851'
     },
     {
-      imgUrl: 'images/small_image_6.jpg',
+      imgUrl: 'images/cards/small_image_6.jpg',
       author: 'Kathryn Murphy',  
       date: '3 Aug 20',
       title: 'China Ends Animal-Testing But It Won’t Help Cruelty-Free Brands', 
@@ -101,7 +109,7 @@ var pages_data = {
       views: '12,851'
     },
     {
-      imgUrl: 'images/small_image_7.jpg',
+      imgUrl: 'images/cards/small_image_7.jpg',
       author: 'Theresa Webb',  
       date: '3 Aug 20',
       title: 'Making Peace With Your Body Is a Mighty Act of Revolution', 
@@ -111,7 +119,7 @@ var pages_data = {
       views: '12,851'
     },
     {
-      imgUrl: 'images/small_image_8.jpg',
+      imgUrl: 'images/cards/small_image_8.jpg',
       author: 'Devon Lane',  
       date: '3 Aug 20',
       title: 'Imperfection is Perfect', 
@@ -121,7 +129,7 @@ var pages_data = {
       views: '12,851'
     },
     {
-      imgUrl: 'images/small_image_9.jpg',
+      imgUrl: 'images/cards/small_image_9.jpg',
       author: 'Kathryn Murphy',  
       date: '3 Aug 20',
       title: 'China Ends Animal-Testing But It Won’t Help Cruelty-Free Brands', 
@@ -133,7 +141,7 @@ var pages_data = {
   ],
   mediumCards: [
     {
-      imgUrl: 'images/card_medium_1.jpg',
+      imgUrl: 'images/cards/card_medium_1.jpg',
       author: 'Annette Black',  
       date: '3 Aug 20',
       title: 'How Marketing Made ‘Oil-Free’ A Thing', 
@@ -143,7 +151,7 @@ var pages_data = {
       views: '12,851'
     },
     {
-      imgUrl: 'images/card_medium_2.jpg',
+      imgUrl: 'images/cards/card_medium_2.jpg',
       author: 'Dianne Russell',  
       date: '3 Aug 20',
       title: '7 Hip-Hop Fashion Brands That Make Us Most Nostalgic, Ranked', 
@@ -153,7 +161,7 @@ var pages_data = {
       views: '12,851'
     },
     {
-      imgUrl: 'images/card_medium_3.jpg',
+      imgUrl: 'images/cards/card_medium_3.jpg',
       author: 'Michael Thompson',  
       date: '3 Aug 20',
       title: '11 Things Socially Aware People Don’t Say', 
@@ -165,7 +173,7 @@ var pages_data = {
   ],
   bigCards : [
     {
-      imgUrl: 'images/card_big_1.jpg',
+      imgUrl: 'images/cards/card_big_1.jpg',
       author: 'Annette Black',  
       date: '3 Aug 20',
       title: 'How Marketing Made ‘Oil-Free’ A Thing', 
@@ -175,7 +183,7 @@ var pages_data = {
       views: '12,851'
     },
     {
-      imgUrl: 'images/card_big_2.jpg',
+      imgUrl: 'images/cards/card_big_2.jpg',
       author: 'Dianne Russell',  
       date: '3 Aug 20',
       title: '7 Hip-Hop Fashion Brands That Make Us Most Nostalgic, Ranked', 
@@ -185,7 +193,7 @@ var pages_data = {
       views: '12,851'
     },
     {
-      imgUrl: 'images/card_big_3.jpg',
+      imgUrl: 'images/cards/card_big_3.jpg',
       author: 'Michael Thompson',  
       date: '3 Aug 20',
       title: '11 Things Socially Aware People Don’t Say', 
@@ -195,7 +203,7 @@ var pages_data = {
       views: '12,851'
     },
     {
-      imgUrl: 'images/card_big_4.jpg',
+      imgUrl: 'images/cards/card_big_4.jpg',
       author: 'Michael Thompson',  
       date: '3 Aug 20',
       title: '11 Things Socially Aware People Don’t Say', 
@@ -337,9 +345,12 @@ function browserSync(cb) {
         }
     });
 
-    watch('gulpfile.js', series(generateIndexHTML, generatePostHTML));
-    watch('views/**.ejs', series(generateIndexHTML, generatePostHTML));
-    watch('views/partials/**.ejs', series(generateIndexHTML, generatePostHTML));
+    // watch('gulpfile.js', series(generateIndexHTML, generatePostHTML));
+    // watch('views/**.ejs', series(generateIndexHTML, generatePostHTML));
+    // watch('views/partials/**.ejs', series(generateIndexHTML, generatePostHTML));
+    watch('gulpfile.js', generateIndexHTML);
+    watch('views/**.ejs', generateIndexHTML);
+    watch('views/partials/**.ejs', generateIndexHTML);
     watch('sass/**.scss', generateCSS);
     watch('scripts/*.js', uglifyJS);
     watch('./public/**.html').on('change', sync.reload);
@@ -356,4 +367,5 @@ exports.watch = watchFiles;
 exports.sync = browserSync;
 exports.clean = cleanCSS;
 
-exports.default = series(runLinter,parallel(generateCSS, generateIndexHTML, generatePostHTML, uglifyJS),runTests);
+// exports.default = series(runLinter,parallel(generateCSS, generateIndexHTML, generatePostHTML, uglifyJS),runTests);
+exports.default = series(runLinter,parallel(generateCSS, generateIndexHTML, uglifyJS),runTests);
