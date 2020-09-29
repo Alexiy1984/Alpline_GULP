@@ -1,19 +1,20 @@
 const { src, dest, watch, parallel, series } = require('gulp');
 
-const sass = require('gulp-sass');
-const autoprefixer = require('gulp-autoprefixer');
-const ejs = require('gulp-ejs');
-const rename = require('gulp-rename');
-const eslint = require('gulp-eslint');
-const mocha = require('gulp-mocha');
-const sync = require('browser-sync').create();
-const htmlmin = require('gulp-htmlmin');
-const uglify = require('gulp-uglify');
-const uglifycss = require('gulp-uglifycss');
-const concat = require('gulp-concat');
-const del = require('del');
-const removeEmptyLines = require('gulp-remove-empty-lines');
-const formatHtml = require('gulp-format-html');
+const sass = require('gulp-sass'),
+autoprefixer = require('gulp-autoprefixer'),
+ejs = require('gulp-ejs'),
+rename = require('gulp-rename'),
+eslint = require('gulp-eslint'),
+mocha = require('gulp-mocha'),
+sync = require('browser-sync').create(),
+htmlmin = require('gulp-htmlmin'),
+babel = require("gulp-babel"),
+uglify = require('gulp-uglify'),
+uglifycss = require('gulp-uglifycss'),
+concat = require('gulp-concat'),
+del = require('del'),
+removeEmptyLines = require('gulp-remove-empty-lines'),
+formatHtml = require('gulp-format-html');
 
 var prefixerOptions = {
   browserlist: ['last 3 versions']
@@ -260,6 +261,8 @@ function generateCSS(cb) {
           './sass/footer.scss',
           './sass/menu_main.scss',
           './sass/user_window.scss',
+          './sass/slick.scss',
+          './sass/card_slide.scss', 
         ])
         .pipe(sass(sassOptions).on('error', sass.logError))
         .pipe(autoprefixer(prefixerOptions))
@@ -304,8 +307,14 @@ function minifyHTML(cb) {
 };
 
 function uglifyJS(cb) {
-  src('./scripts/*.js')
+  src([
+      'node_modules/jquery/dist/jquery.js',
+      './scripts/*.js'
+    ])
+    .pipe(babel()) 
+    .pipe(dest('public/javascripts'))
     .pipe(uglify())
+    .pipe(concat('index.js'))
     .pipe(dest('public/javascripts'))
     .pipe(sync.stream());
   cb();
@@ -368,4 +377,4 @@ exports.sync = browserSync;
 exports.clean = cleanCSS;
 
 // exports.default = series(runLinter,parallel(generateCSS, generateIndexHTML, generatePostHTML, uglifyJS),runTests);
-exports.default = series(runLinter,parallel(generateCSS, generateIndexHTML, uglifyJS),runTests);
+exports.default = series(runLinter,parallel(generateCSS, generateIndexHTML, uglifyJS));

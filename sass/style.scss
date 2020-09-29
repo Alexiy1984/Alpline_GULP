@@ -189,8 +189,10 @@ p {
   flex-direction: column;
   flex-grow: 2;
   min-height: 100vh;
+  overflow: hidden;
 
   .content {
+    width: 100%;
     flex-grow: 1;
     padding: 0 30px;
     max-width: 1290px;
@@ -201,6 +203,65 @@ p {
 .flex-container {
   display: flex;
   flex-wrap: wrap;
+}
+
+.rounded-button {
+  display: inline-block;
+  border: 1.5px solid rgba(0, 0, 0, 0.05);
+  border-radius: 60px;
+  background-color: #fff;
+  height: 60px;
+  outline: none;
+
+  &_controls {
+    @extend .rounded-button;
+    width: 110px;
+    display: flex;
+
+    %controls {
+      position: relative;
+      display: inline-block;
+      width: 50%;
+      height: 100%;
+      cursor: pointer;
+      
+      svg {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        path {
+          transition: fill-opacity 0.15s ease-in;
+        }
+      }
+
+      &:hover {
+        svg {
+          @include svg-hover-effect;
+
+          path {
+            fill-opacity: 1;
+          }
+        }  
+      }
+    }
+
+    &__prev {
+      @extend %controls;
+
+      svg {
+        left: 24px;
+      }
+    }
+
+    &__next {
+      @extend %controls;
+
+      svg {
+        right: 24px;
+      }
+    }
+  }
 }
 
 @media (min-width: 768px) {

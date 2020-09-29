@@ -290,9 +290,11 @@ p {
   flex-direction: column;
   flex-grow: 2;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 .wrap .content {
+  width: 100%;
   flex-grow: 1;
   padding: 0 30px;
   max-width: 1290px;
@@ -302,6 +304,58 @@ p {
 .flex-container {
   display: flex;
   flex-wrap: wrap;
+}
+
+.rounded-button, .rounded-button_controls {
+  display: inline-block;
+  border: 1.5px solid rgba(0, 0, 0, 0.05);
+  border-radius: 60px;
+  background-color: #fff;
+  height: 60px;
+  outline: none;
+}
+
+.rounded-button_controls {
+  width: 110px;
+  display: flex;
+}
+
+.rounded-button_controls .rounded-button_controls__prev, .rounded-button_controls .rounded-button_controls__next {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.rounded-button_controls .rounded-button_controls__prev svg, .rounded-button_controls .rounded-button_controls__next svg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.rounded-button_controls .rounded-button_controls__prev svg path, .rounded-button_controls .rounded-button_controls__next svg path {
+  transition: fill-opacity 0.15s ease-in;
+}
+
+.rounded-button_controls .rounded-button_controls__prev:hover svg, .rounded-button_controls .rounded-button_controls__next:hover svg {
+  cursor: pointer;
+}
+
+.rounded-button_controls .rounded-button_controls__prev:hover svg path, .rounded-button_controls .rounded-button_controls__next:hover svg path {
+  fill: #e11d74;
+}
+
+.rounded-button_controls .rounded-button_controls__prev:hover svg path, .rounded-button_controls .rounded-button_controls__next:hover svg path {
+  fill-opacity: 1;
+}
+
+.rounded-button_controls__prev svg {
+  left: 24px;
+}
+
+.rounded-button_controls__next svg {
+  right: 24px;
 }
 
 @media (min-width: 768px) {
@@ -1847,4 +1901,281 @@ p {
   width: 100%;
   border-radius: 2px;
   margin-bottom: 17px;
+}
+
+/* Slider */
+.slider-container {
+  position: relative;
+  width: 100%;
+  margin: 40px 0;
+}
+
+.slider-container::before {
+  position: absolute;
+  right: 100%;
+  display: block;
+  content: '';
+  height: 100%;
+  width: calc((100vw - 100%)/2);
+  background-color: #fff;
+  z-index: 10;
+}
+
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+  position: relative;
+  display: block;
+  margin-left: -30px;
+  padding: 0;
+}
+
+.slick-list:focus {
+  outline: none;
+}
+
+.slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+  position: relative;
+  left: 0;
+  top: 0;
+  display: flex !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.slick-track:before, .slick-track:after {
+  content: "";
+  display: table;
+}
+
+.slick-track:after {
+  clear: both;
+}
+
+.slick-loading .slick-track {
+  visibility: hidden;
+}
+
+.slick-slide {
+  float: left;
+  height: 100%;
+  min-height: 1px;
+  margin-left: 30px;
+  height: inherit !important;
+  display: none;
+}
+
+.slick-slide > div {
+  height: 100%;
+}
+
+.slick-slide > div > div {
+  height: 100%;
+}
+
+[dir="rtl"] .slick-slide {
+  float: right;
+}
+
+.slick-slide img {
+  display: block;
+}
+
+.slick-slide.slick-loading img {
+  display: none;
+}
+
+.slick-slide.dragging img {
+  pointer-events: none;
+}
+
+.slick-initialized .slick-slide {
+  display: block;
+}
+
+.slick-loading .slick-slide {
+  visibility: hidden;
+}
+
+.slick-vertical .slick-slide {
+  display: block;
+  height: auto;
+  border: 1px solid transparent;
+}
+
+.slick-arrow.slick-hidden {
+  display: none;
+}
+
+@media screen and (min-width: 1350px) {
+  .slider-container {
+    min-width: 1290px;
+  }
+}
+
+.card_slide {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  height: 100%;
+}
+
+.card_slide * {
+  outline-color: rgba(0, 0, 0, 0);
+}
+
+.card_slide::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 1.5px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.card_slide__img {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 65.85%;
+  margin-bottom: 20px;
+}
+
+.card_slide__img img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  border-radius: 5px;
+}
+
+.card_slide__img img:hover {
+  cursor: pointer;
+}
+
+.card_slide__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.card_slide__body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card_slide__author, .card_slide__date, .card_slide__description {
+  color: rgba(0, 0, 0, 0.5);
+  transition: color 0.15s ease-in;
+}
+
+.card_slide__author {
+  transition: color 0.15s ease-in;
+}
+
+.card_slide__author:hover {
+  cursor: pointer;
+  color: #e11d74;
+}
+
+.card_slide__title {
+  margin-bottom: 15px;
+}
+
+.card_slide__description {
+  margin-bottom: 28px;
+}
+
+.card_slide__info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: auto;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.card_slide__stats {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 3px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition: background-color 0.15s ease-in, color 0.15s ease-in;
+}
+
+.card_slide__stats svg {
+  margin-right: 4.5px;
+}
+
+.card_slide__category {
+  border-radius: 20px;
+  padding: 3px 10px;
+  background-color: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0);
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition: background-color 0.15s ease-in, color 0.15s ease-in;
+}
+
+.card_slide__category:hover {
+  cursor: pointer;
+  background-color: rgba(225, 29, 116, 0.1);
+  color: #e11d74;
+}
+
+.card_slide__bookmark {
+  height: 21px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: 5px;
+}
+
+.card_slide__bookmark svg {
+  height: 100%;
+  width: auto;
+}
+
+.card_slide__bookmark svg path {
+  transition: fill-opacity 0.15s ease-in, color 0.15s ease-in;
+}
+
+.card_slide__bookmark:hover {
+  cursor: pointer;
+}
+
+.card_slide__bookmark:hover svg path {
+  fill-opacity: 1;
+  fill: #e11d74;
 }
