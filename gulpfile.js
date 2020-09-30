@@ -26,7 +26,7 @@ var sassOptions = {
 };
 
 var pages_data = {
-  title: 'Some cool title',
+  title: 'Single Post',
   text: 'Some text',
   user: [
     {
@@ -263,6 +263,8 @@ function generateCSS(cb) {
           './sass/user_window.scss',
           './sass/slick.scss',
           './sass/card_slide.scss', 
+          './sass/subscribe_block.scss',
+          './sass/inputs.scss'
         ])
         .pipe(sass(sassOptions).on('error', sass.logError))
         .pipe(autoprefixer(prefixerOptions))
@@ -291,6 +293,19 @@ function generatePostHTML(cb) {
       .pipe(ejs({ data: pages_data}))
       .pipe(rename(function (path) {
         path.basename = 'post';
+        path.extname = '.html';
+      }))
+      .pipe(removeEmptyLines())
+      .pipe(formatHtml())
+      .pipe(dest('public'));
+  cb();
+}
+
+function generateTermsHTML(cb) {
+  src('./views/terms-and-conditions.ejs')
+      .pipe(ejs({ data: pages_data}))
+      .pipe(rename(function (path) {
+        path.basename = 'terms-and-conditions';
         path.extname = '.html';
       }))
       .pipe(removeEmptyLines())
@@ -354,12 +369,12 @@ function browserSync(cb) {
         }
     });
 
-    // watch('gulpfile.js', series(generateIndexHTML, generatePostHTML));
-    // watch('views/**.ejs', series(generateIndexHTML, generatePostHTML));
-    // watch('views/partials/**.ejs', series(generateIndexHTML, generatePostHTML));
-    watch('gulpfile.js', generateIndexHTML);
-    watch('views/**.ejs', generateIndexHTML);
-    watch('views/partials/**.ejs', generateIndexHTML);
+    watch('gulpfile.js', series(generateIndexHTML, generatePostHTML, generateTermsHTML));
+    watch('views/**.ejs', series(generateIndexHTML, generatePostHTML, generateTermsHTML));
+    watch('views/partials/**.ejs', series(generateIndexHTML, generatePostHTML, generateTermsHTML));
+    // watch('gulpfile.js', generateIndexHTML);
+    // watch('views/**.ejs', generateIndexHTML);
+    // watch('views/partials/**.ejs', generateIndexHTML);
     watch('sass/**.scss', generateCSS);
     watch('scripts/*.js', uglifyJS);
     watch('./public/**.html').on('change', sync.reload);
@@ -376,5 +391,5 @@ exports.watch = watchFiles;
 exports.sync = browserSync;
 exports.clean = cleanCSS;
 
-// exports.default = series(runLinter,parallel(generateCSS, generateIndexHTML, generatePostHTML, uglifyJS),runTests);
-exports.default = series(runLinter,parallel(generateCSS, generateIndexHTML, uglifyJS));
+exports.default = series(runLinter,parallel(generateCSS, generateIndexHTML, generatePostHTML, generateTermsHTML ,uglifyJS));
+// exports.default = series(runLinter,parallel(generateCSS, generateIndexHTML, uglifyJS));

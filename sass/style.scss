@@ -189,7 +189,10 @@ p {
   flex-direction: column;
   flex-grow: 2;
   min-height: 100vh;
-  overflow: hidden;
+
+  .outer {
+    overflow: hidden;
+  }
 
   .content {
     width: 100%;
@@ -197,6 +200,11 @@ p {
     padding: 0 30px;
     max-width: 1290px;
     margin: auto;
+
+    &__thin {
+      @extend .content;
+      max-width: 850px;
+    }
   }
 }
 

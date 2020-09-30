@@ -243,7 +243,7 @@ $menu-mian-text: (
     li {
       @include font-size($menu-mian-text);
       font-weight: 400;
-      color: $grey-dark;
+      color: nth($grey-dark, 5);
       margin-bottom: 5px;
       transition: color 0.15s ease-in;
       transform: translateX(-100px);

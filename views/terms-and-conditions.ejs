@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><% data.title %></title>
+  <title>Terms & Conditions</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel='stylesheet' href='stylesheets/index.css' />
@@ -57,24 +57,11 @@
       ]
     }) %>
     <div class="content__thin">
-      <img src="<%= data.heroCards[0].imgUrl %>" alt="<%= data.heroCards[0].title %>" style="width: 100%; height: auto;">
-      <p>I know something about you without knowing you. I bet you spend A LOT of time in your head.</p>
-      <p>You know, thinking, worrying, stressing, freaking out — call it whatever you want. I call it a preoccupied mind. And with what?</p>
-      <p>99% of your thoughts are useless. William James put it best:</p>
-    </div>
-    <div class="content">
-      <% data.mediumCards.forEach(function(mediumCard){ %>
-        <%- include('partials/card_medium', { 
-          imgUrl: mediumCard.imgUrl,
-          author: mediumCard.author,
-          date: mediumCard.date,
-          title: mediumCard.title, 
-          text: mediumCard.text,
-          categories: mediumCard.categories,
-          ttr: mediumCard.ttr,
-          views: mediumCard.views
-        }); %>
-      <% }); %>
+      <h2>Terms & Conditions</h2>
+      <p>Google Analytics is a fantastic tool because it eliminates the guesswork as to how visitors behave on a website.</p>
+      <p>Conversion rates are one of the top priorities for many marketing websites, and Google Analytics can certainly help give you insight as to why the conversion rate is what it is. It can also shed light on additional user experience issues.</p>
+      <p>Google Analytics is a tool for improving products, not just marketing websites.</p>
+      <p>It tells you exactly what users are doing, where they’re coming from, how long they engaged, and so on. All of those things impact conversion rates and retention rates, among other metrics. Google Analytics can be a complicated tool, but it provides an enormous amount of data and insights. So, today we’ll be talking about two subsets of what you can use Google Analytics for as a UX designer: user behavior and user intent.</p>
     </div>
     <%- include('partials/footer') %>
   </div>

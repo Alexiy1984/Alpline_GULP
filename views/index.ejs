@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= data.title %></title>
+    <title>Alpine</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel='stylesheet' href='stylesheets/index.css' />
 
@@ -56,105 +56,108 @@
           ],
         ],
       }) %>
-      <div class="content">
-        <% data.heroCards.forEach(function(heroCard){ %>
-          <%- include('partials/card_hero', { 
-            imgUrl: heroCard.imgUrl,
-            author: heroCard.author,
-            date: heroCard.date,
-            title: heroCard.title, 
-            text: heroCard.text,
-            categories: heroCard.categories,
-            ttr: heroCard.ttr,
-            views: heroCard.views
-          }); %>
-        <% }); %>
-        <div class="flex-container">
-          <% data.smallCards.forEach(function(smallCard){ %>
-            <%- include('partials/card_small', { 
-              imgUrl: smallCard.imgUrl,
-              author: smallCard.author,
-              date: smallCard.date,
-              title: smallCard.title, 
-              text: smallCard.text,
-              categories: smallCard.categories,
-              ttr: smallCard.ttr,
-              views: smallCard.views
+      <div class="outer">
+        <div class="content">
+          <% data.heroCards.forEach(function(heroCard){ %>
+            <%- include('partials/card_hero', { 
+              imgUrl: heroCard.imgUrl,
+              author: heroCard.author,
+              date: heroCard.date,
+              title: heroCard.title, 
+              text: heroCard.text,
+              categories: heroCard.categories,
+              ttr: heroCard.ttr,
+              views: heroCard.views
             }); %>
           <% }); %>
-        </div> 
-        <% data.mediumCards.forEach(function(mediumCard){ %>
-          <%- include('partials/card_medium', { 
-            imgUrl: mediumCard.imgUrl,
-            author: mediumCard.author,
-            date: mediumCard.date,
-            title: mediumCard.title, 
-            text: mediumCard.text,
-            categories: mediumCard.categories,
-            ttr: mediumCard.ttr,
-            views: mediumCard.views
-          }); %>
-        <% }); %>
-        <div class="flex-container">
-          <% data.bigCards.forEach(function(bigCard){ %>
-            <%- include('partials/card_big', { 
-              imgUrl: bigCard.imgUrl,
-              author: bigCard.author,
-              date: bigCard.date,
-              title: bigCard.title, 
-              text: bigCard.text,
-              categories: bigCard.categories,
-              ttr: bigCard.ttr,
-              views: bigCard.views
-            }); %>
-          <% }); %>
-        </div> 
-        <h1><%= data.title %></h1>
-        <h2><%= data.text %></h1>
-        <h3><%= data.title %></h1>
-        <h4><%= data.text %></h1>
-        <h5><%= data.user[0].img %></h1>
-        <p>Welcome to <%= data.title %></p>
-        <p>Some new</p>
-        <%- include('partials/rounded-button_controls', { dataTarget: 'slider_1' }) %>
-        <div class="slider-container">
-          <div class="responsive_small" id="slider_1">
+          <div class="flex-container">
             <% data.smallCards.forEach(function(smallCard){ %>
-              <div>
-                <%- include('partials/card_slide', { 
-                  imgUrl: smallCard.imgUrl,
-                  author: smallCard.author,
-                  date: smallCard.date,
-                  title: smallCard.title, 
-                  text: smallCard.text,
-                  categories: smallCard.categories,
-                  ttr: smallCard.ttr,
-                  views: smallCard.views
-                }); %>
-              </div>
+              <%- include('partials/card_small', { 
+                imgUrl: smallCard.imgUrl,
+                author: smallCard.author,
+                date: smallCard.date,
+                title: smallCard.title, 
+                text: smallCard.text,
+                categories: smallCard.categories,
+                ttr: smallCard.ttr,
+                views: smallCard.views
+              }); %>
             <% }); %>
+          </div> 
+          <% data.mediumCards.forEach(function(mediumCard){ %>
+            <%- include('partials/card_medium', { 
+              imgUrl: mediumCard.imgUrl,
+              author: mediumCard.author,
+              date: mediumCard.date,
+              title: mediumCard.title, 
+              text: mediumCard.text,
+              categories: mediumCard.categories,
+              ttr: mediumCard.ttr,
+              views: mediumCard.views
+            }); %>
+          <% }); %>
+          <div class="flex-container">
+            <% data.bigCards.forEach(function(bigCard){ %>
+              <%- include('partials/card_big', { 
+                imgUrl: bigCard.imgUrl,
+                author: bigCard.author,
+                date: bigCard.date,
+                title: bigCard.title, 
+                text: bigCard.text,
+                categories: bigCard.categories,
+                ttr: bigCard.ttr,
+                views: bigCard.views
+              }); %>
+            <% }); %>
+          </div> 
+          <h1><%= data.title %></h1>
+          <h2><%= data.text %></h1>
+          <h3><%= data.title %></h1>
+          <h4><%= data.text %></h1>
+          <h5><%= data.user[0].img %></h1>
+          <p>Welcome to <%= data.title %></p>
+          <p>Some new</p>
+          <%- include('partials/rounded-button_controls', { dataTarget: 'slider_1' }) %>
+          <div class="slider-container">
+            <div class="responsive_small" id="slider_1">
+              <% data.smallCards.forEach(function(smallCard){ %>
+                <div>
+                  <%- include('partials/card_slide', { 
+                    imgUrl: smallCard.imgUrl,
+                    author: smallCard.author,
+                    date: smallCard.date,
+                    title: smallCard.title, 
+                    text: smallCard.text,
+                    categories: smallCard.categories,
+                    ttr: smallCard.ttr,
+                    views: smallCard.views
+                  }); %>
+                </div>
+              <% }); %>
+            </div>
           </div>
-        </div>
-        <%- include('partials/rounded-button_controls', { dataTarget: 'slider_2' }) %>
-        <div class="slider-container">
-          <div class="responsive_big" id="slider_2">
-            <% data.mediumCards.forEach(function(mediumCard){ %>
-              <div>
-                <%- include('partials/card_slide', { 
-                  imgUrl: mediumCard.imgUrl,
-                  author: mediumCard.author,
-                  date: mediumCard.date,
-                  title: mediumCard.title, 
-                  text: mediumCard.text,
-                  categories: mediumCard.categories,
-                  ttr: mediumCard.ttr,
-                  views: mediumCard.views
-                }); %>
-              </div>
-            <% }); %>
+          <%- include('partials/rounded-button_controls', { dataTarget: 'slider_2' }) %>
+          <div class="slider-container">
+            <div class="responsive_big" id="slider_2">
+              <% data.mediumCards.forEach(function(mediumCard){ %>
+                <div>
+                  <%- include('partials/card_slide', { 
+                    imgUrl: mediumCard.imgUrl,
+                    author: mediumCard.author,
+                    date: mediumCard.date,
+                    title: mediumCard.title, 
+                    text: mediumCard.text,
+                    categories: mediumCard.categories,
+                    ttr: mediumCard.ttr,
+                    views: mediumCard.views
+                  }); %>
+                </div>
+              <% }); %>
+            </div>
           </div>
         </div>
       </div>
+      <%- include('partials/subscribe_block') %>
       <%- include('partials/footer') %>
     </div>
   </body>
