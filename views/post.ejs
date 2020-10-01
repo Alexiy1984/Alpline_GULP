@@ -7,10 +7,11 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel='stylesheet' href='stylesheets/index.css' />
+  <link rel='stylesheet' href='stylesheets/single-post.css' />
 
   <script src='javascripts/index.js'></script>
 </head>
-<body>
+<body class="single-post">
   <div class="wrap">
     <%- include('partials/header', { 
       menuCol1Title1: data.menuCol1[0].title,
@@ -56,13 +57,60 @@
         ],
       ]
     }) %>
+    <div class="content">
+      <div class="single-post__header">
+        <div class="single-post__header-left">
+
+        </div>
+        <div class="single-post__header-center">
+          <div class="single-post__author caption_2">Jane Cooper</div>
+          <h2 class="text-center single-post__title">You Don’t Need a Compass to Tell You Where You Are</h2>
+          <div class="single-post__description body_large ">Peter yanked the curtain back, eager to see the dawn. Grace pulled the covers over her head.</div>
+        </div>
+        <div class="single-post__header-right">
+          
+        </div>
+      </div>
+    </div>
     <div class="content__thin">
-      <img src="<%= data.heroCards[0].imgUrl %>" alt="<%= data.heroCards[0].title %>" style="width: 100%; height: auto;">
-      <p>I know something about you without knowing you. I bet you spend A LOT of time in your head.</p>
-      <p>You know, thinking, worrying, stressing, freaking out — call it whatever you want. I call it a preoccupied mind. And with what?</p>
-      <p>99% of your thoughts are useless. William James put it best:</p>
+      <div class="article-content">
+        <div class="img_cropped img_round-borders img_bottom-margin">
+          <picture>
+            <% var bigUrl = data.heroCards[0].imgUrl.split('.').join('@2.') %>
+            <source srcset="<%= bigUrl %> 2x, <%= data.heroCards[0].imgUrl %> 1x" />
+            <img src="<%= data.heroCards[0].imgUrl %>" alt="<%= data.heroCards[0].title %>">
+          </picture>
+        </div>
+        <p>I know something about you without knowing you. I bet you spend A LOT of time in your head.</p>
+        <p>You know, thinking, worrying, stressing, freaking out — call it whatever you want. I call it a preoccupied mind. And with what?</p>
+        <p>99% of your thoughts are useless. William James put it best:</p>
+        <blockquote>
+          “A great many people think they are thinking when they are merely rearranging their prejudices.”
+        </blockquote>
+        <p>All my life I’ve been obsessed with practical things. Practical philosophy, practical knowledge, practical books, practical work, and practical advice.</p>
+        <p>That idea comes from Pragmatism, a philosophical tradition that started in the 19th century in America. Charles Sanders Peirce, who was a Harvard professor, is considered as the “father of Pragmatism.”</p>
+        <p>But it was William James, a trained physician turned philosopher, who really defined the philosophy:</p>
+        <ul>
+          <li>“I wonder what my boss thinks?”</li>
+          <li>“What happens if I screw up and lose my job?”</li>
+          <li>“Does she love me?”</li>
+          <li>“I think he doesn’t care about me.”</li>
+          <li>“I just keep failing.”</li>
+          <li>“Why does my life suck?”</li>
+        </ul>
+        <div class="img_cropped img_round-borders">
+          <picture>
+            <% var bigUrl = data.heroCards[0].imgUrl.split('.').join('@2.') %>
+            <source srcset="<%= bigUrl %> 2x, <%= data.heroCards[0].imgUrl %> 1x" />
+            <img src="<%= data.heroCards[0].imgUrl %>" alt="<%= data.heroCards[0].title %>">
+          </picture>
+        </div>
+        <div class="img__caption">If you can change your mind, you can change your life.</div>
+        <p>All my life I’ve been obsessed with practical things. Practical philosophy, practical knowledge, practical books, practical work, and practical advice:</p>
+      </div>
     </div>
     <div class="content">
+      <h2>Read next</h2>
       <% data.mediumCards.forEach(function(mediumCard){ %>
         <%- include('partials/card_medium', { 
           imgUrl: mediumCard.imgUrl,

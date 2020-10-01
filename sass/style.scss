@@ -46,6 +46,26 @@ $caption_4-font-sizes: (
   small: (13px, 15px, -0.3px),
 );
 
+$body_large-font-sizes: (
+  null: (20px, 28px, -0.6px),
+  small: (21px, 30px, -0.8px),
+);
+
+$body_normal-font-sizes: (
+  null: (16px, 20px, -0.5px),
+  small: (17px, 25px, -0.7px),
+);
+
+$body_small-font-sizes: (
+  null: (14px, 18px, -0.5px),
+  small: (15px, 23px, -0.6px),
+);
+
+$blockquote-font-sizes: (
+  null: (22px, 28px, -0.8px),
+  small: (24px, 35px, -1px),
+);
+
 html {
   scroll-behavior: smooth;
 }
@@ -127,21 +147,15 @@ p {
 }
 
 .body_large {
-  font-size: 18px;
-  line-height: 20px;
-  letter-spacing: -0.6px;
+  @include font-size($body_large-font-sizes);
 }
 
 .body_normal {
-  font-size: 16px;
-  line-height: 18px;
-  letter-spacing: -0.5px;
+  @include font-size($body_normal-font-sizes);
 }
 
 .body_small {
-  font-size: 14px;
-  line-height: 16px;
-  letter-spacing: -0.4px;
+  @include font-size($body_small-font-sizes);
 }
 
 .caption_1 {
@@ -184,6 +198,44 @@ p {
   }
 }
 
+.article-content {
+  p {
+    @include font-size($body_large-font-sizes);
+    color: nth($grey-dark, 5);
+    margin-bottom: 44px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ul
+  ,ol {
+    padding-left: 30px;
+    @include font-size($body_large-font-sizes);
+    color: nth($grey-dark, 5);
+
+    li {
+      margin-bottom: 25px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  blockquote {
+    color: nth($grey-dark, 4);
+    background-color: rgba(0, 0, 0, 0.02);
+    padding: 20px 30px;
+    @include font-size($blockquote-font-sizes);
+  }
+
+  .img__caption {
+    @include font-size($body_normal-font-sizes);
+  }
+}
+
 .wrap {
   display: flex;
   flex-direction: column;
@@ -196,10 +248,9 @@ p {
 
   .content {
     width: 100%;
-    flex-grow: 1;
     padding: 0 30px;
     max-width: 1290px;
-    margin: auto;
+    margin: 0 auto;
 
     &__thin {
       @extend .content;
@@ -211,6 +262,44 @@ p {
 .flex-container {
   display: flex;
   flex-wrap: wrap;
+}
+
+.img {
+  &_cropped {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 58%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &_round-borders {
+    border-radius: 5px;
+
+    img {
+      border-radius: 5px;
+    }
+  }
+
+  &_bottom-margin {
+    margin-bottom: 50px;
+  }
+
+  &__caption {
+    @include font-size($body_normal-font-sizes);
+    color: nth($grey-dark, 3);
+    text-align: center;
+    margin: 15px 0 30px;
+  }
 }
 
 .rounded-button {
@@ -272,6 +361,144 @@ p {
   }
 }
 
+.text {
+  &-left {
+    text-align: left;
+  }
+
+  &-right {
+    text-align: right;
+  }
+
+  &-center {
+    text-align: center;
+  }
+}
+
+.p {
+  &-0 {
+    padding: 0!important;
+  }
+
+  &-l-0 {
+    padding-left: 0!important;
+  }
+
+  &-r-0 {
+    padding-right: 0!important;
+  }
+
+  &-t-0 {
+    padding-top: 0!important;
+  }
+
+  &-b-0 {
+    padding-bottom: 0!important;
+  }
+}
+
+@for $i from 1 through 160 {
+  .p {
+    &-#{$i} {
+      padding: #{$i}px!important;
+    }
+  
+    &-l-#{$i} {
+      padding-left: #{$i}px!important;
+    }
+  
+    &-r-#{$i} {
+      padding-right: #{$i}px!important;
+    }
+  
+    &-t-#{$i} {
+      padding-top: #{$i}px!important;
+    }
+  
+    &-b-#{$i} {
+      padding-bottom: #{$i}px!important;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  @for $i from 1 through 160 {
+    .p {
+      &-md-#{$i} {
+        padding: #{$i}px!important;
+      }
+    
+      &-md-l-#{$i} {
+        padding-left: #{$i}px!important;
+      }
+    
+      &-md-r-#{$i} {
+        padding-right: #{$i}px!important;
+      }
+    
+      &-md-t-#{$i} {
+        padding-top: #{$i}px!important;
+      }
+    
+      &-md-b-#{$i} {
+        padding-bottom: #{$i}px!important;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  @for $i from 1 through 160 {
+    .p {
+      &-md-#{$i} {
+        padding: #{$i}px!important;
+      }
+    
+      &-md-l-#{$i} {
+        padding-left: #{$i}px!important;
+      }
+    
+      &-md-r-#{$i} {
+        padding-right: #{$i}px!important;
+      }
+    
+      &-md-t-#{$i} {
+        padding-top: #{$i}px!important;
+      }
+    
+      &-md-b-#{$i} {
+        padding-bottom: #{$i}px!important;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  @for $i from 1 through 160 {
+    .p {
+      &-lg-#{$i} {
+        padding: #{$i}px!important;
+      }
+    
+      &-lg-l-#{$i} {
+        padding-left: #{$i}px!important;
+      }
+    
+      &-lg-r-#{$i} {
+        padding-right: #{$i}px!important;
+      }
+    
+      &lgd-t-#{$i} {
+        padding-top: #{$i}px!important;
+      }
+    
+      &-lg-b-#{$i} {
+        padding-bottom: #{$i}px!important;
+      }
+    }
+  }
+}
+
 @media (min-width: 768px) {
   .lead,
   .lead_medium {
@@ -284,24 +511,6 @@ p {
     font-size: 16px;
     line-height: 18px;
     letter-spacing: -0.5px;
-  }
-
-  .body_large {
-    font-size: 21px;
-    line-height: 30px;
-    letter-spacing: -0.8px;
-  }
-  
-  .body_normal {
-    font-size: 17px;
-    line-height: 25px;
-    letter-spacing: -0.7px;
-  }
-  
-  .body_small {
-    font-size: 15px;
-    line-height: 23px;
-    letter-spacing: -0.6px;
   }
 
   .wrap {
@@ -322,7 +531,7 @@ p {
 @media (min-width: 1200px) {
   .wrap {
     .content {
-      padding: 30px;
+      padding: 0 30px;
     }
   }
 }

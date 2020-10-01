@@ -7,10 +7,11 @@
 
   &::before {
     position: absolute;
+    top: -2px;
     right: 100%;
     display: block;
     content: '';
-    height: 100%;
+    height: calc(100% + 4px);
     width: calc((100vw - 100%)/2);
     background-color: #fff;
     z-index: 10;

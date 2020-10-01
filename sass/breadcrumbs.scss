@@ -1,0 +1,14 @@
+@import '_variables.scss';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+
+  &__item {
+    color: nth($grey-dark, 3);
+  }
+
+  svg {
+    margin: 0 13.5px;
+  }
+}

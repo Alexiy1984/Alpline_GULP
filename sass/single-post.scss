@@ -1,0 +1,42 @@
+@import '_variables.scss';
+
+%text-size-color {
+  text-align: center;
+  color: nth($grey-dark, 4);
+}
+
+.single-post {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    &-center {
+      max-width: 850px;
+    }
+
+    &_left {
+      flex-grow: 1;
+    }
+
+    &-rigth {
+      flex-grow: 1;
+    }
+  }
+
+  &__author {
+    @extend %text-size-color;
+    margin-bottom: 13px;
+  }
+
+  &__description {
+    max-width: 630px;
+    @extend %text-size-color;
+    margin: 0 auto 50px;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+}

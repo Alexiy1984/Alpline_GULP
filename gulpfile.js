@@ -30,7 +30,7 @@ var pages_data = {
   text: 'Some text',
   user: [
     {
-      img: 'images/users/user_1.jpg',
+      img: 'images/users/Leslie_Alexander.jpg',
       firstname: 'Leslie',
       surname: 'Alexander',
       email: 'lesliealexandro@gmail.com',
@@ -250,7 +250,7 @@ function cleanCSS() {
   return del(['public/stylesheets/**', '!public/stylesheets']);
 }
 
-function generateCSS(cb) {
+function generateIndexCSS(cb) {
     src([ 
           './sass/styles-reset.scss',
           './sass/style.scss',
@@ -264,7 +264,9 @@ function generateCSS(cb) {
           './sass/slick.scss',
           './sass/card_slide.scss', 
           './sass/subscribe_block.scss',
-          './sass/inputs.scss'
+          './sass/inputs.scss',
+          './sass/avatar.scss',
+          './sass/breadcrumbs.scss',
         ])
         .pipe(sass(sassOptions).on('error', sass.logError))
         .pipe(autoprefixer(prefixerOptions))
@@ -273,6 +275,19 @@ function generateCSS(cb) {
         .pipe(dest('public/stylesheets'))
         .pipe(sync.stream());
     cb();
+}
+
+function generatePagesCSS(cb) {
+  src([ 
+        './sass/terms-and-conditions-page.scss',
+        './sass/single-post.scss',
+      ])
+      .pipe(sass(sassOptions).on('error', sass.logError))
+      .pipe(autoprefixer(prefixerOptions))
+      // .pipe(uglifycss().on('error', console.error))
+      .pipe(dest('public/stylesheets'))
+      .pipe(sync.stream());
+  cb();
 }
 
 function generateIndexHTML(cb) {
@@ -358,7 +373,7 @@ function runTests(cb) {
 
 function watchFiles(cb) {
     watch('views/**.ejs', generateHTML);
-    watch('sass/**.scss', generateCSS);
+    watch('sass/**.scss', generateIndexCSS);
     watch([ '**/*.js', '!node_modules/**'], parallel(runLinter, runTests));
 }
 
@@ -375,13 +390,13 @@ function browserSync(cb) {
     // watch('gulpfile.js', generateIndexHTML);
     // watch('views/**.ejs', generateIndexHTML);
     // watch('views/partials/**.ejs', generateIndexHTML);
-    watch('sass/**.scss', generateCSS);
+    watch('sass/**.scss', series(generateIndexCSS, generatePagesCSS));
     watch('scripts/*.js', uglifyJS);
     watch('./public/**.html').on('change', sync.reload);
 }
 
 
-exports.css = series(cleanCSS,generateCSS);
+exports.css = series(cleanCSS,generateIndexCSS);
 exports.multhtml = series(generateIndexHTML, generatePostHTML);
 exports.js = uglifyJS;
 exports.htmlMin = minifyHTML;
@@ -391,5 +406,5 @@ exports.watch = watchFiles;
 exports.sync = browserSync;
 exports.clean = cleanCSS;
 
-exports.default = series(runLinter,parallel(generateCSS, generateIndexHTML, generatePostHTML, generateTermsHTML ,uglifyJS));
+exports.default = series(runLinter,parallel(generateIndexCSS, generatePagesCSS, generateIndexHTML, generatePostHTML, generateTermsHTML ,uglifyJS));
 // exports.default = series(runLinter,parallel(generateCSS, generateIndexHTML, uglifyJS));

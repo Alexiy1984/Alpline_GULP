@@ -1,0 +1,36 @@
+.single-post__author, .single-post__description {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.single-post__header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.single-post__header-center {
+  max-width: 850px;
+}
+
+.single-post__header_left {
+  flex-grow: 1;
+}
+
+.single-post__header-rigth {
+  flex-grow: 1;
+}
+
+.single-post__author {
+  margin-bottom: 13px;
+}
+
+.single-post__description {
+  max-width: 630px;
+  margin: 0 auto 50px;
+}
+
+.single-post__title {
+  text-align: center;
+  margin-bottom: 15px;
+}

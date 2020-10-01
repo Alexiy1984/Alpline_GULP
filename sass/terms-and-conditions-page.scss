@@ -1,0 +1,29 @@
+.terms-and-conditions-page {
+  .breadcrumbs {
+    margin-bottom: 30px;
+  }
+
+  &__title {
+    margin-bottom: 30px;
+  }
+
+  .article-content {
+    margin-bottom: 60px;
+  }
+}
+
+@media (min-width: 992px) {
+  .terms-and-conditions-page {
+    .breadcrumbs {
+      margin-bottom: 40px;
+    }
+  
+    &__title {
+      margin-bottom: 40px;
+    }
+  
+    .article-content {
+      margin-bottom: 135px;
+    }
+  }
+}
