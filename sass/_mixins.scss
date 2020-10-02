@@ -91,3 +91,26 @@
   background: rgba(0, 0, 0, 0.05);
   border-radius: 2px;
 }
+
+@mixin indents($classname, $propertyname, $ind-map) {
+  @include make-indents($classname, $propertyname);
+  @each $ind-breakpoint, $ind-value in $ind-map {
+    @media screen and (min-width: nth($ind-value, 1)) {
+      @include make-indents($classname, $propertyname, nth($ind-value, 2));
+    }
+  }
+}
+
+$max: 50;
+$offset: 5;
+$unit: 'px'; 
+
+@mixin make-indents($classname, $propertyname, $suffix: '')  {
+  $i: 0;
+  @while $i <= $max {
+    #{$classname + $suffix + $i} { 
+      #{$propertyname}: #{$i + $unit}!important;
+    }
+    $i: $i + $offset;
+  }
+}

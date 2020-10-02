@@ -55,6 +55,10 @@ $input-font-sizes: (
     cursor: pointer;
 
     &:hover {
+      background-color: nth($accent1, 3);
+    }
+
+    &:active {
       background-color: nth($accent1, 5);
     }
   }

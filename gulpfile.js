@@ -243,7 +243,7 @@ var pages_data = {
       title: 'Top authors',
       items: ['Jacob Jones', 'Eleanor Pena', 'Robert Fox', 'Jane Cooper', 'Bessie Cooper', 'Guy Hawkins']
     },
-  ],     
+  ],  
 };
 
 function cleanCSS() {
@@ -267,6 +267,8 @@ function generateIndexCSS(cb) {
           './sass/inputs.scss',
           './sass/avatar.scss',
           './sass/breadcrumbs.scss',
+          './sass/comments.scss',
+          './sass/buttons.scss'
         ])
         .pipe(sass(sassOptions).on('error', sass.logError))
         .pipe(autoprefixer(prefixerOptions))
@@ -321,6 +323,19 @@ function generateTermsHTML(cb) {
       .pipe(ejs({ data: pages_data}))
       .pipe(rename(function (path) {
         path.basename = 'terms-and-conditions';
+        path.extname = '.html';
+      }))
+      .pipe(removeEmptyLines())
+      .pipe(formatHtml())
+      .pipe(dest('public'));
+  cb();
+}
+
+function generate404HTML(cb) {
+  src('./views/404.ejs')
+      .pipe(ejs({ data: pages_data}))
+      .pipe(rename(function (path) {
+        path.basename = '404';
         path.extname = '.html';
       }))
       .pipe(removeEmptyLines())
@@ -384,9 +399,9 @@ function browserSync(cb) {
         }
     });
 
-    watch('gulpfile.js', series(generateIndexHTML, generatePostHTML, generateTermsHTML));
-    watch('views/**.ejs', series(generateIndexHTML, generatePostHTML, generateTermsHTML));
-    watch('views/partials/**.ejs', series(generateIndexHTML, generatePostHTML, generateTermsHTML));
+    watch('gulpfile.js', series(generateIndexHTML, generatePostHTML, generateTermsHTML, generate404HTML));
+    watch('views/**.ejs', series(generateIndexHTML, generatePostHTML, generateTermsHTML, generate404HTML));
+    watch('views/partials/**.ejs', series(generateIndexHTML, generatePostHTML, generateTermsHTML, generate404HTML));
     // watch('gulpfile.js', generateIndexHTML);
     // watch('views/**.ejs', generateIndexHTML);
     // watch('views/partials/**.ejs', generateIndexHTML);
@@ -397,7 +412,7 @@ function browserSync(cb) {
 
 
 exports.css = series(cleanCSS,generateIndexCSS);
-exports.multhtml = series(generateIndexHTML, generatePostHTML);
+exports.multhtml = series(generateIndexHTML, generatePostHTML, generateTermsHTML, generate404HTML);
 exports.js = uglifyJS;
 exports.htmlMin = minifyHTML;
 exports.lint = runLinter;
@@ -406,5 +421,5 @@ exports.watch = watchFiles;
 exports.sync = browserSync;
 exports.clean = cleanCSS;
 
-exports.default = series(runLinter,parallel(generateIndexCSS, generatePagesCSS, generateIndexHTML, generatePostHTML, generateTermsHTML ,uglifyJS));
+exports.default = series(runLinter,parallel(generateIndexCSS, generatePagesCSS, generateIndexHTML, generatePostHTML, generateTermsHTML, generate404HTML ,uglifyJS));
 // exports.default = series(runLinter,parallel(generateCSS, generateIndexHTML, uglifyJS));

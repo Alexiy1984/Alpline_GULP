@@ -1,0 +1,118 @@
+@import '_variables.scss';
+
+.button {
+  border-radius: 8px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  outline: 0;
+  background-color: nth($accent1, 4);
+  color: #fff;
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: -0.3px;
+  padding: 0 18px;
+  transition: background-color 0.15s ease-in, color 0.15s ease-in;
+
+  &:hover {
+    background-color: nth($accent1, 3);
+    cursor: pointer;
+  }
+
+  &:active {
+    background-color: nth($accent1, 5);
+  }  
+
+  &_small {
+    @extend .button;
+    height: 40px;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: -0.5px;
+    padding: 0 14px;
+  }
+
+  &_big {
+    @extend .button;
+    height: 60px;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.6px;
+    padding: 0 22px;
+  }
+
+  &_fixed {
+    @extend .button;
+    width: 200px;
+
+    &_small {
+      @extend .button;
+      width: 200px;
+      height: 40px;
+      font-size: 16px;
+      line-height: 18px;
+      letter-spacing: -0.5px;
+      padding: 0 14px;
+    }
+
+    &_big {
+      @extend .button;
+      width: 200px;
+      height: 60px;
+      height: 60px;
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: -0.6px;
+      padding: 0 22px;
+    }
+  }
+
+  &_outline {
+    background-color: #fff;
+    color: #000;
+    border-color: nth($grey-dark, 2);
+    pointer-events: none;
+  }
+
+  &_disabled {
+    background-color: nth($grey-dark, 1);
+    color: nth($grey-dark, 3);
+    border-color: nth($grey-dark, 2);
+    pointer-events: none;
+  }
+
+  &_follow {
+    @extend .button;
+    height: 30px;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: -0.2px;
+    padding: 0 11px 0 9px;
+    color: nth($accent3, 4);
+    background-color: nth($accent3, 1);
+
+    &:hover {
+      background-color: nth($accent3, 2);
+      cursor: pointer;
+    }
+  
+    &:active {
+      background-color: nth($accent3, 4);
+      color: #fff;
+    }
+    
+    &.followed {
+      @extend .button_follow;
+      background-color: nth($accent3, 4);
+      color: #fff;
+      background-image: url('/images/follow.svg');
+      background-repeat: no-repeat;
+      padding: 0 25px 0 9px;
+      background-position: calc(100% - 8px);
+    }
+  }
+}

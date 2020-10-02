@@ -66,6 +66,12 @@ $blockquote-font-sizes: (
   small: (24px, 35px, -1px),
 );
 
+$indent-breackpoints: (
+  small: (768px, 'sm-'),
+  medium: (992px, 'md-'),
+  large: (1200px, 'lg-' ),
+);
+
 html {
   scroll-behavior: smooth;
 }
@@ -375,128 +381,31 @@ p {
   }
 }
 
-.p {
-  &-0 {
-    padding: 0!important;
+@include indents('.p-l-', 'padding-left', $indent-breackpoints);
+@include indents('.p-r-', 'padding-right', $indent-breackpoints);
+@include indents('.p-t-', 'padding-top', $indent-breackpoints);
+@include indents('.p-b-', 'padding-bottom', $indent-breackpoints);
+@include indents('.m-l-', 'margin-left', $indent-breackpoints);
+@include indents('.m-r-', 'margin-right', $indent-breackpoints);
+@include indents('.m-t-', 'margin-top', $indent-breackpoints);
+@include indents('.m-b-', 'margin-bottom', $indent-breackpoints);
+
+.order {
+  &-1 {
+    order: 1;
   }
 
-  &-l-0 {
-    padding-left: 0!important;
+  &-2 {
+    order: 2;
   }
 
-  &-r-0 {
-    padding-right: 0!important;
-  }
-
-  &-t-0 {
-    padding-top: 0!important;
-  }
-
-  &-b-0 {
-    padding-bottom: 0!important;
+  &-3 {
+    order: 3;
   }
 }
 
-@for $i from 1 through 160 {
-  .p {
-    &-#{$i} {
-      padding: #{$i}px!important;
-    }
-  
-    &-l-#{$i} {
-      padding-left: #{$i}px!important;
-    }
-  
-    &-r-#{$i} {
-      padding-right: #{$i}px!important;
-    }
-  
-    &-t-#{$i} {
-      padding-top: #{$i}px!important;
-    }
-  
-    &-b-#{$i} {
-      padding-bottom: #{$i}px!important;
-    }
-  }
-}
-
-@media (min-width: 768px) {
-  @for $i from 1 through 160 {
-    .p {
-      &-md-#{$i} {
-        padding: #{$i}px!important;
-      }
-    
-      &-md-l-#{$i} {
-        padding-left: #{$i}px!important;
-      }
-    
-      &-md-r-#{$i} {
-        padding-right: #{$i}px!important;
-      }
-    
-      &-md-t-#{$i} {
-        padding-top: #{$i}px!important;
-      }
-    
-      &-md-b-#{$i} {
-        padding-bottom: #{$i}px!important;
-      }
-    }
-  }
-}
-
-@media (min-width: 992px) {
-  @for $i from 1 through 160 {
-    .p {
-      &-md-#{$i} {
-        padding: #{$i}px!important;
-      }
-    
-      &-md-l-#{$i} {
-        padding-left: #{$i}px!important;
-      }
-    
-      &-md-r-#{$i} {
-        padding-right: #{$i}px!important;
-      }
-    
-      &-md-t-#{$i} {
-        padding-top: #{$i}px!important;
-      }
-    
-      &-md-b-#{$i} {
-        padding-bottom: #{$i}px!important;
-      }
-    }
-  }
-}
-
-@media (min-width: 1200px) {
-  @for $i from 1 through 160 {
-    .p {
-      &-lg-#{$i} {
-        padding: #{$i}px!important;
-      }
-    
-      &-lg-l-#{$i} {
-        padding-left: #{$i}px!important;
-      }
-    
-      &-lg-r-#{$i} {
-        padding-right: #{$i}px!important;
-      }
-    
-      &lgd-t-#{$i} {
-        padding-top: #{$i}px!important;
-      }
-    
-      &-lg-b-#{$i} {
-        padding-bottom: #{$i}px!important;
-      }
-    }
-  }
+.hidden {
+  display: none;
 }
 
 @media (min-width: 768px) {

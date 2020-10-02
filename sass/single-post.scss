@@ -24,6 +24,10 @@
     }
   }
 
+  .article-content {
+    margin-bottom: 50px;
+  }
+
   &__author {
     @extend %text-size-color;
     margin-bottom: 13px;

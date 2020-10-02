@@ -1,0 +1,43 @@
+<div class="comments">
+  <h4 class="comments__title">Comments</h4>
+  <% comments.forEach(function(comment){ %>
+    <div class="comment">
+      <div class="comment__avatar">
+        <% if (comment.avatar !== '') { %>
+          <picture>
+             <% var bigUrl = comment.avatar.split('.').join('@2.') %>
+             <source srcset="<%= bigUrl %> 2x, <%= comment.avatar %> 1x" />
+            <img src="<%= comment.avatar %>" alt="<%= comment.author %>">
+          </picture>
+        <% } else { %>
+          <div class="comment__avatar-placeholder<%= comment.color %>">
+            <p class="caption_3_med"><%= comment.initials %></p>
+          </div>
+        <% }; %>  
+      </div>
+      <div class="comment__body">
+        <div class="comment__header">
+          <p class="comment__author caption_1_med"><%= comment.author %></p>
+          <p class="comment__date caption_3"><%= comment.date %></p>
+        </div>
+        <div class="comment__content body_normal">
+          <%= comment.content %>
+        </div>
+      </div>
+    </div>
+  <% }); %>
+  <div class="comment_new">
+    <div class="comment__avatar">
+      <div class="comment__avatar-placeholder_accent_1">
+        <p class="caption_3_med">You</p>
+      </div>
+    </div>
+    <textarea class="comment_new-content body_normal" name="comment-new" id="comment-new" rows="3">
+    </textarea>
+  </div>
+  <button class="button_small button_disabled" id="comment-new-button" >Post Comment</button>
+  <button class="button_small">Post Comment</button>
+  <button class="button_small button_outline">Post Comment</button>
+  <button class="button_small button_follow">
+    Follow <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0333 0.407396C10.9636 0.337099 10.8806 0.281303 10.7892 0.243227C10.6979 0.20515 10.5998 0.185547 10.5008 0.185547C10.4018 0.185547 10.3038 0.20515 10.2124 0.243227C10.121 0.281303 10.038 0.337099 9.96832 0.407396L4.38082 6.0024L2.03332 3.6474C1.96093 3.57747 1.87547 3.52248 1.78183 3.48558C1.68819 3.44867 1.58819 3.43058 1.48756 3.43232C1.38692 3.43406 1.28762 3.45561 1.19531 3.49573C1.103 3.53585 1.0195 3.59375 0.949567 3.66615C0.879638 3.73854 0.824652 3.82399 0.787749 3.91763C0.750846 4.01128 0.732749 4.11127 0.73449 4.2119C0.736231 4.31254 0.757777 4.41185 0.797897 4.50415C0.838017 4.59646 0.895926 4.67997 0.968317 4.7499L3.84832 7.6299C3.91804 7.70019 4.00099 7.75599 4.09238 7.79406C4.18378 7.83214 4.28181 7.85174 4.38082 7.85174C4.47983 7.85174 4.57785 7.83214 4.66925 7.79406C4.76064 7.75599 4.84359 7.70019 4.91332 7.6299L11.0333 1.5099C11.1094 1.43966 11.1702 1.35443 11.2118 1.25955C11.2533 1.16468 11.2748 1.06222 11.2748 0.958646C11.2748 0.855069 11.2533 0.752615 11.2118 0.657741C11.1702 0.562866 11.1094 0.477627 11.0333 0.407396Z" fill="white"/></svg></button>
+</div>

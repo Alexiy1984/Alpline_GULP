@@ -21,6 +21,10 @@
   flex-grow: 1;
 }
 
+.single-post .article-content {
+  margin-bottom: 50px;
+}
+
 .single-post__author {
   margin-bottom: 13px;
 }

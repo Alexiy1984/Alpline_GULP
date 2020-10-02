@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><% data.title %></title>
+  <title>Post</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel='stylesheet' href='stylesheets/index.css' />
@@ -83,14 +83,14 @@
         </div>
         <p>I know something about you without knowing you. I bet you spend A LOT of time in your head.</p>
         <p>You know, thinking, worrying, stressing, freaking out — call it whatever you want. I call it a preoccupied mind. And with what?</p>
-        <p>99% of your thoughts are useless. William James put it best:</p>
-        <blockquote>
+        <p class="m-b-50">99% of your thoughts are useless. William James put it best:</p>
+        <blockquote class="m-b-30">
           “A great many people think they are thinking when they are merely rearranging their prejudices.”
         </blockquote>
         <p>All my life I’ve been obsessed with practical things. Practical philosophy, practical knowledge, practical books, practical work, and practical advice.</p>
         <p>That idea comes from Pragmatism, a philosophical tradition that started in the 19th century in America. Charles Sanders Peirce, who was a Harvard professor, is considered as the “father of Pragmatism.”</p>
         <p>But it was William James, a trained physician turned philosopher, who really defined the philosophy:</p>
-        <ul>
+        <ul class="m-b-30 m-t-30">
           <li>“I wonder what my boss thinks?”</li>
           <li>“What happens if I screw up and lose my job?”</li>
           <li>“Does she love me?”</li>
@@ -100,14 +100,35 @@
         </ul>
         <div class="img_cropped img_round-borders">
           <picture>
-            <% var bigUrl = data.heroCards[0].imgUrl.split('.').join('@2.') %>
-            <source srcset="<%= bigUrl %> 2x, <%= data.heroCards[0].imgUrl %> 1x" />
-            <img src="<%= data.heroCards[0].imgUrl %>" alt="<%= data.heroCards[0].title %>">
+            <% var bigUrl = data.bigCards[2].imgUrl.split('.').join('@2.') %>
+            <source srcset="<%= bigUrl %> 2x, <%= data.bigCards[2].imgUrl %> 1x" />
+            <img src="<%= data.bigCards[2].imgUrl %>" alt="<%= data.bigCards[2].title %>">
           </picture>
         </div>
         <div class="img__caption">If you can change your mind, you can change your life.</div>
         <p>All my life I’ve been obsessed with practical things. Practical philosophy, practical knowledge, practical books, practical work, and practical advice:</p>
       </div>
+
+      <%- include('partials/comments', { 
+        comments: [
+          { 
+            avatar: 'images/users/Leslie_Alexander.jpg', 
+            author: 'Tom Black', 
+            date: 'Today',
+            content: 'What we choose not to say is just as important as what we decide to say', 
+            initials: 'TB',
+            color: '_accent_1',
+          },
+          { 
+            avatar: '', 
+            author: 'Devon Lane', 
+            date: '14 July, 2020',
+            content: 'What we choose not to say is just as important as what we decide to say',
+            initials: 'DL',
+            color: '_accent_2',
+          },
+        ],
+       }); %>
     </div>
     <div class="content">
       <h2>Read next</h2>
@@ -124,6 +145,7 @@
         }); %>
       <% }); %>
     </div>
+    <%- include('partials/subscribe_block') %>
     <%- include('partials/footer') %>
   </div>
 </body>
