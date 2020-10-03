@@ -6,6 +6,15 @@
 
   &__item {
     color: nth($grey-dark, 3);
+    text-decoration: none;
+
+    &.active {
+      color: nth($grey-dark, 6);
+    }
+
+    &:visited {
+      color: nth($grey-dark, 3);
+    }
   }
 
   svg {

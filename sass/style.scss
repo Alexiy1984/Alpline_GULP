@@ -1,76 +1,8 @@
 @import '_mixins.scss';
 @import '_variables.scss';
+@import '_article_content.scss';
 
-$h1-font-sizes: (
-  null: (54px, 60px, -3.5px),
-  small: (72px, 80px, -4.5px),
-);
-
-$h2-font-sizes: (
-  null: (40px, 46px, -1.8px),
-  small: (60px, 65px, -2.5px),
-);
-
-$h3-font-sizes: (
-  null: (32px, 36px, -1.1px),
-  small: (48px, 54px, -1.6px),
-);
-
-$h4-font-sizes: (
-  null: (24px, 28px, -0.8px),
-  small: (36px, 44px, -1.2px),
-);
-
-$h5-font-sizes: (
-  null: (22px, 26px, -0.55px),
-  small: (28px, 34px, -0.8px),
-);
-
-$caption_1-font-sizes: (
-  null: (18px, 20px, -0.5px),
-  small: (20px, 24px, -0.6px),
-);
-
-$caption_2-font-sizes: (
-  null: (17px, 18px, -0.3px),
-  small: (18px, 20px, -0.3px),
-);
-
-$caption_3-font-sizes: (
-  null: (15px, 18px, -0.3px),
-  small: (16px, 18px, -0.5px),
-);
-
-$caption_4-font-sizes: (
-  null: (12px, 14px, -0.3px),
-  small: (13px, 15px, -0.3px),
-);
-
-$body_large-font-sizes: (
-  null: (20px, 28px, -0.6px),
-  small: (21px, 30px, -0.8px),
-);
-
-$body_normal-font-sizes: (
-  null: (16px, 20px, -0.5px),
-  small: (17px, 25px, -0.7px),
-);
-
-$body_small-font-sizes: (
-  null: (14px, 18px, -0.5px),
-  small: (15px, 23px, -0.6px),
-);
-
-$blockquote-font-sizes: (
-  null: (22px, 28px, -0.8px),
-  small: (24px, 35px, -1px),
-);
-
-$indent-breackpoints: (
-  small: (768px, 'sm-'),
-  medium: (992px, 'md-'),
-  large: (1200px, 'lg-' ),
-);
+$classlist: '.caption_1', '.caption_2', '.caption_3', '.caption_4';
 
 html {
   scroll-behavior: smooth;
@@ -83,12 +15,12 @@ body {
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  color: nth($accent1, 3);
 
   &:visited,
   &:active {
-    color: inherit;
+    color: nth($accent1, 3);
   }
 }
 
@@ -204,44 +136,6 @@ p {
   }
 }
 
-.article-content {
-  p {
-    @include font-size($body_large-font-sizes);
-    color: nth($grey-dark, 5);
-    margin-bottom: 44px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  ul
-  ,ol {
-    padding-left: 30px;
-    @include font-size($body_large-font-sizes);
-    color: nth($grey-dark, 5);
-
-    li {
-      margin-bottom: 25px;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  blockquote {
-    color: nth($grey-dark, 4);
-    background-color: rgba(0, 0, 0, 0.02);
-    padding: 20px 30px;
-    @include font-size($blockquote-font-sizes);
-  }
-
-  .img__caption {
-    @include font-size($body_normal-font-sizes);
-  }
-}
-
 .wrap {
   display: flex;
   flex-direction: column;
@@ -260,7 +154,7 @@ p {
 
     &__thin {
       @extend .content;
-      max-width: 850px;
+      padding: 0 30px;
     }
   }
 }
@@ -381,6 +275,23 @@ p {
   }
 }
 
+.notify {
+  &_error {
+    background-color: map-get($notify-colors, 'error')!important;
+    color: #fff!important;
+  }
+
+  &_warning {
+    background-color: map-get($notify-colors, 'warning')!important;
+    color: #fff!important;
+  }
+
+  &_success {
+    background-color: map-get($notify-colors, 'success')!important;
+    color: #fff!important;
+  }
+}
+
 @include indents('.p-l-', 'padding-left', $indent-breackpoints);
 @include indents('.p-r-', 'padding-right', $indent-breackpoints);
 @include indents('.p-t-', 'padding-top', $indent-breackpoints);
@@ -429,10 +340,25 @@ p {
   } 
 }
 
+@media (min-width: 910px) {
+  .wrap {
+    .content {
+      &__thin {
+        max-width: 850px;
+        padding: 0;
+      }
+    }
+  }  
+}
+
 @media (min-width: 992px) {
   .wrap {
     .content {
       padding: 0 100px;
+
+      &__thin {
+        padding: 0;
+      }
     }
   }
 }
@@ -441,6 +367,10 @@ p {
   .wrap {
     .content {
       padding: 0 30px;
+
+      &__thin {
+        padding: 0;
+      }
     }
   }
 }

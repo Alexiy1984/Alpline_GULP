@@ -15,10 +15,8 @@ $(function () {
   });
   $('#comment-new').on('keyup input', function () {
     if (!($.trim($(this).val()) === "")) {
-      console.log($(this).val());
       $(this).parents('.comments').find('#comment-new-button').removeClass('button_disabled');
     } else {
-      console.log($(this).val());
       $(this).parents('.comments').find('#comment-new-button').addClass('button_disabled');
     }
   });

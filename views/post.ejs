@@ -84,13 +84,13 @@
         <p>I know something about you without knowing you. I bet you spend A LOT of time in your head.</p>
         <p>You know, thinking, worrying, stressing, freaking out — call it whatever you want. I call it a preoccupied mind. And with what?</p>
         <p class="m-b-50">99% of your thoughts are useless. William James put it best:</p>
-        <blockquote class="m-b-30">
+        <blockquote>
           “A great many people think they are thinking when they are merely rearranging their prejudices.”
         </blockquote>
         <p>All my life I’ve been obsessed with practical things. Practical philosophy, practical knowledge, practical books, practical work, and practical advice.</p>
         <p>That idea comes from Pragmatism, a philosophical tradition that started in the 19th century in America. Charles Sanders Peirce, who was a Harvard professor, is considered as the “father of Pragmatism.”</p>
         <p>But it was William James, a trained physician turned philosopher, who really defined the philosophy:</p>
-        <ul class="m-b-30 m-t-30">
+        <ul class="m-b-30">
           <li>“I wonder what my boss thinks?”</li>
           <li>“What happens if I screw up and lose my job?”</li>
           <li>“Does she love me?”</li>
@@ -107,8 +107,44 @@
         </div>
         <div class="img__caption">If you can change your mind, you can change your life.</div>
         <p>All my life I’ve been obsessed with practical things. Practical philosophy, practical knowledge, practical books, practical work, and practical advice:</p>
+        <h5>I just have one question for you: What’s the practical use of your thoughts?</h5>
+        <p>Also, you’re probably thinking so much that you’re missing out of life. Did you notice the sunshine this morning when you woke up? Or the raindrops? Did you notice the smell of your coffee? Did you feel the texture of your cereals?</p>
+        <blockquote>“Try to internalize knowledge and think about how you can use that knowledge to improve your life, career, work, relationships, etc.”
+          <footer>— Jane Cooper</footer>
+        </blockquote>
+        <p>Yes? I’m waiting. Still no answer? Exactly.</p>
+        <p>Thoughts have no use. <a href="#">99% of them that is.</a></p>
+        <p>Which thoughts are useful?</p>
+        <ol>
+          <li>Thinking about how you can solve problems. A problem is just an unanswered question. Put your brain to use and think about how you can solve problems. There are a lot of those on this earth.</li>
+          <li>Understanding knowledge. That mean this: Try to internalize knowledge and think about how you can use that knowledge to improve your life, career, work, relationships, etc.</li>
+        </ol>
+        <div class="article-content__footer">
+          <div class="article-content__footer-top">
+            <div class="article-content__tags">
+              <a href="#" class="tag_accent_1">Fiction</a>
+              <a href="#" class="tag_accent_2">Relationships</a>
+              <a href="#" class="tag_accent_4">Hiking</a>
+              <a href="#" class="tag">Tag</a>
+            </div>
+            <div class="article-content__date">
+              <p class="caption_3">14 July, 2020</p>
+            </div>
+          </div>
+          <div class="article-content__footer-bottom">
+            <div class="article-content__author-block">
+              <p class="caption_3">Author</p> 
+              <picture>
+                <% var bigUrl = data.user[1].img.split('.').join('@2.') %>
+                <source srcset="<%= bigUrl %> 2x, <%= data.user[1].img %> 1x" />
+                <img class="avatar_small" src="<%= data.user[1].img %>" alt="<%= data.user[1].firstname %>">
+              </picture>
+            </div>
+            
+          </div>
+        </div>
       </div>
-
+      
       <%- include('partials/comments', { 
         comments: [
           { 

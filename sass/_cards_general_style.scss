@@ -1,0 +1,31 @@
+@mixin category {
+  text-decoration: none;
+  border-radius: 20px;
+  padding: 3px 10px;
+  background-color: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0);   
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition: background-color 0.15s ease-in, color 0.15s ease-in;
+  color: nth($grey-dark, 3);
+
+  &:visited {
+    color: nth($grey-dark, 3);
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: nth($accent3, 1); 
+    color:  nth($accent3, 4);
+  }
+}
+
+@mixin author {
+  transition: color 0.15s ease-in;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+    color:  nth($accent3, 4);
+  }
+}

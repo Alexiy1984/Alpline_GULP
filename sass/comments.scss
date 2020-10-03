@@ -15,20 +15,73 @@
 }
 
 .comments {
+  margin-bottom: 60px;
+
   &__title {
     margin-bottom: 36px;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    color: nth($grey-dark, 4);
+
+    &-text {
+      margin-right: 20px;
+      order: 2;
+    }
+  }
+
+  &__icon {
+    order: 3;
+    position: relative;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: nth($accent1, 1);
+    margin-right: 10px;
+
+    svg {
+      width: 13.33px;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      path {
+        fill: nth($accent1, 4);
+      }
+    }
+
+    &:hover {
+      background-color: rgba(93, 140, 255, 0.05);
+      opacity: 0.5;
+
+      svg {
+        path {
+          fill: nth($accent1, 4);
+        }
+      }
+    }
   }
 }
 
 .comment {
   display: flex;
+  flex-direction: column;
   width: 100%;
 
   &__avatar {
     position: relative;
     width: 40px;
+    min-width: 40px;
     height: 40px;
+    min-height: 40px;
     margin-right: 25px;
+    margin-bottom: 15px;
     
     img {
       @extend %avatar-inner;
@@ -107,6 +160,13 @@
   &__date {
     color: nth($grey-dark, 4);
   }
+
+  &__add-button {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 15px;
+    order: 1;
+  }
 }
 
 .comment_new {
@@ -121,4 +181,47 @@
     border-radius: 8px;
     color: nth($grey-dark, 3);
   }
+}
+
+@media (min-width: 480px) {
+  .comment {
+    flex-direction: row;
+
+    &__avatar {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .comments {
+    &__footer {
+      justify-content: flex-end;
+
+      &-text {
+        order: 1;
+      }
+    }
+  }
+
+  .comment {
+    &__add-button {
+      order: 3;
+      margin-left: 15px;
+      margin-bottom: 0;
+      width: auto;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .comments {
+    margin-bottom: 80px;
+  }  
+}
+
+@media (min-width: 992px) {
+  .comments {
+    margin-bottom: 108px;
+  }  
 }

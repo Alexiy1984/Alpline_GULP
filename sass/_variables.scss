@@ -5,11 +5,21 @@ $breakpoints: (
 );
 
 $font-stack: Inter, sans-serif;
+
+//Colors
+
 $primary-color: #000000;
 $hover-color: rgba(225, 29, 116, 1);
 $ligth-text: rgba(0, 0, 0, 0.5);
 $grey-dark: rgba(0, 0, 0, 0.8);
 $ligth-border: 1.5px solid rgba(0, 0, 0, 0.05);
+$tag-bg: rgba(0, 0, 0, 0.04);
+
+$notify-colors : (
+  error: rgb(255, 78, 78),
+  warning: rgb(254, 183, 47),
+  success: rgb(144, 218, 26),
+);
 
 $accent1 : (
 rgba(93, 140, 255, 0.1),
@@ -50,4 +60,79 @@ rgba(0, 0, 0, 0.3),
 rgba(0, 0, 0, 0.5),
 rgba(0, 0, 0, 0.8),
 rgb(0, 0, 0),
+);
+
+//Font sizes
+
+$h1-font-sizes: (
+  null: (54px, 60px, -3.5px),
+  small: (72px, 80px, -4.5px),
+);
+
+$h2-font-sizes: (
+  null: (40px, 46px, -1.8px),
+  small: (60px, 65px, -2.5px),
+);
+
+$h3-font-sizes: (
+  null: (32px, 36px, -1.1px),
+  small: (48px, 54px, -1.6px),
+);
+
+$h4-font-sizes: (
+  null: (24px, 28px, -0.8px),
+  small: (36px, 44px, -1.2px),
+);
+
+$h5-font-sizes: (
+  null: (22px, 26px, -0.55px),
+  small: (28px, 34px, -0.8px),
+);
+
+$caption_1-font-sizes: (
+  null: (18px, 20px, -0.5px),
+  small: (20px, 24px, -0.6px),
+);
+
+$caption_2-font-sizes: (
+  null: (17px, 18px, -0.3px),
+  small: (18px, 20px, -0.3px),
+);
+
+$caption_3-font-sizes: (
+  null: (15px, 18px, -0.3px),
+  small: (16px, 18px, -0.5px),
+);
+
+$caption_4-font-sizes: (
+  null: (12px, 14px, -0.3px),
+  small: (13px, 15px, -0.3px),
+);
+
+$body_large-font-sizes: (
+  null: (20px, 28px, -0.6px),
+  small: (21px, 30px, -0.8px),
+);
+
+$body_normal-font-sizes: (
+  null: (16px, 20px, -0.5px),
+  small: (17px, 25px, -0.7px),
+);
+
+$body_small-font-sizes: (
+  null: (14px, 18px, -0.5px),
+  small: (15px, 23px, -0.6px),
+);
+
+$blockquote-font-sizes: (
+  null: (22px, 28px, -0.8px),
+  small: (24px, 35px, -1px),
+);
+
+//Indents
+
+$indent-breackpoints: (
+  small: (768px, 'sm-'),
+  medium: (992px, 'md-'),
+  large: (1200px, 'lg-' ),
 );

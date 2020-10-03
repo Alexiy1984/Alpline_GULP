@@ -35,6 +35,12 @@ var pages_data = {
       surname: 'Alexander',
       email: 'lesliealexandro@gmail.com',
     },
+    {
+      img: 'images/users/Jane_Cooper.jpg',
+      firstname: 'Jane',
+      surname: 'Cooper',
+      email: 'janecooper@gmail.com',
+    },
   ], 
   heroCards: [
     {
@@ -45,7 +51,8 @@ var pages_data = {
       text: 'Peter yanked the curtain back, eager to see the dawn. Grace pulled the covers over her head.',
       categories: ['Fiction', 'Relationships', 'Hiking'],
       ttr: 7,
-      views: '12,851'
+      views: '12,851',
+      link: '/post.html',
     },
   ],
   smallCards: [
@@ -268,7 +275,8 @@ function generateIndexCSS(cb) {
           './sass/avatar.scss',
           './sass/breadcrumbs.scss',
           './sass/comments.scss',
-          './sass/buttons.scss'
+          './sass/buttons.scss',
+          './sass/tags.scss',
         ])
         .pipe(sass(sassOptions).on('error', sass.logError))
         .pipe(autoprefixer(prefixerOptions))
@@ -305,6 +313,20 @@ function generateIndexHTML(cb) {
     cb();
 }
 
+
+function generateUiHTML(cb) {
+  src('./views/ui.ejs')
+      .pipe(ejs({ data: pages_data }))
+      .pipe(rename(function (path) {
+          path.basename = 'ui';
+          path.extname = '.html';
+      }))
+      .pipe(removeEmptyLines())
+      .pipe(formatHtml())
+      .pipe(dest('public'));
+  cb();
+}
+
 function generatePostHTML(cb) {
   src('./views/post.ejs')
       .pipe(ejs({ data: pages_data}))
@@ -336,6 +358,19 @@ function generate404HTML(cb) {
       .pipe(ejs({ data: pages_data}))
       .pipe(rename(function (path) {
         path.basename = '404';
+        path.extname = '.html';
+      }))
+      .pipe(removeEmptyLines())
+      .pipe(formatHtml())
+      .pipe(dest('public'));
+  cb();
+}
+
+function generateFeaturedHTML(cb) {
+  src('./views/featured.ejs')
+      .pipe(ejs({ data: pages_data}))
+      .pipe(rename(function (path) {
+        path.basename = 'featured';
         path.extname = '.html';
       }))
       .pipe(removeEmptyLines())
@@ -399,9 +434,9 @@ function browserSync(cb) {
         }
     });
 
-    watch('gulpfile.js', series(generateIndexHTML, generatePostHTML, generateTermsHTML, generate404HTML));
-    watch('views/**.ejs', series(generateIndexHTML, generatePostHTML, generateTermsHTML, generate404HTML));
-    watch('views/partials/**.ejs', series(generateIndexHTML, generatePostHTML, generateTermsHTML, generate404HTML));
+    watch('gulpfile.js', series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML));
+    watch('views/**.ejs', series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML));
+    watch('views/partials/**.ejs', series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML));
     // watch('gulpfile.js', generateIndexHTML);
     // watch('views/**.ejs', generateIndexHTML);
     // watch('views/partials/**.ejs', generateIndexHTML);
@@ -412,7 +447,7 @@ function browserSync(cb) {
 
 
 exports.css = series(cleanCSS,generateIndexCSS);
-exports.multhtml = series(generateIndexHTML, generatePostHTML, generateTermsHTML, generate404HTML);
+exports.multhtml = series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML);
 exports.js = uglifyJS;
 exports.htmlMin = minifyHTML;
 exports.lint = runLinter;
@@ -421,5 +456,5 @@ exports.watch = watchFiles;
 exports.sync = browserSync;
 exports.clean = cleanCSS;
 
-exports.default = series(runLinter,parallel(generateIndexCSS, generatePagesCSS, generateIndexHTML, generatePostHTML, generateTermsHTML, generate404HTML ,uglifyJS));
+exports.default = series(runLinter,parallel(generateIndexCSS, generatePagesCSS, generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML ,uglifyJS));
 // exports.default = series(runLinter,parallel(generateCSS, generateIndexHTML, uglifyJS));

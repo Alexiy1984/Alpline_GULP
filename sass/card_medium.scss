@@ -1,3 +1,6 @@
+@import '_variables.scss';
+@import '_cards_general_style.scss';
+
 .card_medium {
   display: flex;
   flex-wrap: wrap;
@@ -51,12 +54,16 @@
   &__author,
   &__date,
   &__description  {
-    color: rgba(0, 0, 0, 0.5);
+    color: nth($grey-dark, 4);
     transition: color 0.15s ease-in;
+
+    &:visited {
+      color: nth($grey-dark, 4);  
+    }
   }
 
-  &__author:hover {
-    color:  rgba(225, 29, 116, 1);
+  &__author {
+    @include author;
   }
 
   &__title {
@@ -91,18 +98,7 @@
   }
 
   &__category {
-    border-radius: 20px;
-    padding: 3px 10px;
-    background-color: rgba(0, 0, 0, 0.04);
-    border: 1px solid rgba(0, 0, 0, 0);   
-    margin-right: 10px;
-    margin-bottom: 10px;
-    transition: background-color 0.15s ease-in, color 0.15s ease-in;
-
-    &:hover {
-      background-color: rgba(225, 29, 116, 0.1); 
-      color:  rgba(225, 29, 116, 1);
-    }
+    @include category;
   }
 
   &__bookmark {
@@ -124,7 +120,7 @@
       svg {
         path {
           fill-opacity: 1;
-          fill: rgba(225, 29, 116, 1);
+          fill: nth($accent3, 4);
         }
       }
     }

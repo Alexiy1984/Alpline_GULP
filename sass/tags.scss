@@ -1,0 +1,62 @@
+@import '_variables.scss';
+@import '_mixins.scss';
+
+$tag-font-sizes: (
+  null: (14px, 18px, -0.4px),
+  small: (15px, 18px, -0.5px),
+);
+
+.tag {
+  cursor: pointer;
+  text-decoration: none;
+  padding: 3px 10px;
+  background-color: $tag-bg;
+  color: nth($grey-dark, 3);
+  border-radius: 20px;
+  display: inline-block;
+  @include font-size($tag-font-sizes);
+
+  &:visited {
+    color: nth($grey-dark, 3);
+  }
+
+  &_accent_1 {
+    @extend .tag;
+    background-color: nth($accent1, 1);
+    color: nth($accent1, 5);
+
+    &:visited {
+      color: nth($accent1, 5);
+    }
+  }
+
+  &_accent_2 {
+    @extend .tag;
+    background-color: nth($accent2, 1);
+    color: nth($accent2, 5);
+
+    &:visited {
+      color: nth($accent2, 5);
+    }
+  }
+
+  &_accent_3 {
+    @extend .tag;
+    background-color: nth($accent3, 1);
+    color: nth($accent3, 5);
+
+    &:visited {
+      color: nth($accent3, 5);
+    }
+  }
+
+  &_accent_4 {
+    @extend .tag;
+    background-color: nth($accent4, 1);
+    color: nth($accent4, 5);
+
+    &:visited {
+      color: nth($accent4, 5);
+    }
+  }
+}

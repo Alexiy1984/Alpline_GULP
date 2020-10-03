@@ -37,6 +37,7 @@ $menu-mian-text: (
   &__open-button {
     display: flex;
     align-items: center;
+    color: nth($grey-dark, 6);
     
     p {
       display: none;
@@ -56,6 +57,7 @@ $menu-mian-text: (
   }
   
   &__logo {
+    text-decoration: none;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -64,6 +66,12 @@ $menu-mian-text: (
     font-weight: 600;
     line-height: 30px;
     letter-spacing: -0.5px;
+    color: nth($grey-dark, 6);
+
+    &:visited,
+    &:active {
+      color:nth($grey-dark, 6);
+    }  
   }
   
   &__user-block {
@@ -200,11 +208,16 @@ $menu-mian-text: (
     }
 
     &-link {
+      text-decoration: none;
       display: inline-block;
-      color: $ligth-text;
+      color: nth($grey-dark, 4);
       width: 100%;
       text-align: center;
       @include font-size($menu-mian-text);
+
+      &:visited {
+        color: nth($grey-dark, 4);
+      }
 
       &:hover {
         @include text-hover-effect;
@@ -260,7 +273,12 @@ $menu-mian-text: (
         }
       }
 
-      &:hover {
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      &:hover a {
         cursor: pointer;
         color: $hover-color;
       }
@@ -295,7 +313,7 @@ $menu-mian-text: (
     }
 
     &-header {
-      color: $ligth-text;
+      color: nth($grey-dark, 4);
     }
 
     &-header,
@@ -306,6 +324,11 @@ $menu-mian-text: (
 
     &-body {
       margin-top: 12px;
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
       svg {
         display: none;

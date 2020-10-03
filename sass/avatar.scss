@@ -1,11 +1,23 @@
 .avatar {
   border-radius: 50%;
   width: 70px;
+  min-width: 70px;
   height: 70px;
+  min-height: 70px;
 
   &_small {
     @extend .avatar;
     width: 40px;
+    min-width: 40px;
     height: 40px;
+    min-height: 40px;
+  }
+
+  &_big {
+    @extend .avatar;
+    width: 80px;
+    min-width: 80px;
+    height: 80px;
+    min-height: 80px;
   }
 }

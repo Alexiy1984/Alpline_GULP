@@ -64,7 +64,7 @@
 
 @mixin  text-hover-effect {
   cursor: pointer;
-  color: $hover-color;
+  color: nth($accent3, 4);
 }
 
 @mixin svg-hover-effect {

@@ -47,6 +47,10 @@
     line-height: 18px;
     letter-spacing: -0.2px;
     color: rgba(255, 255, 255, 0.5);
+
+    &:visited {
+      color: rgba(255, 255, 255, 0.5);
+    }
   }
 
   &__top {
