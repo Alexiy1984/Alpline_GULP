@@ -59,4 +59,40 @@ $tag-font-sizes: (
       color: nth($accent4, 5);
     }
   }
+
+  &_info {
+    @extend .tag;
+    background-color: #fff;
+    border: 1px nth($grey-dark, 1) solid;
+  }
+
+  &_icon-left {
+    @extend .tag;
+    position: relative;
+    padding-left: 24px;
+
+    svg {
+      position: absolute;
+      width: 13.33px;
+      height: auto;
+      top: 50%;
+      right: 55.3px;
+      transform: translate(0, -50%);
+    }
+  }
+
+  &_icon-right {
+    @extend .tag;
+    position: relative;
+    padding-right: 24px;
+
+    svg {
+      position: absolute;
+      width: 13.33px;
+      height: auto;
+      top: 50%;
+      right: 55.3px;
+      transform: translate(0, -50%);
+    }
+  }
 }

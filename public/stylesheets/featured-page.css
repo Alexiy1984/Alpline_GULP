@@ -1,0 +1,19 @@
+.featured-page .breadcrumbs {
+  margin-bottom: 20px;
+}
+
+.featured-page .flex-container {
+  margin: 0 0 40px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .featured-page .flex-container {
+    margin: 0 0 60px 0;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .featured-page .flex-container {
+    margin: 0 0 100px 0;
+  }
+}

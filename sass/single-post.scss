@@ -1,3 +1,4 @@
+@import '_mixins.scss';
 @import '_variables.scss';
 
 %text-size-color {
@@ -5,22 +6,90 @@
   color: nth($grey-dark, 4);
 }
 
+$single-post-footer-margins: (
+  null: (0, 0, 40px, 0),
+  small: (0, 0, 60px, 0),
+  medium: (0, 0, 100px, 0),
+);
+
+$single-post-footer-paddings: (
+  null: (30px, 0, 0, 0),
+  small: (40px, 0, 0, 0),
+  medium: (50px, 0, 0, 0),
+);
+
 .single-post {
   &__header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     margin-top: 20px;
 
     &-center {
       max-width: 850px;
+      margin: 0 auto;
+      order: 1;
+      padding: 0 30px;
     }
 
-    &_left {
-      flex-grow: 1;
+    &-left {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      max-width: 850px;
+      margin: 0 auto;
+      order: 2;
+      padding: 0 30px;
     }
 
-    &-rigth {
-      flex-grow: 1;
+    &-right {
+      max-width: 850px;
+      margin: 0 auto;
+      order: 3;
+      padding: 0 30px;
+    }
+
+    &-icon {
+      position: relative;
+      border: 1.5px nth($grey-dark, 1) solid;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      margin-bottom: 35px;
+      margin-right: 15px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      svg {
+        color: nth($grey-dark, 3);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: auto;
+
+        path {
+          transition: fill 0.15s ease-in;
+          fill: nth($grey-dark, 3);
+        }
+
+        &.fix-height {
+          @extend svg;
+          width: auto;
+          height: 20px;
+        }
+      }
+
+      &:hover {
+       svg {
+         path {
+           fill: nth($accent3, 4);
+         }
+       }
+      }
     }
   }
 
@@ -43,4 +112,66 @@
     text-align: center;
     margin-bottom: 15px;
   }
+
+  &__footer {
+    position: relative;
+    @include element-indent($single-post-footer-margins, 'margin');
+    @include element-indent($single-post-footer-paddings , 'padding');
+
+    &:before {
+      @include delimiter-before;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .single-post {
+    &__header {
+      &-left,
+      &-center,
+      &-right {
+        padding: 0 80px;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .single-post {
+    &__header {
+      &-left,
+      &-center,
+      &-right {
+        padding: 0;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .single-post {
+    &__header {
+      flex-direction: row;
+
+      &-left {
+        min-width: calc((100% - 850px)/2);
+        order: 1;
+        flex-direction: column;
+      }
+
+      &-center {
+        order: 2;
+      }
+
+      &-right {
+        min-width: calc((100% - 850px)/2);
+        order: 3;
+      }
+
+      &-icon {
+        margin-bottom: 15px;
+        margin-right: 0;
+      }
+    }
+  }  
 }

@@ -14,17 +14,17 @@
   }
 }
 
-@mixin element-padding($pad-map, $fs-breakpoints: $breakpoints) {
+@mixin element-indent($pad-map, $indent-type, $fs-breakpoints: $breakpoints) {
   @each $fs-breakpoint, $padding in $pad-map {
     @if $fs-breakpoint == null {
-      @include make-element-paddigs($padding);
+      @include make-element-indents($padding, $indent-type);
     }
     @else {
       @if map-has-key($fs-breakpoints, $fs-breakpoint) {
         $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
       }
       @media screen and (min-width: $fs-breakpoint) {
-        @include make-element-paddigs($padding);
+        @include make-element-indents($padding, $indent-type);
       }
     }
   }
@@ -45,20 +45,20 @@
   }
 }
 
-@mixin make-element-paddigs($elt-padding) {
+@mixin make-element-indents($elt-padding, $indent-type) {
   @if type-of($elt-padding) == "list" {
     @if (length($elt-padding) == 2) {
-      padding: nth($elt-padding, 1) nth($elt-padding, 2);
+      #{$indent-type}: nth($elt-padding, 1) nth($elt-padding, 2);
     }
     @if (length($elt-padding) == 3) {
-      padding: nth($elt-padding, 1) nth($elt-padding, 2) nth($elt-padding, 3);
+      #{$indent-type}: nth($elt-padding, 1) nth($elt-padding, 2) nth($elt-padding, 3);
     }
     @if (length($elt-padding) == 4) {
-      padding: nth($elt-padding, 1) nth($elt-padding, 2) nth($elt-padding, 3) nth($elt-padding, 4);
+      #{$indent-type}: nth($elt-padding, 1) nth($elt-padding, 2) nth($elt-padding, 3) nth($elt-padding, 4);
     }
   }
   @else {
-    padding: nth($elt-padding, 1);
+    #{$indent-type}: nth($elt-padding, 1);
   }
 }
 
@@ -83,6 +83,18 @@
 @mixin delimiter {
   position: absolute;
   bottom: 0;
+  left: 0;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 1.5px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 2px;
+}
+
+@mixin delimiter-before {
+  position: absolute;
+  top: 0;
   left: 0;
   display: block;
   content: '';

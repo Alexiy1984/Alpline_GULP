@@ -34,12 +34,35 @@ var pages_data = {
       firstname: 'Leslie',
       surname: 'Alexander',
       email: 'lesliealexandro@gmail.com',
+      followers: '1K',
     },
     {
       img: 'images/users/Jane_Cooper.jpg',
       firstname: 'Jane',
       surname: 'Cooper',
       email: 'janecooper@gmail.com',
+      followers: '2.9K',
+    },
+    {
+      img: 'images/users/Ralph_Edwards.jpg',
+      firstname: 'Ralph',
+      surname: 'Edwards',
+      email: 'ralphedwards@gmail.com',
+      followers: '492',
+    },
+    {
+      img: 'images/users/Tyler_Black.jpg',
+      firstname: 'Tyler',
+      surname: 'Black',
+      email: 'tylerblack@gmail.com',
+      followers: '211',
+    },
+    {
+      img: 'images/users/Courtney_Henry.jpg',
+      firstname: 'Courtney',
+      surname: 'Henry',
+      email: 'courtneyhenry@gmail.com',
+      followers: '1.2K',
     },
   ], 
   heroCards: [
@@ -53,6 +76,7 @@ var pages_data = {
       ttr: 7,
       views: '12,851',
       link: '/post.html',
+      authorLink: '/author.html',
     },
   ],
   smallCards: [
@@ -271,12 +295,12 @@ function generateIndexCSS(cb) {
           './sass/slick.scss',
           './sass/card_slide.scss', 
           './sass/subscribe_block.scss',
-          './sass/inputs.scss',
           './sass/avatar.scss',
           './sass/breadcrumbs.scss',
           './sass/comments.scss',
           './sass/buttons.scss',
           './sass/tags.scss',
+          './sass/author_block.scss',
         ])
         .pipe(sass(sassOptions).on('error', sass.logError))
         .pipe(autoprefixer(prefixerOptions))
@@ -291,6 +315,8 @@ function generatePagesCSS(cb) {
   src([ 
         './sass/terms-and-conditions-page.scss',
         './sass/single-post.scss',
+        './sass/featured-page.scss',
+        './sass/search-results-page.scss',
       ])
       .pipe(sass(sassOptions).on('error', sass.logError))
       .pipe(autoprefixer(prefixerOptions))
@@ -379,6 +405,19 @@ function generateFeaturedHTML(cb) {
   cb();
 }
 
+function generateSearchResultsHTML(cb) {
+  src('./views/search_results.ejs')
+      .pipe(ejs({ data: pages_data}))
+      .pipe(rename(function (path) {
+        path.basename = 'search-results';
+        path.extname = '.html';
+      }))
+      .pipe(removeEmptyLines())
+      .pipe(formatHtml())
+      .pipe(dest('public'));
+  cb();
+}
+
 function minifyHTML(cb) {
   src('public/*.html')
       .pipe(htmlmin({ collapseWhitespace: true }))
@@ -434,9 +473,9 @@ function browserSync(cb) {
         }
     });
 
-    watch('gulpfile.js', series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML));
-    watch('views/**.ejs', series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML));
-    watch('views/partials/**.ejs', series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML));
+    watch('gulpfile.js', series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML, generateSearchResultsHTML));
+    watch('views/**.ejs', series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML, generateSearchResultsHTML));
+    watch('views/partials/**.ejs', series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML, generateSearchResultsHTML));
     // watch('gulpfile.js', generateIndexHTML);
     // watch('views/**.ejs', generateIndexHTML);
     // watch('views/partials/**.ejs', generateIndexHTML);
@@ -447,7 +486,7 @@ function browserSync(cb) {
 
 
 exports.css = series(cleanCSS,generateIndexCSS);
-exports.multhtml = series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML);
+exports.multhtml = series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML, generateSearchResultsHTML);
 exports.js = uglifyJS;
 exports.htmlMin = minifyHTML;
 exports.lint = runLinter;

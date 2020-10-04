@@ -3,10 +3,13 @@
 .breadcrumbs {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 
   &__item {
     color: nth($grey-dark, 3);
     text-decoration: none;
+    align-items: center;
+    margin: 5px 0;
 
     &.active {
       color: nth($grey-dark, 6);
@@ -19,5 +22,13 @@
 
   svg {
     margin: 0 13.5px;
+  }
+}
+
+@media (min-width: 480px) {
+  .breadcrumbs {
+    &__item {
+      margin: 0;
+    }
   }
 }

@@ -1,0 +1,16 @@
+<div class="author-block">
+  <a href="#" class="author-block__avatar">
+    <picture>
+      <% var bigUrl = avatar.split('.').join('@2.') %>
+      <source srcset="<%= bigUrl %> 2x, <%= avatar %> 1x" />
+      <img class="avatar" src="<%= avatar %>" alt="<%= firstname %> <%= surname %>">
+    </picture>
+  </a>
+  <div class="author-block__body">
+    <a class="author-block__name"><%= firstname %> <%= surname %></a>
+    <div class="author-block__followers">
+      <button class="button_small button_follow">Follow</button>
+      <p class="caption_4"><%= followers %> Followers</p>
+    </div>
+  </div>
+</div>

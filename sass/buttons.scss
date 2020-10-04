@@ -1,6 +1,9 @@
+@import '_mixins.scss';
 @import '_variables.scss';
 
 .button {
+  text-decoration: none;
+  position: relative;
   border-radius: 8px;
   border-width: 1px;
   border-style: solid;
@@ -25,7 +28,50 @@
 
   &:active {
     background-color: nth($accent1, 5);
-  }  
+  }
+
+  svg {
+    path {
+      transition: fill 0.15s ease-in;
+    }
+  }
+
+  &_mini {
+    @extend .button;
+    height: 30px;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: -0.2px;
+    padding: 0 9px;
+
+    &_icon-left {
+      @extend .button_mini;
+      padding-left: 25px;
+    
+      svg {
+        position: absolute;
+        width: 13.33px;
+        height: auto;
+        left: 8.33px;
+        top: 50%;
+        transform: translate(0, -50%);
+      }
+    }
+    
+    &_icon-right {
+      @extend .button_mini;
+      padding-right: 25px;
+    
+      svg {
+        position: absolute;
+        width: 13.33px;
+        height: auto;
+        right: 8.33px;
+        top: 50%;
+        transform: translate(0, -50%);
+      }
+    }
+  }
 
   &_small {
     @extend .button;
@@ -48,6 +94,16 @@
   &_fixed {
     @extend .button;
     width: 200px;
+
+    &_mini {
+      @extend .button;
+      width: 200px;
+      height: 30px;
+      font-size: 13px;
+      line-height: 15px;
+      letter-spacing: -0.2px;
+      padding: 0 9px;
+    }
 
     &_small {
       @extend .button;
@@ -85,6 +141,105 @@
     pointer-events: none;
   }
 
+  &_twitter {
+    background-color: rgba(106, 171, 232, 0.15);
+    color: rgb(106, 171, 232);
+
+    svg {
+      path {
+        fill:rgb(106, 171, 232);
+      }
+    }
+
+    &:hover {
+      background-color: rgba(106, 171, 232, 0.05);
+      color: rgba(106, 171, 232, 0.75);
+
+      svg {
+        path {
+          fill:rgba(106, 171, 232, 0.75);
+        }
+      }
+    }
+  
+    &:active {
+      background-color: rgba(106, 171, 232, 0.3);
+      color: rgb(106, 171, 232);
+
+      svg {
+        path {
+          fill:rgb(106, 171, 232);
+        }
+      }
+    }
+  }
+
+  &_facebook {
+    background-color: rgba(66, 87, 153, 0.1);
+    color: rgb(66, 87, 153);
+
+    svg {
+      path {
+        fill:rgb(66, 87, 153);
+      }
+    }
+
+    &:hover {
+      background-color: rgba(66, 87, 153, 0.05);
+      color: rgba(66, 87, 153, 0.75);
+
+      svg {
+        path {
+          fill:rgba(66, 87, 153, 0.75);
+        }
+      }
+    }
+  
+    &:active {
+      background-color: rgba(66, 87, 153, 0.3);
+      color: rgb(66, 87, 153);
+
+      svg {
+        path {
+          fill:rgb(66, 87, 153);
+        }
+      }
+    }
+  }
+
+  &_gray {
+    background-color: nth($grey-dark, 1);
+    color: nth($grey-dark, 3);
+
+    svg {
+      path {
+        fill: nth($grey-dark, 3);
+      }
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+      color: nth($grey-dark, 3);
+
+      svg {
+        path {
+          fill:nth($grey-dark, 3);
+        }
+      }
+    }
+  
+    &:active {
+      background-color: nth($grey-dark, 2);
+      color: nth($grey-dark, 4);
+
+      svg {
+        path {
+          fill:nth($grey-dark, 4);
+        }
+      }
+    }
+  }
+
   &_follow {
     @extend .button;
     height: 30px;
@@ -113,6 +268,120 @@
       background-repeat: no-repeat;
       padding: 0 25px 0 9px;
       background-position: calc(100% - 8px);
+    }
+  }
+}
+
+.rounded-button {
+  position: relative;
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  border: 1.5px solid rgba(0, 0, 0, 0.05);
+  border-radius: 60px;
+  background-color: #fff;
+  padding: 0 33px;
+  height: 60px;
+  outline: none;
+  color: nth($grey-dark, 6);
+  @include font-size($caption_1-font-sizes);
+  transition: color 0.15s ease-in;
+
+  svg {
+    path {
+      transition: fill 0.15s ease-in;
+    }
+  }
+
+  &:visited {
+    color: nth($grey-dark, 6);
+  }
+
+  &:hover {
+    color: nth($accent3, 4);
+
+    svg {
+      path {
+        fill: nth($accent3, 4);
+      }
+    }
+  }
+
+  &_icon-left {
+    @extend .rounded-button;
+    padding-left: 63px;
+
+    svg {
+      position: absolute;
+      width: 12px;
+      height: auto;
+      left: 35px;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+  }
+
+  &_icon-right {
+    @extend .rounded-button;
+    padding-right: 63px;
+
+    svg {
+      position: absolute;
+      width: 12px;
+      height: auto;
+      right: 35px;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+  }
+
+  &_controls {
+    @extend .rounded-button;
+    width: 110px;
+    display: flex;
+
+    %controls {
+      position: relative;
+      display: inline-block;
+      width: 50%;
+      height: 100%;
+      cursor: pointer;
+      
+      svg {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        path {
+          transition: fill-opacity 0.15s ease-in;
+        }
+      }
+
+      &:hover {
+        svg {
+          @include svg-hover-effect;
+
+          path {
+            fill-opacity: 1;
+          }
+        }  
+      }
+    }
+
+    &__prev {
+      @extend %controls;
+
+      svg {
+        left: 24px;
+      }
+    }
+
+    &__next {
+      @extend %controls;
+
+      svg {
+        right: 24px;
+      }
     }
   }
 }

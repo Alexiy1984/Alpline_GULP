@@ -1,4 +1,10 @@
+@import '_mixins.scss';
 @import '_variables.scss';
+
+$input-font-sizes: (
+  null: (17px, 18px, -0.3px),
+  small: (18px, 20px, -0.3px),
+);
 
 .subscribe_block {
   position: relative;
@@ -150,6 +156,64 @@
 
     &__image {
       width: calc(50% - 15px)
+    }
+  }
+}
+
+.subscribe-input {
+  @include font-size($input-font-sizes);
+  padding: 15px 18px;
+  border-radius: 5px;
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.3);
+  border: none;
+  margin-right: -4px;
+
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+  }
+
+  &_icon-left {
+    position: relative;
+    display: inline-block;
+    
+    input {
+      @extend .subscribe-input;
+      padding: 15px 18px 15px 44px;
+
+      & + svg {
+        position: absolute;
+        left: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &_icon-right {
+    position: relative;
+    display: inline-block;
+
+    input {
+      @extend .subscribe-input;
+      padding: 15px 44px 15px 18px;
+    }
+  }
+
+  &_button {
+    @extend .subscribe-input;
+    display: inline-block;
+    background-color: nth($accent1, 4);
+    transition: background-color 0.15s ease-in;
+    color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      background-color: nth($accent1, 3);
+    }
+
+    &:active {
+      background-color: nth($accent1, 5);
     }
   }
 }

@@ -1,6 +1,8 @@
 @import '_mixins.scss';
 @import '_variables.scss';
 @import '_article_content.scss';
+@import '_headline.scss';
+@import '_inputs.scss';
 
 $classlist: '.caption_1', '.caption_2', '.caption_3', '.caption_4';
 
@@ -199,65 +201,6 @@ p {
     color: nth($grey-dark, 3);
     text-align: center;
     margin: 15px 0 30px;
-  }
-}
-
-.rounded-button {
-  display: inline-block;
-  border: 1.5px solid rgba(0, 0, 0, 0.05);
-  border-radius: 60px;
-  background-color: #fff;
-  height: 60px;
-  outline: none;
-
-  &_controls {
-    @extend .rounded-button;
-    width: 110px;
-    display: flex;
-
-    %controls {
-      position: relative;
-      display: inline-block;
-      width: 50%;
-      height: 100%;
-      cursor: pointer;
-      
-      svg {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-
-        path {
-          transition: fill-opacity 0.15s ease-in;
-        }
-      }
-
-      &:hover {
-        svg {
-          @include svg-hover-effect;
-
-          path {
-            fill-opacity: 1;
-          }
-        }  
-      }
-    }
-
-    &__prev {
-      @extend %controls;
-
-      svg {
-        left: 24px;
-      }
-    }
-
-    &__next {
-      @extend %controls;
-
-      svg {
-        right: 24px;
-      }
-    }
   }
 }
 

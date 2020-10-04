@@ -1,0 +1,35 @@
+@import '_mixins.scss';
+@import '_variables.scss';
+
+$search-results-page-breadcrumbs-margins: (
+  null: (0, 0, 20px, 0),
+  small: (0, 0, 30px, 0),
+  medium: (0, 0, 30px, 0),
+);
+
+$search-results-page-show-articles-margins: (
+  null: (30px, 0, 40px),
+  small: (40px, 0, 60px),
+  medium: (50px, 0, 100px),
+);
+
+$search-results-page-input-margins: (
+  null: (0, 0, 30px, 0),
+  medium: (0, 0, 40px, 0),
+);
+
+.search-results-page {
+  .breadcrumbs {
+    @include element-indent($search-results-page-breadcrumbs-margins, 'margin');
+  }
+
+  &__input {
+    @include element-indent($search-results-page-input-margins, 'margin');
+  }
+
+  &__show-articles {
+    display: flex;
+    justify-content: center;
+    @include element-indent($search-results-page-show-articles-margins, 'margin');
+  }
+}
