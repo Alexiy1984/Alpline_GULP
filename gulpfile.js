@@ -202,6 +202,56 @@ var pages_data = {
       ttr: 5,
       views: '12,851'
     },
+    {
+      imgUrl: 'images/cards/card_medium_4.jpg',
+      author: 'Michael Thompson',  
+      date: '3 Aug 20',
+      title: 'Making Peace With Your Body Is a Mighty Act of Revolution', 
+      text: 'What we choose not to say is just as important as what we decide to saysay',
+      categories: ['Life', 'Relationships'],
+      ttr: 5,
+      views: '12,851'
+    },
+    {
+      imgUrl: 'images/cards/card_medium_5.jpg',
+      author: 'Annette Black',  
+      date: '3 Aug 20',
+      title: 'How Marketing Made ‘Oil-Free’ A Thing', 
+      text: 'Experts say “oil-free” skincare is scam that benefits beauty brands more than it benefits your skin.',
+      categories: ['Art', 'Design'],
+      ttr: 12,
+      views: '12,851'
+    },
+    {
+      imgUrl: 'images/cards/card_medium_6.jpg',
+      author: 'Michael Thompson',  
+      date: '3 Aug 20',
+      title: '11 Things Socially Aware People Don’t Say', 
+      text: 'What we choose not to say is just as important as what we decide to say',
+      categories: ['Life', 'Relationships'],
+      ttr: 5,
+      views: '12,851'
+    },
+    {
+      imgUrl: 'images/cards/card_medium_7.jpg',
+      author: 'Dianne Russell',  
+      date: '3 Aug 20',
+      title: '7 Hip-Hop Fashion Brands That Make Us Most Nostalgic, Ranked', 
+      text: 'It’s a ’90s streetwear time capsule — back when sizing started at XXXL Tall',
+      categories: ['Food', 'Health'],
+      ttr: 8,
+      views: '12,851'
+    },
+    {
+      imgUrl: 'images/cards/card_medium_8.jpg',
+      author: 'Michael Thompson',  
+      date: '3 Aug 20',
+      title: 'China Ends Animal-Testing But It Won’t Help Cruelty-Free Brands', 
+      text: 'What we choose not to say is just as important as what we decide to say',
+      categories: ['Life', 'Relationships'],
+      ttr: 5,
+      views: '12,851'
+    },
   ],
   bigCards : [
     {
@@ -301,6 +351,7 @@ function generateIndexCSS(cb) {
           './sass/buttons.scss',
           './sass/tags.scss',
           './sass/author_block.scss',
+          './sass/author_heading.scss',
         ])
         .pipe(sass(sassOptions).on('error', sass.logError))
         .pipe(autoprefixer(prefixerOptions))
@@ -316,7 +367,7 @@ function generatePagesCSS(cb) {
         './sass/terms-and-conditions-page.scss',
         './sass/single-post.scss',
         './sass/featured-page.scss',
-        './sass/search-results-page.scss',
+        './sass/search-results-and-author-page.scss',
       ])
       .pipe(sass(sassOptions).on('error', sass.logError))
       .pipe(autoprefixer(prefixerOptions))
@@ -418,6 +469,32 @@ function generateSearchResultsHTML(cb) {
   cb();
 }
 
+function generateAuthorHTML(cb) {
+  src('./views/author.ejs')
+      .pipe(ejs({ data: pages_data}))
+      .pipe(rename(function (path) {
+        path.basename = 'author';
+        path.extname = '.html';
+      }))
+      .pipe(removeEmptyLines())
+      .pipe(formatHtml())
+      .pipe(dest('public'));
+  cb();
+}
+
+function generateCategoryHTML(cb) {
+  src('./views/category.ejs')
+      .pipe(ejs({ data: pages_data}))
+      .pipe(rename(function (path) {
+        path.basename = 'category';
+        path.extname = '.html';
+      }))
+      .pipe(removeEmptyLines())
+      .pipe(formatHtml())
+      .pipe(dest('public'));
+  cb();
+}
+
 function minifyHTML(cb) {
   src('public/*.html')
       .pipe(htmlmin({ collapseWhitespace: true }))
@@ -473,9 +550,9 @@ function browserSync(cb) {
         }
     });
 
-    watch('gulpfile.js', series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML, generateSearchResultsHTML));
-    watch('views/**.ejs', series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML, generateSearchResultsHTML));
-    watch('views/partials/**.ejs', series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML, generateSearchResultsHTML));
+    watch('gulpfile.js', series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML, generateSearchResultsHTML, generateAuthorHTML, generateCategoryHTML));
+    watch('views/**.ejs', series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML, generateSearchResultsHTML, generateAuthorHTML, generateCategoryHTML));
+    watch('views/partials/**.ejs', series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML, generateSearchResultsHTML, generateAuthorHTML, generateCategoryHTML));
     // watch('gulpfile.js', generateIndexHTML);
     // watch('views/**.ejs', generateIndexHTML);
     // watch('views/partials/**.ejs', generateIndexHTML);
@@ -486,7 +563,7 @@ function browserSync(cb) {
 
 
 exports.css = series(cleanCSS,generateIndexCSS);
-exports.multhtml = series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML, generateSearchResultsHTML);
+exports.multhtml = series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML, generateSearchResultsHTML, generateAuthorHTML, generateCategoryHTML);
 exports.js = uglifyJS;
 exports.htmlMin = minifyHTML;
 exports.lint = runLinter;
@@ -495,5 +572,5 @@ exports.watch = watchFiles;
 exports.sync = browserSync;
 exports.clean = cleanCSS;
 
-exports.default = series(runLinter,parallel(generateIndexCSS, generatePagesCSS, generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML ,uglifyJS));
+exports.default = series(runLinter,parallel(generateIndexCSS, generatePagesCSS, generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML, generateSearchResultsHTML, generateAuthorHTML, generateCategoryHTML, uglifyJS));
 // exports.default = series(runLinter,parallel(generateCSS, generateIndexHTML, uglifyJS));

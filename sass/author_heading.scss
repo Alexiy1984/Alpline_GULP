@@ -1,0 +1,60 @@
+@import '_mixins.scss';
+@import '_variables.scss';
+
+$author-heading-margins: (
+  null: (0, 0, 25px, 0),
+  small: (0, 0, 35px, 0),
+  medium: (0, 0, 40px, 0),
+);
+
+$author-heading-paddings: (
+  null: (0, 0, 24px, 0),
+  small: (0, 0, 34px, 0),
+  medium: (0, 0, 38,5px, 0),
+);
+
+.author-heading  {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  @include element-indent($author-heading-margins, 'margin');
+  @include element-indent($author-heading-paddings, 'padding');
+
+  &::after {
+    @include delimiter;
+  }
+
+  &__avatar {
+    margin-right: 20px;
+  }
+
+  &__name {
+    margin-bottom: 6px;
+  }
+
+  &__followers {
+    display: flex;
+    align-items: center;
+    color: nth($grey-dark, 3);
+    margin-right: 20px;
+
+    & > *:first-child {
+      margin-right: 10px;
+    }
+  }
+
+  &__button {
+    margin: 20px auto 0 auto;
+  }
+}
+
+@media (min-width: 680px) {
+  .author-heading  {
+    &__button {
+      margin: 0 0 0 auto;
+    }
+  }
+}

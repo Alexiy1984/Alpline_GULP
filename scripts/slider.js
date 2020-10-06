@@ -3,7 +3,7 @@ $(function() {
     dots: false,
     prevArrow: false,
     nextArrow: false,
-    infinite: true,
+    infinite: false,
     speed: 300,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -26,7 +26,7 @@ $(function() {
   });
 
   $('.responsive_big').slick({
-    infinite: true,
+    infinite: false,
     dots: false,
     prevArrow: false,
     nextArrow: false,
@@ -44,7 +44,7 @@ $(function() {
     ]
   });
 
-  $('.rounded-button_controls__prev').each(function() {
+  $('.rounded-button_controls__prev, .noborder_controls__prev').each(function() {
     $(this).on('click', function(){
       console.log('clicked');
       var data_target = $(this).attr('data-target');
@@ -52,7 +52,7 @@ $(function() {
     });
   });
 
-  $('.rounded-button_controls__next').each(function() {
+  $('.rounded-button_controls__next, .noborder_controls__next').each(function() {
     $(this).on('click', function(){
       console.log('clicked');
       var data_target = $(this).attr('data-target');

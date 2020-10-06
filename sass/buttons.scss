@@ -339,6 +339,24 @@
     @extend .rounded-button;
     width: 110px;
     display: flex;
+    padding: 0;
+    color: nth($grey-dark, 4);
+
+    svg {
+      path {
+        fill: nth($grey-dark, 4);
+      }
+    }
+
+    &:hover {
+      color: nth($grey-dark, 4);
+
+      svg {
+        path {
+          fill: nth($grey-dark, 4);
+        }
+      }
+    }
 
     %controls {
       position: relative;
@@ -360,10 +378,6 @@
       &:hover {
         svg {
           @include svg-hover-effect;
-
-          path {
-            fill-opacity: 1;
-          }
         }  
       }
     }
@@ -383,5 +397,52 @@
         right: 24px;
       }
     }
+  }
+}
+
+%rouded-controls {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  border-radius: 50%; 
+  border-color: rgba(0, 0, 0, 0);
+  transition: border-color 0.15s ease-in;
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    path {
+      transition: fill 0.15s ease-in;
+      fill: nth($grey-dark, 4);
+    }
+  }
+
+  &:hover {
+    border: 1px solid nth($grey-dark, 1);
+    cursor: pointer;
+
+    svg {
+      path {
+        fill: nth($grey-dark, 6);
+      }
+    }
+  }
+}
+
+.noborder_controls {
+  width: 120px;
+  display: flex;
+  height: 60px;
+
+  &__prev {
+    @extend %rouded-controls;
+  }
+
+  &__next {
+    @extend %rouded-controls;
   }
 }

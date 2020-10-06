@@ -18,7 +18,8 @@ $search-results-page-input-margins: (
   medium: (0, 0, 40px, 0),
 );
 
-.search-results-page {
+.search-results-page,
+.author-page {
   .breadcrumbs {
     @include element-indent($search-results-page-breadcrumbs-margins, 'margin');
   }

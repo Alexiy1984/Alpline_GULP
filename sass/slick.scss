@@ -4,18 +4,6 @@
   position: relative;  
   width: 100%;
   margin: 40px 0;
-
-  &::before {
-    position: absolute;
-    top: -2px;
-    right: 100%;
-    display: block;
-    content: '';
-    height: calc(100% + 4px);
-    width: calc((100vw - 100%)/2);
-    background-color: #fff;
-    z-index: 10;
-  }
 }
 
 .slick-slider {
