@@ -7,10 +7,11 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel='stylesheet' href='stylesheets/index.css' />
+  <link rel='stylesheet' href='stylesheets/category-page.css' />
 
   <script src='javascripts/index.js'></script>
 </head>
-<body class="">
+<body class="category-page">
   <div class="wrap">
     <%- include('partials/header', { 
       menuCol1Title1: data.menuCol1[0].title,
@@ -58,8 +59,14 @@
     }) %>
     <div class="outer">
       <div class="content">
-        <div class="headline">
-          <h2>Creativity</h2>
+        <%- include('partials/breadcrumbs', {   
+          breadcrumbsItems: [
+           { url: '/', text: 'Main', class: ''},
+           { url: '', text: 'Creativity', class: 'active'},
+          ],
+         }); %>
+        <div class="headline category-page__top-headline">
+          <h1>Creativity</h1>
           <div class="noborder_controls">
             <div class="noborder_controls__prev" data-target="slider_2">
               <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0009 5.99994H3.41087L6.71087 2.70994C6.89918 2.52164 7.00496 2.26624 7.00496 1.99994C7.00496 1.73364 6.89918 1.47825 6.71087 1.28994C6.52257 1.10164 6.26717 0.99585 6.00087 0.99585C5.73457 0.99585 5.47918 1.10164 5.29087 1.28994L0.290873 6.28994C0.199832 6.38505 0.128467 6.49719 0.0808729 6.61994C-0.0191451 6.8634 -0.0191451 7.13648 0.0808729 7.37994C0.128467 7.50269 0.199832 7.61484 0.290873 7.70994L5.29087 12.7099C5.38384 12.8037 5.49444 12.8781 5.6163 12.9288C5.73816 12.9796 5.86886 13.0057 6.00087 13.0057C6.13288 13.0057 6.26359 12.9796 6.38545 12.9288C6.50731 12.8781 6.61791 12.8037 6.71087 12.7099C6.8046 12.617 6.879 12.5064 6.92976 12.3845C6.98053 12.2627 7.00667 12.132 7.00667 11.9999C7.00667 11.8679 6.98053 11.7372 6.92976 11.6154C6.879 11.4935 6.8046 11.3829 6.71087 11.2899L3.41087 7.99994H11.0009C11.2661 7.99994 11.5204 7.89458 11.708 7.70705C11.8955 7.51951 12.0009 7.26516 12.0009 6.99994C12.0009 6.73472 11.8955 6.48037 11.708 6.29283C11.5204 6.1053 11.2661 5.99994 11.0009 5.99994Z" fill="black"/></svg>
@@ -73,7 +80,7 @@
           <div class="responsive_big" id="slider_2">
             <% data.bigCards.forEach(function(gigCard){ %>
               <div>
-                <%- include('partials/card_slide', { 
+                <%- include('partials/card_slide_big', { 
                   imgUrl: gigCard.imgUrl,
                   author: gigCard.author,
                   date: gigCard.date,
@@ -101,6 +108,46 @@
             }); %>
           <% }); %>
         </div> 
+        <div class="show-more-block">
+          <a href="#" class="rounded-button">Show more</a>
+        </div>
+        <div class="headline">
+          <h2>You might also like</h2>
+          <a href="#" class="rounded-button_icon-right">
+            Explore all
+            <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.92 6.62019C11.8724 6.49743 11.801 6.38529 11.71 6.29019L6.71 1.29019C6.61676 1.19695 6.50607 1.12299 6.38425 1.07253C6.26243 1.02207 6.13186 0.996094 6 0.996094C5.7337 0.996094 5.4783 1.10188 5.29 1.29019C5.19676 1.38342 5.1228 1.49411 5.07234 1.61594C5.02188 1.73776 4.99591 1.86833 4.99591 2.00019C4.99591 2.26649 5.1017 2.52188 5.29 2.71019L8.59 6.00019H1C0.734784 6.00019 0.48043 6.10554 0.292893 6.29308C0.105357 6.48062 0 6.73497 0 7.00019C0 7.2654 0.105357 7.51976 0.292893 7.70729C0.48043 7.89483 0.734784 8.00019 1 8.00019H8.59L5.29 11.2902C5.19627 11.3831 5.12188 11.4937 5.07111 11.6156C5.02034 11.7375 4.9942 11.8682 4.9942 12.0002C4.9942 12.1322 5.02034 12.2629 5.07111 12.3848C5.12188 12.5066 5.19627 12.6172 5.29 12.7102C5.38296 12.8039 5.49356 12.8783 5.61542 12.9291C5.73728 12.9798 5.86799 13.006 6 13.006C6.13201 13.006 6.26272 12.9798 6.38458 12.9291C6.50644 12.8783 6.61704 12.8039 6.71 12.7102L11.71 7.71019C11.801 7.61508 11.8724 7.50294 11.92 7.38019C12.02 7.13672 12.02 6.86365 11.92 6.62019Z" fill="black"/></svg>              
+          </a>
+        </div>
+        <%- include('partials/card_medium', { 
+          imgUrl: data.mediumCards[4].imgUrl,
+          author: data.mediumCards[4].author,
+          date: data.mediumCards[4].date,
+          title: data.mediumCards[4].title, 
+          text: data.mediumCards[4].text,
+          categories: data.mediumCards[4].categories,
+          ttr: data.mediumCards[4].ttr,
+          views: data.mediumCards[4].views
+        }); %>
+        <%- include('partials/card_medium', { 
+          imgUrl: data.mediumCards[6].imgUrl,
+          author: data.mediumCards[6].author,
+          date: data.mediumCards[6].date,
+          title: data.mediumCards[6].title, 
+          text: data.mediumCards[6].text,
+          categories: data.mediumCards[6].categories,
+          ttr: data.mediumCards[6].ttr,
+          views: data.mediumCards[6].views
+        }); %>
+        <%- include('partials/card_medium', { 
+          imgUrl: data.mediumCards[7].imgUrl,
+          author: data.mediumCards[7].author,
+          date: data.mediumCards[7].date,
+          title: data.mediumCards[7].title, 
+          text: data.mediumCards[7].text,
+          categories: data.mediumCards[7].categories,
+          ttr: data.mediumCards[7].ttr,
+          views: data.mediumCards[7].views
+        }); %>
       </div>
     </div>
     <%- include('partials/subscribe_block') %>

@@ -28,9 +28,7 @@ $search-results-page-input-margins: (
     @include element-indent($search-results-page-input-margins, 'margin');
   }
 
-  &__show-articles {
-    display: flex;
-    justify-content: center;
+  .show-more-block {
     @include element-indent($search-results-page-show-articles-margins, 'margin');
   }
 }

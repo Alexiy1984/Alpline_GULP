@@ -143,7 +143,7 @@
             <div class="responsive_big" id="slider_2">
               <% data.mediumCards.forEach(function(mediumCard){ %>
                 <div>
-                  <%- include('partials/card_slide', { 
+                  <%- include('partials/card_slide_big', { 
                     imgUrl: mediumCard.imgUrl,
                     author: mediumCard.author,
                     date: mediumCard.date,
@@ -162,5 +162,27 @@
       <%- include('partials/subscribe_block') %>
       <%- include('partials/footer') %>
     </div>
+    <%- include('partials/modal', { 
+      id: 'modal_1',
+      heading: {
+        name: 'Sign In',
+        text: 'Don’t have an account?',
+        link: {
+          text: 'Sign Up',
+          target: '#modal_2',
+        },
+      },
+    }); %>
+    <%- include('partials/modal', { 
+      id: 'modal_2',
+      heading: {
+        name: 'Sign Up',
+        text: 'Don’t have an account?',
+        link: {
+          text: 'Sign Up',
+          target: '#modal_1',
+        },
+      },
+    }); %>
   </body>
 </html>

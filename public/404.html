@@ -7,7 +7,7 @@
   <title>Page not found</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel='stylesheet' href='stylesheets/index.css' />
-  <link rel='stylesheet' href='stylesheets/terms-and-conditions-page.css' />
+  <link rel='stylesheet' href='stylesheets/page404.css' />
   <script src='javascripts/index.js'></script>
 </head>
 
@@ -299,13 +299,20 @@
         lesliealexandro@gmail.com
       </p>
       <div class="user_window__delimiter"></div>
-      <a href="#" class="user_window__login" id="user_window__login">
+      <a href="#" class="user_window__login" id="user_window__login" data-target="#modal_1" data-toggle="modal">
         Logout
       </a>
     </div>
     <div class="outer">
       <div class="content">
-        <img src="images/404_page.svg" alt="" srcset="">
+        <div class="page404__header">
+          <div class="page404__back-link-block">
+            <h1>Oh, no...</h1>
+            <p class="lead">This page does not exist.</p>
+            <a href="/" class="button button_small_br">Go to main page</a>
+          </div>
+          <img class="page404__image" src="images/404_page.svg" alt="404-img">
+        </div>
         <h3>You might also like</h3>
         <div class="slider-container">
           <div class="responsive_small" id="slider_1">

@@ -1,0 +1,56 @@
+@import '_mixins.scss';
+@import '_variables.scss';
+
+$category-page-breadcrumbs-margins: (
+  null: (0, 0, 20px, 0),
+  small: (0, 0, 20px, 0),
+  medium: (0, 0, 20px, 0),
+);
+
+$show-more-block-margins: (
+  null: (10px, 0, 50px, 0),
+  small: (10px, 0, 60px, 0),
+  medium: (10px, 0, 84px, 0),
+);
+
+$bottom-margins: (
+  null: (0, 0, 60px, 0),
+  small: (0, 0, 80px, 0),
+  medium: (0, 0, 100px, 0),
+);
+
+$slider-container-margins: (
+  null: (0, 0, 30px, 0),
+  small: (0, 0, 35px, 0),
+  medium: (0, 0, 42px, 0),
+);
+
+$category-page-top-headline_margins: (
+  null: (0, 0, 20px, 0),
+  small: (0, 0, 30px, 0),
+  medium: (0, 0, 38px, 0),
+);
+
+.category-page {
+  .breadcrumbs {
+    @include element-indent($category-page-breadcrumbs-margins, 'margin');
+  }
+
+  .category-page__top-headline {
+    @include element-indent($category-page-top-headline_margins, 'margin');
+  }
+
+  .show-more-block {
+    display: flex;
+    justify-content: center;
+    @include element-indent($show-more-block-margins, 'margin');
+  }
+
+  .slider-container {
+    @include element-indent($slider-container-margins, 'margin')
+  }
+
+  .card_medium:last-child {
+    @include element-indent($bottom-margins, 'margin');
+  }
+}

@@ -3,31 +3,38 @@
 
 .button {
   text-decoration: none;
+  text-align: center;
   position: relative;
   border-radius: 8px;
   border-width: 1px;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   height: 50px;
   outline: 0;
   background-color: nth($accent1, 4);
   color: #fff;
   font-size: 18px;
-  line-height: 20px;
+  line-height: 28px;
+  font-weight: 500;
   letter-spacing: -0.3px;
-  padding: 0 18px;
+  padding: 11px 18px;
   transition: background-color 0.15s ease-in, color 0.15s ease-in;
+  white-space: nowrap;
 
   &:hover {
+    color: #fff;
     background-color: nth($accent1, 3);
     cursor: pointer;
   }
 
   &:active {
+    color: #fff;
     background-color: nth($accent1, 5);
+  }
+
+  &:visited {
+    color: #fff;
   }
 
   svg {
@@ -102,7 +109,7 @@
       font-size: 13px;
       line-height: 15px;
       letter-spacing: -0.2px;
-      padding: 0 9px;
+      padding: 7.5 9px;
     }
 
     &_small {
@@ -112,7 +119,7 @@
       font-size: 16px;
       line-height: 18px;
       letter-spacing: -0.5px;
-      padding: 0 14px;
+      padding: 11px 14px;
     }
 
     &_big {
@@ -123,7 +130,7 @@
       font-size: 20px;
       line-height: 24px;
       letter-spacing: -0.6px;
-      padding: 0 22px;
+      padding: 18px 22px;
     }
   }
 
@@ -270,6 +277,10 @@
       background-position: calc(100% - 8px);
     }
   }
+
+  &_small_br {
+    border-radius: 5px;
+  }
 }
 
 .rounded-button {
@@ -377,7 +388,9 @@
 
       &:hover {
         svg {
-          @include svg-hover-effect;
+          path {
+            fill: nth($grey-dark, 6);
+          }
         }  
       }
     }

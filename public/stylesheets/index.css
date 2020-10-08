@@ -14,6 +14,8 @@ h1,
 h2,
 h3,
 h4,
+h5,
+h6,
 p,
 ul[class],
 ol[class],
@@ -512,6 +514,111 @@ input:focus, textarea:focus, select:focus {
   border-radius: 30px;
 }
 
+.show-more-block {
+  display: flex;
+  justify-content: center;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  padding: 30px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+}
+
+.modal__content {
+  padding: 25px 30px 30px;
+  position: relative;
+  background-color: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+  max-width: 430px;
+  width: 100%;
+  -webkit-animation: animatetop 0.5s ease-in-out;
+          animation: animatetop 0.5s ease-in-out;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (min-width: 768px) {
+  .modal__content {
+    padding: 32px 35px 35px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .modal__content {
+    padding: 33px 40px 40px;
+  }
+}
+
+.modal__heading {
+  margin: 0 0 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+@media screen and (min-width: 768px) {
+  .modal__heading {
+    margin: 0 0 20px 0;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .modal__heading {
+    margin: 0 0 23px 0;
+  }
+}
+
+.modal__heading a {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.modal__heading a:hover {
+  cursor: pointer;
+  color: #547ee6;
+}
+
+.modal__name {
+  margin-right: auto;
+}
+
+.modal .button {
+  width: 100%;
+}
+
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -558,7 +665,7 @@ h4,
 }
 
 h1 {
-  font-size: 54px;
+  font-size: 44px;
   line-height: 60px;
   letter-spacing: -3.5px;
 }
@@ -4492,32 +4599,39 @@ p {
 
 .button, .button_mini, .button_mini_icon-left, .button_mini_icon-right, .button_small, .button_big, .button_fixed, .button_fixed_mini, .button_fixed_small, .button_fixed_big, .button_follow, .button_follow.followed {
   text-decoration: none;
+  text-align: center;
   position: relative;
   border-radius: 8px;
   border-width: 1px;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   height: 50px;
   outline: 0;
   background-color: #5d8cff;
   color: #fff;
   font-size: 18px;
-  line-height: 20px;
+  line-height: 28px;
+  font-weight: 500;
   letter-spacing: -0.3px;
-  padding: 0 18px;
+  padding: 11px 18px;
   transition: background-color 0.15s ease-in, color 0.15s ease-in;
+  white-space: nowrap;
 }
 
 .button:hover, .button_mini:hover, .button_mini_icon-left:hover, .button_mini_icon-right:hover, .button_small:hover, .button_big:hover, .button_fixed:hover, .button_fixed_mini:hover, .button_fixed_small:hover, .button_fixed_big:hover, .button_follow:hover {
+  color: #fff;
   background-color: rgba(93, 140, 255, 0.8);
   cursor: pointer;
 }
 
 .button:active, .button_mini:active, .button_mini_icon-left:active, .button_mini_icon-right:active, .button_small:active, .button_big:active, .button_fixed:active, .button_fixed_mini:active, .button_fixed_small:active, .button_fixed_big:active, .button_follow:active {
+  color: #fff;
   background-color: #547ee6;
+}
+
+.button:visited, .button_mini:visited, .button_mini_icon-left:visited, .button_mini_icon-right:visited, .button_small:visited, .button_big:visited, .button_fixed:visited, .button_fixed_mini:visited, .button_fixed_small:visited, .button_fixed_big:visited, .button_follow:visited {
+  color: #fff;
 }
 
 .button svg path, .button_mini svg path, .button_mini_icon-left svg path, .button_mini_icon-right svg path, .button_small svg path, .button_big svg path, .button_fixed svg path, .button_fixed_mini svg path, .button_fixed_small svg path, .button_fixed_big svg path, .button_follow svg path, .button_follow.followed svg path {
@@ -4584,7 +4698,7 @@ p {
   font-size: 13px;
   line-height: 15px;
   letter-spacing: -0.2px;
-  padding: 0 9px;
+  padding: 7.5 9px;
 }
 
 .button_fixed_small {
@@ -4593,7 +4707,7 @@ p {
   font-size: 16px;
   line-height: 18px;
   letter-spacing: -0.5px;
-  padding: 0 14px;
+  padding: 11px 14px;
 }
 
 .button_fixed_big {
@@ -4603,7 +4717,7 @@ p {
   font-size: 20px;
   line-height: 24px;
   letter-spacing: -0.6px;
-  padding: 0 22px;
+  padding: 18px 22px;
 }
 
 .button_outline {
@@ -4730,6 +4844,10 @@ p {
   background-position: calc(100% - 8px);
 }
 
+.button_small_br {
+  border-radius: 5px;
+}
+
 .rounded-button, .rounded-button_icon-left, .rounded-button_icon-right, .rounded-button_controls {
   position: relative;
   display: flex;
@@ -4835,12 +4953,8 @@ p {
   transition: fill-opacity 0.15s ease-in;
 }
 
-.rounded-button_controls .rounded-button_controls__prev:hover svg, .rounded-button_controls .rounded-button_controls__next:hover svg {
-  cursor: pointer;
-}
-
 .rounded-button_controls .rounded-button_controls__prev:hover svg path, .rounded-button_controls .rounded-button_controls__next:hover svg path {
-  fill: #e11d74;
+  fill: black;
 }
 
 .rounded-button_controls__prev svg {

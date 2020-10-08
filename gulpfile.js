@@ -368,6 +368,8 @@ function generatePagesCSS(cb) {
         './sass/single-post.scss',
         './sass/featured-page.scss',
         './sass/search-results-and-author-page.scss',
+        './sass/category-page.scss',
+        './sass/page404.scss',
       ])
       .pipe(sass(sassOptions).on('error', sass.logError))
       .pipe(autoprefixer(prefixerOptions))
@@ -562,7 +564,7 @@ function browserSync(cb) {
 }
 
 
-exports.css = series(cleanCSS,generateIndexCSS);
+exports.css = series(cleanCSS, generateIndexCSS, generatePagesCSS);
 exports.multhtml = series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML, generateSearchResultsHTML, generateAuthorHTML, generateCategoryHTML);
 exports.js = uglifyJS;
 exports.htmlMin = minifyHTML;

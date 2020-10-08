@@ -29,23 +29,21 @@
   }
 }
 
-.search-results-page__show-articles,
-.author-page__show-articles {
-  display: flex;
-  justify-content: center;
+.search-results-page .show-more-block,
+.author-page .show-more-block {
   margin: 30px 0 40px;
 }
 
 @media screen and (min-width: 768px) {
-  .search-results-page__show-articles,
-  .author-page__show-articles {
+  .search-results-page .show-more-block,
+  .author-page .show-more-block {
     margin: 40px 0 60px;
   }
 }
 
 @media screen and (min-width: 992px) {
-  .search-results-page__show-articles,
-  .author-page__show-articles {
+  .search-results-page .show-more-block,
+  .author-page .show-more-block {
     margin: 50px 0 100px;
   }
 }
