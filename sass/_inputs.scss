@@ -78,6 +78,23 @@
       }
     }
   }
+
+  &_button {
+    @extend .input;
+    background-color: nth($accent1, 4);
+    color: #fff;
+    border: none;
+    transition: background-color 0.15s ease-in;
+
+    &:hover {
+      background-color: nth($accent1, 3);
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: nth($accent1, 5);
+    }
+  }
 }
 
 .input_rounded {

@@ -64,6 +64,31 @@ $modal-heading-margins: (
   .button {
     width: 100%;
   }
+
+  .input {
+    width: 100%;
+    border-radius: 5px;
+
+    &-combined,
+    &_icon-left,
+    &_icon-right,
+    &_icon-both {
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
+
+  &__body {
+    form {
+      & > * {
+        margin-bottom: 15px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
 }
 
 @keyframes animatetop {

@@ -172,17 +172,67 @@
           target: '#modal_2',
         },
       },
+      form: {
+        id: 'sign-in-form',
+        inputs : [
+          { 
+            class: 'input',
+            type: 'email', 
+            name: 'userEmail',
+          },
+          {
+            class: 'input_icon-right',
+            type: 'password',
+            name: 'userPassword',
+          },
+          {
+            class: 'input_button',
+            type: 'submit',
+            value: 'Sign In',
+          },
+        ],
+      } 
     }); %>
     <%- include('partials/modal', { 
       id: 'modal_2',
       heading: {
         name: 'Sign Up',
-        text: 'Don’t have an account?',
+        text: 'Already have an account?',
         link: {
-          text: 'Sign Up',
+          text: 'Sign In',
           target: '#modal_1',
         },
       },
+      form: {
+          id: 'sign-up-form',
+          inputs : [
+            { 
+              class: 'input',
+              type: 'text', 
+              name: 'userName',
+            },
+            { 
+              class: 'input',
+              type: 'email', 
+              name: 'userEmail',
+            },
+            {
+              class: 'input_icon-right',
+              type: 'password',
+              name: 'userPassword',
+            },
+            {
+              class: 'input_icon-right',
+              type: 'password',
+              name: 'userPasswordConfirm',
+            },
+            {
+              class: 'input_button',
+              type: 'submit',
+              value: 'Sign In',
+            },
+          ],
+        } 
     }); %>
   </body>
 </html>

@@ -332,7 +332,7 @@ input:focus, textarea:focus, select:focus {
   max-width: 100%;
 }
 
-.input, .input_icon-left, .input_rounded_icon-left, .input_icon-right, .input_rounded_icon-right, .input_icon-both, .input_rounded_icon-both, .input_rounded, .input_big, .input_big_icon-left, .input_big_rounded_icon-left, .input_big_icon-right, .input_big_rounded_icon-right, .input_big_icon-both, .input_big_rounded_icon-both, .input_big_rounded {
+.input, .input_icon-left, .input_rounded_icon-left, .input_icon-right, .input_rounded_icon-right, .input_icon-both, .input_rounded_icon-both, .input_button, .input_rounded, .input_big, .input_big_icon-left, .input_big_rounded_icon-left, .input_big_icon-right, .input_big_rounded_icon-right, .input_big_icon-both, .input_big_rounded_icon-both, .input_big_rounded {
   max-width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -345,26 +345,26 @@ input:focus, textarea:focus, select:focus {
 }
 
 @media screen and (min-width: 768px) {
-  .input, .input_icon-left, .input_rounded_icon-left, .input_icon-right, .input_rounded_icon-right, .input_icon-both, .input_rounded_icon-both, .input_rounded, .input_big, .input_big_icon-left, .input_big_rounded_icon-left, .input_big_icon-right, .input_big_rounded_icon-right, .input_big_icon-both, .input_big_rounded_icon-both, .input_big_rounded {
+  .input, .input_icon-left, .input_rounded_icon-left, .input_icon-right, .input_rounded_icon-right, .input_icon-both, .input_rounded_icon-both, .input_button, .input_rounded, .input_big, .input_big_icon-left, .input_big_rounded_icon-left, .input_big_icon-right, .input_big_rounded_icon-right, .input_big_icon-both, .input_big_rounded_icon-both, .input_big_rounded {
     font-size: 18px;
     line-height: 20px;
     letter-spacing: -0.3px;
   }
 }
 
-.input ~ svg path, .input_icon-left ~ svg path, .input_rounded_icon-left ~ svg path, .input_icon-right ~ svg path, .input_rounded_icon-right ~ svg path, .input_icon-both ~ svg path, .input_rounded_icon-both ~ svg path, .input_rounded ~ svg path, .input_big ~ svg path, .input_big_icon-left ~ svg path, .input_big_rounded_icon-left ~ svg path, .input_big_icon-right ~ svg path, .input_big_rounded_icon-right ~ svg path, .input_big_icon-both ~ svg path, .input_big_rounded_icon-both ~ svg path, .input_big_rounded ~ svg path {
+.input ~ svg path, .input_icon-left ~ svg path, .input_rounded_icon-left ~ svg path, .input_icon-right ~ svg path, .input_rounded_icon-right ~ svg path, .input_icon-both ~ svg path, .input_rounded_icon-both ~ svg path, .input_button ~ svg path, .input_rounded ~ svg path, .input_big ~ svg path, .input_big_icon-left ~ svg path, .input_big_rounded_icon-left ~ svg path, .input_big_icon-right ~ svg path, .input_big_rounded_icon-right ~ svg path, .input_big_icon-both ~ svg path, .input_big_rounded_icon-both ~ svg path, .input_big_rounded ~ svg path {
   fill: rgba(0, 0, 0, 0.3);
 }
 
-.input::-moz-placeholder, .input_icon-left::-moz-placeholder, .input_rounded_icon-left::-moz-placeholder, .input_icon-right::-moz-placeholder, .input_rounded_icon-right::-moz-placeholder, .input_icon-both::-moz-placeholder, .input_rounded_icon-both::-moz-placeholder, .input_rounded::-moz-placeholder, .input_big::-moz-placeholder, .input_big_icon-left::-moz-placeholder, .input_big_rounded_icon-left::-moz-placeholder, .input_big_icon-right::-moz-placeholder, .input_big_rounded_icon-right::-moz-placeholder, .input_big_icon-both::-moz-placeholder, .input_big_rounded_icon-both::-moz-placeholder, .input_big_rounded::-moz-placeholder {
+.input::-moz-placeholder, .input_icon-left::-moz-placeholder, .input_rounded_icon-left::-moz-placeholder, .input_icon-right::-moz-placeholder, .input_rounded_icon-right::-moz-placeholder, .input_icon-both::-moz-placeholder, .input_rounded_icon-both::-moz-placeholder, .input_button::-moz-placeholder, .input_rounded::-moz-placeholder, .input_big::-moz-placeholder, .input_big_icon-left::-moz-placeholder, .input_big_rounded_icon-left::-moz-placeholder, .input_big_icon-right::-moz-placeholder, .input_big_rounded_icon-right::-moz-placeholder, .input_big_icon-both::-moz-placeholder, .input_big_rounded_icon-both::-moz-placeholder, .input_big_rounded::-moz-placeholder {
   color: rgba(0, 0, 0, 0.3);
 }
 
-.input:-ms-input-placeholder, .input_icon-left:-ms-input-placeholder, .input_rounded_icon-left:-ms-input-placeholder, .input_icon-right:-ms-input-placeholder, .input_rounded_icon-right:-ms-input-placeholder, .input_icon-both:-ms-input-placeholder, .input_rounded_icon-both:-ms-input-placeholder, .input_rounded:-ms-input-placeholder, .input_big:-ms-input-placeholder, .input_big_icon-left:-ms-input-placeholder, .input_big_rounded_icon-left:-ms-input-placeholder, .input_big_icon-right:-ms-input-placeholder, .input_big_rounded_icon-right:-ms-input-placeholder, .input_big_icon-both:-ms-input-placeholder, .input_big_rounded_icon-both:-ms-input-placeholder, .input_big_rounded:-ms-input-placeholder {
+.input:-ms-input-placeholder, .input_icon-left:-ms-input-placeholder, .input_rounded_icon-left:-ms-input-placeholder, .input_icon-right:-ms-input-placeholder, .input_rounded_icon-right:-ms-input-placeholder, .input_icon-both:-ms-input-placeholder, .input_rounded_icon-both:-ms-input-placeholder, .input_button:-ms-input-placeholder, .input_rounded:-ms-input-placeholder, .input_big:-ms-input-placeholder, .input_big_icon-left:-ms-input-placeholder, .input_big_rounded_icon-left:-ms-input-placeholder, .input_big_icon-right:-ms-input-placeholder, .input_big_rounded_icon-right:-ms-input-placeholder, .input_big_icon-both:-ms-input-placeholder, .input_big_rounded_icon-both:-ms-input-placeholder, .input_big_rounded:-ms-input-placeholder {
   color: rgba(0, 0, 0, 0.3);
 }
 
-.input::placeholder, .input_icon-left::placeholder, .input_rounded_icon-left::placeholder, .input_icon-right::placeholder, .input_rounded_icon-right::placeholder, .input_icon-both::placeholder, .input_rounded_icon-both::placeholder, .input_rounded::placeholder, .input_big::placeholder, .input_big_icon-left::placeholder, .input_big_rounded_icon-left::placeholder, .input_big_icon-right::placeholder, .input_big_rounded_icon-right::placeholder, .input_big_icon-both::placeholder, .input_big_rounded_icon-both::placeholder, .input_big_rounded::placeholder {
+.input::placeholder, .input_icon-left::placeholder, .input_rounded_icon-left::placeholder, .input_icon-right::placeholder, .input_rounded_icon-right::placeholder, .input_icon-both::placeholder, .input_rounded_icon-both::placeholder, .input_button::placeholder, .input_rounded::placeholder, .input_big::placeholder, .input_big_icon-left::placeholder, .input_big_rounded_icon-left::placeholder, .input_big_icon-right::placeholder, .input_big_rounded_icon-right::placeholder, .input_big_icon-both::placeholder, .input_big_rounded_icon-both::placeholder, .input_big_rounded::placeholder {
   color: rgba(0, 0, 0, 0.3);
 }
 
@@ -415,6 +415,22 @@ input:focus, textarea:focus, select:focus {
   top: 50%;
   right: 18.33px;
   transform: translate(0, -50%);
+}
+
+.input_button {
+  background-color: #5d8cff;
+  color: #fff;
+  border: none;
+  transition: background-color 0.15s ease-in;
+}
+
+.input_button:hover {
+  background-color: rgba(93, 140, 255, 0.8);
+  cursor: pointer;
+}
+
+.input_button:active {
+  background-color: #547ee6;
 }
 
 .input_rounded {
@@ -595,6 +611,24 @@ input:focus, textarea:focus, select:focus {
 
 .modal .button {
   width: 100%;
+}
+
+.modal .input, .modal .input_icon-left, .modal .input_rounded_icon-left, .modal .input_icon-right, .modal .input_rounded_icon-right, .modal .input_icon-both, .modal .input_rounded_icon-both, .modal .input_button, .modal .input_rounded, .modal .input_big, .modal .input_big_icon-left, .modal .input_big_rounded_icon-left, .modal .input_big_icon-right, .modal .input_big_rounded_icon-right, .modal .input_big_icon-both, .modal .input_big_rounded_icon-both, .modal .input_big_rounded {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.modal .input-combined, .modal .input_icon-left, .modal .input_rounded_icon-left, .modal .input_icon-right, .modal .input_rounded_icon-right, .modal .input_icon-both, .modal .input_rounded_icon-both {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.modal__body form > * {
+  margin-bottom: 15px;
+}
+
+.modal__body form > *:last-child {
+  margin-bottom: 0;
 }
 
 @-webkit-keyframes animatetop {
