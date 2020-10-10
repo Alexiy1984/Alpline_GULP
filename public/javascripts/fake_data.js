@@ -17,12 +17,18 @@ $(function () {
     }
   });
   localStorage.setItem('user', JSON.stringify({
-    name: 'Alex',
-    surname: 'Valiev',
-    email: 'alevaliev@yandex.ru'
+    name: 'Leslie',
+    surname: 'Alexander',
+    email: 'lesliealexandro@gmail.com'
   }));
-  var fake_user = JSON.parse(localStorage.getItem('user'));
-  console.log(fake_user.name + ' ' + fake_user.surname + ' ' + fake_user.email);
+
+  if (localStorage.getItem('user') === null) {
+    var fake_user = JSON.parse(localStorage.getItem('user'));
+    $('#user_window').find('.user_window__name').text(fake_user.name + ' ' + fake_user.surname);
+    $('#user_window').find('.user_window__email').text(fake_user.email);
+  }
+
+  ;
   $('#comment-new-button').on('click', function () {
     if (!($.trim($('#comment-new').val()) === "")) {
       var date = new Date();
@@ -42,5 +48,54 @@ $(function () {
       $('#comment-new').val('');
       $(this).addClass('button_disabled');
     }
+  });
+
+  function isEmail(email) {
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email);
+  }
+
+  function passComparison(pass, confirm) {
+    return pass === confirm;
+  }
+
+  $('#modal_2 .input_button').on('click', function (e) {
+    e.preventDefault();
+    var userName = $(e.currentTarget).parents('form').find('input[name=userName]').val();
+    var userEmail = $(e.currentTarget).parents('form').find('input[name=userEmail]').val();
+    var userPassword = $(e.currentTarget).parents('form').find('input[name=userPassword]').val();
+    var userConfirm = $(e.currentTarget).parents('form').find('input[name=userPasswordConfirm]').val();
+
+    if (userName != '' && userEmail != '' && userPassword != '' && userConfirm != '') {
+      if (isEmail(userEmail) && passComparison(userPassword, userConfirm)) {
+        $('.modal').hide();
+        $('#modal_4').toggle();
+        var name_array = userName.split();
+        localStorage.setItem('user', JSON.stringify({
+          name: name_array[0],
+          surname: name_array[1],
+          email: userEmail
+        }));
+        var fake_user = JSON.parse(localStorage.getItem('user'));
+        console.log(fake_user.name + ' ' + fake_user.email);
+        $('#user_window').find('.user_window__name').text(fake_user.name + ' ' + fake_user.surname);
+        $('#user_window').find('.user_window__email').text(fake_user.email);
+        $('#modal_4').find('.modal__content .modal__greetings-title').text('Welcome, ' + fake_user.name);
+      } else {
+        if (!isEmail(userEmail)) {
+          alert('Please, fill in Email field correctly');
+        }
+
+        if (!passComparison(userPassword, userConfirm)) {
+          alert('Passwords do not match');
+        }
+      }
+    } else {
+      alert('Please, fill in Sign Up form fields');
+    }
+  });
+  $('#modal_4 .input_button, #modal_3 .input_button').on('click', function (e) {
+    e.preventDefault();
+    $(e.currentTarget).parents('.modal').hide();
   });
 });

@@ -42,6 +42,7 @@
     border-radius: 50%;
     background-color: nth($accent1, 1);
     margin-right: 10px;
+    transition: background-color 0.15s ease-in;
 
     svg {
       width: 13.33px;
@@ -53,6 +54,7 @@
 
       path {
         fill: nth($accent1, 4);
+        transition: fill 0.15s ease-in;
       }
     }
 
