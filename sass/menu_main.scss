@@ -1,7 +1,7 @@
 @import '_mixins.scss';
 @import '_variables.scss';
 
-$menu-mian-text: (
+$menu-main-text: (
   null: (16px, 20px, -0.5px),
   small: (16px, 20px, -0.5px),
 );
@@ -16,10 +16,12 @@ $menu-mian-text: (
   &__container {
     position: relative; 
     display: flex;
+    flex-wrap: wrap;
     padding: 0 32px;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    height: auto;
+    min-height: 80px;
     @include for-collapsed-content;
   
     &::after {
@@ -35,6 +37,8 @@ $menu-mian-text: (
   } 
   
   &__open-button {
+    margin-top: 20px;
+    flex: 1;
     display: flex;
     align-items: center;
     color: nth($grey-dark, 6);
@@ -57,11 +61,11 @@ $menu-mian-text: (
   }
   
   &__logo {
+    margin-top: 20px;
+    flex: 1;
     text-decoration: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    text-align: right;
     font-size: 24px;
     font-weight: 600;
     line-height: 30px;
@@ -75,7 +79,10 @@ $menu-mian-text: (
   }
   
   &__user-block {
+    width: 100%;
     display: flex;
+    justify-content: flex-end;
+    margin: 15px 0 20px;
 
     &-item {
       display: flex;
@@ -102,14 +109,14 @@ $menu-mian-text: (
       transition: width 0.3s ease-in-out, border-color 0.3s ease-in-out;
 
       input {
-        color: rgba(0, 0, 0, 0.3);
+        color: nth($grey-dark, 3);
         border: none;
         width: 0;
         padding: 0;
         opacity: 0;
 
         &::placeholder {
-          color: rgba(0, 0, 0, 0.3);
+          color: nth($grey-dark, 3);
         }
       }
 
@@ -121,19 +128,22 @@ $menu-mian-text: (
       }
 
       &.open {
-        border: 1.5px solid rgba(0, 0, 0, 0.05);
+        border: 1.5px solid nth($grey-dark, 1);
         overflow: hidden;
         width: 360px;
         max-width: 100%;
         background-color: #fff;
+        color: nth($grey-dark, 6);
 
-        svg {
+        svg,
+        svg:hover {
           path {
-            color: rgba(0, 0, 0, 0.3);
+            fill: nth($grey-dark, 3);
           }
         }
 
         input {
+          color: nth($grey-dark, 6);
           width: 100%;
           padding: 0 0 0 47px;
           opacity: 1;
@@ -213,7 +223,7 @@ $menu-mian-text: (
       color: nth($grey-dark, 4);
       width: 100%;
       text-align: center;
-      @include font-size($menu-mian-text);
+      @include font-size($menu-main-text);
 
       &:visited {
         color: nth($grey-dark, 4);
@@ -258,7 +268,7 @@ $menu-mian-text: (
     }
   
     li {
-      @include font-size($menu-mian-text);
+      @include font-size($menu-main-text);
       font-weight: 400;
       color: nth($grey-dark, 5);
       margin-bottom: 5px;
@@ -354,6 +364,10 @@ $menu-mian-text: (
 
 @media (min-width: 768px) {
   .menu_main {
+    &__container {
+      height: 80px;
+    }
+
     &__dropdown {
       padding: 0 80px;
 
@@ -363,9 +377,20 @@ $menu-mian-text: (
     }
 
     &__open-button {
+      margin: 0;
       p {
         display: block;
       }
+    }
+
+    &__logo {
+      margin: 0;
+      text-align: center;
+    }
+
+    &__user-block {
+      flex: 1;
+      margin: 0;
     }
 
     &__main-section {

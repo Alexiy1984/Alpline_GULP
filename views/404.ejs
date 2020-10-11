@@ -67,8 +67,10 @@
           </div>
           <img class="page404__image" src="images/404_page.svg" alt="404-img">
         </div>
-        
-        <h3>You might also like</h3>
+        <div class="headline">
+          <h3>You might also like</h3>
+          <%- include('partials/rounded-button_controls', { dataTarget: 'slider_1' }) %>
+        </div>
         <div class="slider-container">
           <div class="responsive_small" id="slider_1">
             <% data.smallCards.forEach(function(smallCard){ %>
@@ -92,5 +94,120 @@
     <%- include('partials/subscribe_block') %>
     <%- include('partials/footer') %>
   </div>
+  <%- include('partials/modal', { 
+    id: 'modal_1',
+    heading: {
+      name: 'Sign In',
+      text: 'Don’t have an account?',
+      link: {
+        text: 'Sign Up',
+        target: '#modal_2',
+      },
+    },
+    form: {
+      id: 'sign-in-form',
+      inputs : [
+        { 
+          class: 'input',
+          type: 'email', 
+          name: 'userEmail',
+        },
+        {
+          class: 'input_icon-right',
+          type: 'password',
+          name: 'userPassword',
+        },
+        {
+          class: 'input_button',
+          type: 'submit',
+          value: 'Sign In',
+        },
+      ],
+    },
+    footer: {
+      text: '<a href="#" data-target="#modal_3" data-toggle="modal">Lost your password?</a>',
+    }
+  }); %>
+  <%- include('partials/modal', { 
+    id: 'modal_2',
+    heading: {
+      name: 'Sign Up',
+      text: 'Already have an account?',
+      link: {
+        text: 'Sign In',
+        target: '#modal_1',
+      },
+    },
+    form: {
+      id: 'sign-up-form',
+      inputs : [
+        { 
+          class: 'input',
+          type: 'text', 
+          name: 'userName',
+        },
+        { 
+          class: 'input',
+          type: 'email', 
+          name: 'userEmail',
+        },
+        {
+          class: 'input_icon-right',
+          type: 'password',
+          name: 'userPassword',
+        },
+        {
+          class: 'input_icon-right',
+          type: 'password',
+          name: 'userPasswordConfirm',
+        },
+        {
+          class: 'input_button',
+          type: 'submit',
+          value: 'Sign Up',
+        },
+      ],
+    },
+    footer: {
+      text: 'By signing in to your account you agree to our <a href="terms-and-conditions.html">Terms</a> & <a href="terms-and-conditions.html">Conditions</a> <a href="terms-and-conditions.html"></a>and <a href="terms-and-conditions.html">Privacy Policy</a>',
+    }
+  }); %>
+  <%- include('partials/modal', { 
+    id: 'modal_3',
+    heading: {
+      name: 'Restore password',
+      text: '',
+      link: {
+        text: 'Sign In',
+        target: '#modal_1',
+      },
+    },
+    form: {
+      id: 'restore-password-form',
+      inputs : [
+        { 
+          class: 'input',
+          type: 'email', 
+          name: 'userEmail',
+        },
+        {
+          class: 'input_button',
+          type: 'submit',
+          value: 'Apply',
+        },
+      ],
+    },
+  }); %>
+  <%- include('partials/modal', { 
+    id: 'modal_4',
+    greetings : {
+      title: 'Welcome,Vitaly!',
+      text: 'Add an photo and let others get to know you better! You can do it later',
+      button: {
+        class: 'input_button',
+        value: 'Finish',
+      },
+    },
+  }); %>  
 </body>
 </html>

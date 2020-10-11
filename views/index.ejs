@@ -4,13 +4,14 @@
     <title>Alpine</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel='stylesheet' href='stylesheets/index.css' />
+    <link rel='stylesheet' href='stylesheets/main-page.css' />
 
     <!-- <script src='javascripts/menu_main.js'></script>
     <script src='javascripts/slick.min.js'></script>
     <script src='javascripts/slider.js'></script> -->
     <script src='javascripts/index.js'></script>
   </head>
-  <body>
+  <body class="main-page">
     <div class="wrap">
       <%- include('partials/header', { 
         menuCol1Title1: data.menuCol1[0].title,
@@ -73,89 +74,62 @@
             }); %>
           <% }); %>
           <div class="flex-container">
-            <% data.smallCards.forEach(function(smallCard){ %>
+            <% for(var i = 0; i < 3; i++) { %>
               <%- include('partials/card_small', { 
-                imgUrl: smallCard.imgUrl,
-                author: smallCard.author,
-                date: smallCard.date,
-                title: smallCard.title, 
-                text: smallCard.text,
-                categories: smallCard.categories,
-                ttr: smallCard.ttr,
-                views: smallCard.views
+                imgUrl: data.smallCards[i].imgUrl,
+                author: data.smallCards[i].author,
+                date: data.smallCards[i].date,
+                title: data.smallCards[i].title, 
+                text: data.smallCards[i].text,
+                categories: data.smallCards[i].categories,
+                ttr: data.smallCards[i].ttr,
+                views: data.smallCards[i].views
               }); %>
-            <% }); %>
-          </div> 
-          <% data.mediumCards.forEach(function(mediumCard){ %>
-            <%- include('partials/card_medium', { 
-              imgUrl: mediumCard.imgUrl,
-              author: mediumCard.author,
-              date: mediumCard.date,
-              title: mediumCard.title, 
-              text: mediumCard.text,
-              categories: mediumCard.categories,
-              ttr: mediumCard.ttr,
-              views: mediumCard.views
-            }); %>
-          <% }); %>
-          <div class="flex-container">
-            <% data.bigCards.forEach(function(bigCard){ %>
-              <%- include('partials/card_big', { 
-                imgUrl: bigCard.imgUrl,
-                author: bigCard.author,
-                date: bigCard.date,
-                title: bigCard.title, 
-                text: bigCard.text,
-                categories: bigCard.categories,
-                ttr: bigCard.ttr,
-                views: bigCard.views
-              }); %>
-            <% }); %>
-          </div> 
-          <h1><%= data.title %></h1>
-          <h2><%= data.text %></h1>
-          <h3><%= data.title %></h1>
-          <h4><%= data.text %></h1>
-          <h5><%= data.user[0].img %></h1>
-          <p>Welcome to <%= data.title %></p>
-          <p>Some new</p>
-          <%- include('partials/rounded-button_controls', { dataTarget: 'slider_1' }) %>
+            <% }; %>
+          </div>
+          <div class="headline">
+            <h2>Popular</h2>
+            <%- include('partials/rounded-button_controls', { dataTarget: 'slider_2' }) %>
+          </div>
           <div class="slider-container">
-            <div class="responsive_small" id="slider_1">
-              <% data.smallCards.forEach(function(smallCard){ %>
+            <div class="responsive_big" id="slider_2">
+              <% data.bigCards.forEach(function(bigCard){ %>
                 <div>
-                  <%- include('partials/card_slide', { 
-                    imgUrl: smallCard.imgUrl,
-                    author: smallCard.author,
-                    date: smallCard.date,
-                    title: smallCard.title, 
-                    text: smallCard.text,
-                    categories: smallCard.categories,
-                    ttr: smallCard.ttr,
-                    views: smallCard.views
+                  <%- include('partials/card_slide_big', { 
+                    imgUrl: bigCard.imgUrl,
+                    author: bigCard.author,
+                    date: bigCard.date,
+                    title: bigCard.title, 
+                    text: bigCard.text,
+                    categories: bigCard.categories,
+                    ttr: bigCard.ttr,
+                    views: bigCard.views
                   }); %>
                 </div>
               <% }); %>
             </div>
           </div>
-          <%- include('partials/rounded-button_controls', { dataTarget: 'slider_2' }) %>
-          <div class="slider-container">
-            <div class="responsive_big" id="slider_2">
-              <% data.mediumCards.forEach(function(mediumCard){ %>
-                <div>
-                  <%- include('partials/card_slide_big', { 
-                    imgUrl: mediumCard.imgUrl,
-                    author: mediumCard.author,
-                    date: mediumCard.date,
-                    title: mediumCard.title, 
-                    text: mediumCard.text,
-                    categories: mediumCard.categories,
-                    ttr: mediumCard.ttr,
-                    views: mediumCard.views
-                  }); %>
-                </div>
-              <% }); %>
-            </div>
+          <div class="headline">
+            <h2>For you</h2>
+            <a href="#" class="rounded-button_icon-right">
+              Explore all
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.92 6.62019C11.8724 6.49743 11.801 6.38529 11.71 6.29019L6.71 1.29019C6.61676 1.19695 6.50607 1.12299 6.38425 1.07253C6.26243 1.02207 6.13186 0.996094 6 0.996094C5.7337 0.996094 5.4783 1.10188 5.29 1.29019C5.19676 1.38342 5.1228 1.49411 5.07234 1.61594C5.02188 1.73776 4.99591 1.86833 4.99591 2.00019C4.99591 2.26649 5.1017 2.52188 5.29 2.71019L8.59 6.00019H1C0.734784 6.00019 0.48043 6.10554 0.292893 6.29308C0.105357 6.48062 0 6.73497 0 7.00019C0 7.2654 0.105357 7.51976 0.292893 7.70729C0.48043 7.89483 0.734784 8.00019 1 8.00019H8.59L5.29 11.2902C5.19627 11.3831 5.12188 11.4937 5.07111 11.6156C5.02034 11.7375 4.9942 11.8682 4.9942 12.0002C4.9942 12.1322 5.02034 12.2629 5.07111 12.3848C5.12188 12.5066 5.19627 12.6172 5.29 12.7102C5.38296 12.8039 5.49356 12.8783 5.61542 12.9291C5.73728 12.9798 5.86799 13.006 6 13.006C6.13201 13.006 6.26272 12.9798 6.38458 12.9291C6.50644 12.8783 6.61704 12.8039 6.71 12.7102L11.71 7.71019C11.801 7.61508 11.8724 7.50294 11.92 7.38019C12.02 7.13672 12.02 6.86365 11.92 6.62019Z" fill="black"/></svg>              
+            </a>
+          </div>
+          <% for(var i = 0; i < 3; i++) { %>
+            <%- include('partials/card_medium', { 
+              imgUrl: data.mediumCards[i].imgUrl,
+              author: data.mediumCards[i].author,
+              date: data.mediumCards[i].date,
+              title: data.mediumCards[i].title, 
+              text: data.mediumCards[i].text,
+              categories: data.mediumCards[i].categories,
+              ttr: data.mediumCards[i].ttr,
+              views: data.mediumCards[i].views
+            }); %>
+          <% }; %>
+          <div class="show-more-block">
+            <a href="#" class="rounded-button">Show more</a>
           </div>
         </div>
       </div>

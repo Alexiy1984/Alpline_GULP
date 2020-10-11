@@ -59,10 +59,19 @@ $login-font-sizes: (
   }
 
   &__login {
+    text-decoration: none;
     @include font-size($login-font-sizes);
-    color: rgba(0, 0, 0, 0.3);
+    color: nth($grey-dark, 3);
+
+    &:visited {
+      color: nth($grey-dark, 3);
+    }
 
     &:hover {
+      @include text-hover-effect;
+    }
+
+    &:active {
       @include text-hover-effect;
     }
   }

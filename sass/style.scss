@@ -5,6 +5,7 @@
 @import '_inputs.scss';
 @import 'show-more-block.scss';
 @import '_modal.scss';
+@import 'search-results.scss';
 
 $classlist: '.caption_1', '.caption_2', '.caption_3', '.caption_4';
 
@@ -277,12 +278,6 @@ p {
     line-height: 18px;
     letter-spacing: -0.5px;
   }
-
-  .wrap {
-    .content {
-      padding: 0 80px;
-    }
-  } 
 }
 
 @media (min-width: 910px) {
@@ -299,8 +294,6 @@ p {
 @media (min-width: 992px) {
   .wrap {
     .content {
-      padding: 0 100px;
-
       &__thin {
         padding: 0;
       }

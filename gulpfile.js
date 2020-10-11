@@ -370,6 +370,7 @@ function generatePagesCSS(cb) {
         './sass/search-results-and-author-page.scss',
         './sass/category-page.scss',
         './sass/page404.scss',
+        './sass/main-page.scss',
       ])
       .pipe(sass(sassOptions).on('error', sass.logError))
       .pipe(autoprefixer(prefixerOptions))
