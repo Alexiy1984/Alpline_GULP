@@ -511,7 +511,7 @@ function uglifyJS(cb) {
       './scripts/*.js'
     ])
     .pipe(babel()) 
-    .pipe(dest('public/javascripts'))
+    // .pipe(dest('public/javascripts'))
     .pipe(uglify())
     .pipe(concat('index.js'))
     .pipe(dest('public/javascripts'))

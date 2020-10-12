@@ -1,13 +1,15 @@
 @mixin category {
   text-decoration: none;
   border-radius: 20px;
-  padding: 3px 10px;
+  padding: 2px 10px;
   background-color: rgba(0, 0, 0, 0.04);
   border: 1px solid rgba(0, 0, 0, 0);   
   margin-right: 10px;
   margin-bottom: 10px;
   transition: background-color 0.15s ease-in, color 0.15s ease-in;
   color: nth($grey-dark, 3);
+  font-size: 15px;
+  line-height: 18px;
 
   &:visited {
     color: nth($grey-dark, 3);
@@ -17,6 +19,23 @@
     cursor: pointer;
     background-color: nth($accent3, 1); 
     color:  nth($accent3, 4);
+  }
+}
+
+@mixin stats {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 2px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition: background-color 0.15s ease-in, color 0.15s ease-in;
+  font-size: 15px;
+  line-height: 18px;
+
+  svg {
+    margin-right: 4.5px;
   }
 }
 

@@ -13,7 +13,17 @@ $main-page-headlines-margins: (
   medium: (100px, 0, 40px),
 );
 
+$main-page-menu-main-margins: (
+  null: (0, 0, 40px, 0),
+  small: (0, 0, 45px, 0),
+  medium: (0, 0, 50px, 0),
+);
+
 .main-page {
+  .menu_main {
+    @include element-indent($main-page-menu-main-margins, 'margin');
+  }
+
   .show-more-block {
     @include element-indent($main-page-show-more-margins, 'margin');
   }

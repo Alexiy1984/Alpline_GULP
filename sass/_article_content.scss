@@ -6,7 +6,7 @@
     &:not(.caption_1):not(.caption_2):not(.caption_3):not(.caption_4) {
       @include font-size($body_large-font-sizes);
       color: nth($grey-dark, 5);
-      margin-bottom: 44px;
+      margin-bottom: 30px;
   
       &:last-child {
         margin-bottom: 0;
@@ -21,7 +21,7 @@
     color: nth($grey-dark, 5);
 
     li {
-      margin-bottom: 25px;
+      margin-bottom: 15px;
 
       &:last-child {
         margin-bottom: 0;
@@ -55,6 +55,7 @@
   h4,
   h5,
   h6 {
+    margin-top: 50px;
     margin-bottom: 30px;
   }
 
@@ -78,10 +79,16 @@
     }
 
     &-bottom {
+      position: relative;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
+      padding-bottom: 33.5px;
+
+      &::after {
+        @include delimiter;
+      }
     }
   }
 

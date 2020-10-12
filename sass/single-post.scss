@@ -20,33 +20,20 @@ $single-post-footer-paddings: (
 
 .single-post {
   &__header {
-    display: flex;
-    flex-direction: column;
     margin-top: 20px;
+  }
 
-    &-center {
-      max-width: 850px;
-      margin: 0 auto;
-      order: 1;
-      padding: 0 30px;
-    }
+  &__icon-block {
+    position: relative;
 
-    &-left {
+    &-inner {
+      position: sticky;
+      top: 130px;
+      left: 0;
       display: flex;
       flex-direction: row;
-      flex-wrap: wrap;
-      align-items: center;
-      max-width: 850px;
-      margin: 0 auto;
-      order: 2;
-      padding: 0 30px;
-    }
-
-    &-right {
-      max-width: 850px;
-      margin: 0 auto;
-      order: 3;
-      padding: 0 30px;
+      justify-content: center;
+      padding: 0;
     }
 
     &-icon {
@@ -55,7 +42,7 @@ $single-post-footer-paddings: (
       border-radius: 50%;
       width: 60px;
       height: 60px;
-      margin-bottom: 35px;
+      margin-bottom: 0;
       margin-right: 15px;
 
       &:last-child {
@@ -148,6 +135,31 @@ $single-post-footer-paddings: (
   }
 }
 
+@media (min-width: 1100px) {
+  .single-post {
+    &__icon-block {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+  
+      &-inner {
+        position: sticky;
+        top: 130px;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        padding: 0 0 0 30px;
+      }
+
+      &-icon {
+        margin-bottom: 15px;
+        margin-right: 0;
+      }
+    }  
+  }
+}
+
 @media (min-width: 1200px) {
   .single-post {
     &__header {
@@ -167,11 +179,16 @@ $single-post-footer-paddings: (
         min-width: calc((100% - 850px)/2);
         order: 3;
       }
-
-      &-icon {
-        margin-bottom: 15px;
-        margin-right: 0;
-      }
     }
   }  
+}
+
+@media (min-width: 1330px) {
+  .single-post {
+    &__icon-block {
+      &-inner {
+        padding: 0;
+      }
+    }
+  }
 }

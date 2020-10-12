@@ -88,18 +88,18 @@
         <div class="headline">
           <h2>Articles</h2>
         </div>
-        <% data.mediumCards.forEach(function(mediumCard){ %>
+        <% for(var i = 2; i < 6; i++) { %>
           <%- include('partials/card_medium', { 
-            imgUrl: mediumCard.imgUrl,
-            author: mediumCard.author,
-            date: mediumCard.date,
-            title: mediumCard.title, 
-            text: mediumCard.text,
-            categories: mediumCard.categories,
-            ttr: mediumCard.ttr,
-            views: mediumCard.views
+            imgUrl: data.mediumCards[i].imgUrl,
+            author: data.mediumCards[i].author,
+            date: data.mediumCards[i].date,
+            title: data.mediumCards[i].title, 
+            text: data.mediumCards[i].text,
+            categories: data.mediumCards[i].categories,
+            ttr: data.mediumCards[i].ttr,
+            views: data.mediumCards[i].views
           }); %>
-        <% }); %>
+        <% }; %>
         <div class="show-more-block">
           <a href="#" class="rounded-button">Show more</a>
         </div>

@@ -9,7 +9,7 @@ $tag-font-sizes: (
 .tag {
   cursor: pointer;
   text-decoration: none;
-  padding: 3px 10px;
+  padding: 2px 10px;
   background-color: $tag-bg;
   color: nth($grey-dark, 3);
   border-radius: 20px;
