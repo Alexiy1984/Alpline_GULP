@@ -65,7 +65,7 @@
   }
 
   &__description {
-    margin-bottom: 28px;
+    margin-bottom: 25px;
   }
 
   &__info {
@@ -109,12 +109,6 @@
         }
       }
     }
-  }
-}
-
-@media (min-width: 500px) {
-  .card_small {
-    max-width: 410px;
   }
 }
 

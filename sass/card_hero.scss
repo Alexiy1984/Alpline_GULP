@@ -1,5 +1,12 @@
+@import '_mixins.scss';
 @import '_variables.scss';
 @import '_cards_general_style.scss';
+
+
+$card-hero-body-paddings: (
+  null: (29px, 20px, 20px),
+  small: (29px, 30px, 20px),
+);
 
 .card_hero {
   display: flex;
@@ -22,9 +29,9 @@
   }
 
   &__body {
-    padding: 30px 20px 20px;
     display: flex;
     flex-direction: column;
+    @include element-indent($card-hero-body-paddings, 'padding');
   }
 
   &__header {
@@ -103,14 +110,6 @@
           fill: nth($accent3, 4);
         }
       }
-    }
-  }
-}
-
-@media (min-width: 678px) {
-  .card_hero {
-    &__body {
-      padding: 30px 30px 20px;
     }
   }
 }

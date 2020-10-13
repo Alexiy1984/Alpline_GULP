@@ -3,7 +3,7 @@ $(function() {
     dots: false,
     prevArrow: false,
     nextArrow: false,
-    infinite: false,
+    infinite: true,
     speed: 300,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -26,7 +26,7 @@ $(function() {
   });
 
   $('.responsive_big').slick({
-    infinite: false,
+    infinite: true,
     dots: false,
     prevArrow: false,
     nextArrow: false,

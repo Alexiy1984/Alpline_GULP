@@ -564,7 +564,6 @@ function browserSync(cb) {
     watch('./public/**.html').on('change', sync.reload);
 }
 
-
 exports.css = series(cleanCSS, generateIndexCSS, generatePagesCSS);
 exports.multhtml = series(generateIndexHTML,  generateUiHTML,  generatePostHTML, generateTermsHTML, generate404HTML, generateFeaturedHTML, generateSearchResultsHTML, generateAuthorHTML, generateCategoryHTML);
 exports.js = uglifyJS;
