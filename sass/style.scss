@@ -243,6 +243,10 @@ p {
   }
 }
 
+.hidden {
+  display: none !important;
+}
+
 @include indents('.p-l-', 'padding-left', $indent-breackpoints);
 @include indents('.p-r-', 'padding-right', $indent-breackpoints);
 @include indents('.p-t-', 'padding-top', $indent-breackpoints);

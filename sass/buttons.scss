@@ -309,6 +309,7 @@
   }
 
   &:hover {
+    cursor: pointer;
     color: nth($accent3, 4);
 
     svg {

@@ -44,19 +44,27 @@ $(function() {
     ]
   });
 
+  $('.slick-active').prev('.slick-cloned').css({opacity: 0});
+
   $('.rounded-button_controls__prev, .noborder_controls__prev').each(function() {
     $(this).on('click', function(){
-      console.log('clicked');
       var data_target = $(this).attr('data-target');
       $('#'+ data_target).slick('slickPrev');
+      $('.slick-cloned').animate({opacity: 1}, 500, 
+        function () {
+          $('.slick-cloned').css({opacity: ''});
+      });
     });
   });
 
   $('.rounded-button_controls__next, .noborder_controls__next').each(function() {
     $(this).on('click', function(){
-      console.log('clicked');
       var data_target = $(this).attr('data-target');
       $('#'+ data_target).slick('slickNext');
+      $('.slick-cloned').animate({opacity: 1}, 500, 
+        function () {
+          $('.slick-cloned').css({opacity: ''});
+      });
     });
   });
 });

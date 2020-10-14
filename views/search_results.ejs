@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Search results</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel='stylesheet' href='stylesheets/index.css' />
   <link rel='stylesheet' href='stylesheets/search-results-and-author-page.css' />
 
@@ -88,20 +87,24 @@
         <div class="headline">
           <h2>Articles</h2>
         </div>
-        <% for(var i = 2; i < 6; i++) { %>
-          <%- include('partials/card_medium', { 
-            imgUrl: data.mediumCards[i].imgUrl,
-            author: data.mediumCards[i].author,
-            date: data.mediumCards[i].date,
-            title: data.mediumCards[i].title, 
-            text: data.mediumCards[i].text,
-            categories: data.mediumCards[i].categories,
-            ttr: data.mediumCards[i].ttr,
-            views: data.mediumCards[i].views
-          }); %>
-        <% }; %>
+        <div id="sr_card_container">
+          <% data.mediumCards.forEach(function(mediumCard, cardIndex){ %>
+            <%- include('partials/card_medium', { 
+              index: cardIndex,
+              show: 5,
+              imgUrl: mediumCard.imgUrl,
+              author: mediumCard.author,
+              date: mediumCard.date,
+              title: mediumCard.title, 
+              text: mediumCard.text,
+              categories: mediumCard.categories,
+              ttr: mediumCard.ttr,
+              views: mediumCard.views
+            }); %>
+          <% }); %>
+        </div>
         <div class="show-more-block">
-          <a href="#" class="rounded-button">Show more</a>
+          <a class="rounded-button show-more-trigger" data-target="#sr_card_container">Show more</a>
         </div>
       </div>
     </div>

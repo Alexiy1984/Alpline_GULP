@@ -21,4 +21,8 @@ $(function() {
       $(this).parents('.comments').find('#comment-new-button').addClass('button_disabled');
     }
   });
+
+  $('.show-more-trigger').on('click', function () {
+    $($(this).attr('data-target')).find('.card_hidden').slideToggle(300);
+  });
 });
