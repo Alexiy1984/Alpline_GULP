@@ -116,10 +116,13 @@ document.addEventListener('DOMContentLoaded', function(){
   window.addEventListener('click', function(e) {
     var is_search =  document.getElementById('main_menu__search-input');
     var section = document.querySelector('#menu_main__dropdown.collapsible');
+    var isCollapsed = section.getAttribute('data-collapsed') === 'true';
   
-
     if(!e.target.closest('#menu_main__dropdown') && !e.target.closest('#menu_main__button')) {
-      collapseSection(section);
+      if (!isCollapsed) {
+        collapseSection(section);
+        section.setAttribute('data-collapsed', 'false');
+      }
     }
 
     if(!is_search.isSameNode(e.target)) {
