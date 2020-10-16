@@ -49,7 +49,7 @@
     font-size: 13px;
     line-height: 15px;
     letter-spacing: -0.2px;
-    padding: 0 9px;
+    padding: 7.5px 9px;
 
     &_icon-left {
       @extend .button_mini;
@@ -109,7 +109,7 @@
       font-size: 13px;
       line-height: 15px;
       letter-spacing: -0.2px;
-      padding: 7.5 9px;
+      padding: 7.5px 9px;
     }
 
     &_small {
@@ -158,7 +158,8 @@
       }
     }
 
-    &:hover {
+    &:hover,
+    &:visited {
       background-color: rgba(106, 171, 232, 0.05);
       color: rgba(106, 171, 232, 0.75);
 
@@ -191,7 +192,8 @@
       }
     }
 
-    &:hover {
+    &:hover,
+    &:visited  {
       background-color: rgba(66, 87, 153, 0.05);
       color: rgba(66, 87, 153, 0.75);
 

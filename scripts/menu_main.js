@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function(){
     if(!e.target.closest('#menu_main__dropdown') && !e.target.closest('#menu_main__button')) {
       if (!isCollapsed) {
         collapseSection(section);
-        section.setAttribute('data-collapsed', 'false');
+        section.setAttribute('data-collapsed', 'true');
       }
     }
 

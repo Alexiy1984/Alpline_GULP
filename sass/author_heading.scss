@@ -28,11 +28,18 @@ $author-heading-paddings: (
   }
 
   &__avatar {
-    margin-right: 20px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  &__info {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   &__name {
-    margin-bottom: 6px;
+    margin: 10px 0 10px 0;
+    text-align: center;
   }
 
   &__followers {
@@ -51,8 +58,36 @@ $author-heading-paddings: (
   }
 }
 
+@media (min-width: 375px) {
+  .author-heading  {
+    &__avatar {
+      margin-right: 20px;
+      margin-left: auto;
+    }
+
+    &__info {
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    &__name {
+      margin: 0 0 6px 0;
+      text-align: left;
+    }
+  }  
+}
+
 @media (min-width: 680px) {
   .author-heading  {
+    &__avatar {
+      margin-right: 20px;
+      margin-left: 0;
+    }
+
+    &__info {
+      margin: 0;
+    }
+
     &__button {
       margin: 0 0 0 auto;
     }

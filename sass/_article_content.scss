@@ -39,6 +39,7 @@
     padding: 20px 30px;
     @include font-size($blockquote-font-sizes);
     margin: 30px 0;
+    border-radius: 5px;
 
     footer {
       margin-top: 10px;
