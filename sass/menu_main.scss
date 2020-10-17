@@ -12,6 +12,12 @@ $menu-main-text: (
   margin-bottom: 30px;
   background-color: #fff;
   z-index: 100;
+  transition: opacity 0.3s ease-in, top 0.3s ease-in;
+  opacity: 1;
+
+  &.scrolled {
+    opacity: 0.3;
+  }
 
   &__container {
     position: relative; 
@@ -21,7 +27,6 @@ $menu-main-text: (
     justify-content: space-between;
     align-items: center;
     height: auto;
-    min-height: 80px;
     @include for-collapsed-content;
   
     &::after {
@@ -224,6 +229,7 @@ $menu-main-text: (
       width: 100%;
       text-align: center;
       @include font-size($menu-main-text);
+      transition: color 0.15s ease-out;
 
       &:visited {
         color: nth($grey-dark, 4);
@@ -284,13 +290,17 @@ $menu-main-text: (
       }
 
       a {
+        position: relative;
         color: inherit;
         text-decoration: none;
+        transition: color 0.15s ease-in, margin-left 0.15s ease-in;
+        margin-left: 0;
       }
 
       &:hover a {
         cursor: pointer;
         color: $hover-color;
+        margin-left: 3px;
       }
     }
   }
@@ -354,6 +364,7 @@ $menu-main-text: (
       font-weight: 500;
       line-height: 25px;
       letter-spacing: -0.3px;
+      transition: color 0.15s ease-out;
 
       &:hover {
         @include text-hover-effect;
@@ -367,7 +378,7 @@ $menu-main-text: (
     &__container {
       height: 80px;
     }
-
+   
     &__dropdown {
       padding: 0 80px;
 

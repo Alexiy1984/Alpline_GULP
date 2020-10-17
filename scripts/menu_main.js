@@ -1,3 +1,28 @@
+(function() {
+  var lastTime = 0;
+  var vendors = ['ms', 'moz', 'webkit', 'o'];
+  for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+      window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+      window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame'] 
+                                 || window[vendors[x]+'CancelRequestAnimationFrame'];
+  }
+
+  if (!window.requestAnimationFrame)
+      window.requestAnimationFrame = function(callback, element) {
+          var currTime = new Date().getTime();
+          var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+          var id = window.setTimeout(function() { callback(currTime + timeToCall); }, 
+            timeToCall);
+          lastTime = currTime + timeToCall;
+          return id;
+      };
+
+  if (!window.cancelAnimationFrame)
+      window.cancelAnimationFrame = function(id) {
+          clearTimeout(id);
+      };
+}());
+
 document.addEventListener('DOMContentLoaded', function(){ 
   function collapseSection(element) {
     var sectionHeight = element.scrollHeight;
@@ -139,9 +164,52 @@ document.addEventListener('DOMContentLoaded', function(){
     
   });
 
-  window.addEventListener('scroll', function(e) {
+  var isScrolling;
+  var windowscroll_position = 0;
+  var ticking = false;
+  var footer = document.getElementsByClassName('footer')[0];
+
+  function scrollActions(scroll_pos) {
     user_window.classList.remove('open');
     search_results.classList.remove('open');
+    window.clearTimeout( isScrolling );
+    var section = document.querySelector('#menu_main__dropdown.collapsible');
+    var isCollapsed = section.getAttribute('data-collapsed') === 'true';
+
+    if (!isCollapsed) {
+      collapseSection(section);
+      section.setAttribute('data-collapsed', 'true');
+    }
+
+    if (scroll_pos > 0) {
+      document.querySelector('#menu_main').classList.add('scrolled');
+      isScrolling = setTimeout(function() {
+        document.querySelector('#menu_main').classList.remove('scrolled');
+      }, 300);
+    } else {
+      document.querySelector('#menu_main').classList.remove('scrolled');
+    }
+
+    if (window.innerWidth < 992) {
+      if (scroll_pos > footer.offsetTop - 150) {
+        document.querySelector('#menu_main').style.top = '-150px';
+      } else {
+        document.querySelector('#menu_main').style.top = null;
+      }
+    }
+  }
+
+  window.addEventListener('scroll', function(e) {
+    windowscroll_position = window.scrollY;
+
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        scrollActions(windowscroll_position);
+        ticking = false;
+      });
+
+      ticking = true;
+    }
   });
 
 }, false);

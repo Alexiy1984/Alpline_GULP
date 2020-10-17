@@ -248,3 +248,23 @@ $modal-greetinhs-photo-margins: (
     }
   }
 }
+
+@media screen and (orientation: landscape) and (max-width: 991px) {
+  .modal {
+    &__content {
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .modal {
+    &__content {
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+  }
+}

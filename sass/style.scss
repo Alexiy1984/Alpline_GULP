@@ -28,6 +28,10 @@ a {
   &:active {
     color: nth($accent1, 3);
   }
+
+  &:hover {
+    color: nth($accent1, 5)
+  }
 }
 
 h1,

@@ -32,7 +32,6 @@ $card-medium-body-paddings: (
     display: flex;
     flex-grow: 1;
     flex-direction: column;
-    cursor: pointer;
     @include element-indent($card-medium-body-paddings, 'padding');
 
     &::after {
@@ -70,6 +69,22 @@ $card-medium-body-paddings: (
 
   &__title {
     margin-bottom: 15px;
+
+    a {
+      color: nth($grey-dark, 6);
+      transition: color 0.15s ease-in;
+
+      &:visited,
+      &:active {
+        color: nth($grey-dark, 6);
+      }
+
+      &:hover {
+        cursor: pointer;
+        color: nth($accent3, 4);
+      }
+    }
+   
   }
 
   &__description {
