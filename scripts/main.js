@@ -26,4 +26,30 @@ $(function() {
   $('.show-more-trigger').on('click', function () {
     $($(this).attr('data-target')).find('.card_hidden').slideToggle(300);
   });
+
+  var previous = null;
+  $('.filter').on('click', function () {
+    var action_target = $($(this).attr('data-target'));
+
+    action_target.children().sort(function(a,b){
+      console.log($(a).find('.date').text());
+      console.log($(b).find('.date').text());
+      return new Date($(a).find('.date').text()) > new Date($(b).find('.date').text());
+    }).each(function(){
+        $(action_target).prepend(this);
+    });
+
+    // action_target.children().each(function (index) {
+    //   if (previous) {
+    //     if (Date.parse($(previous).find('.date').text()) > Date.parse($(this).find('.date').text())) {
+    //       $(this).insertBefore($(previous));
+    //     }
+    //   }
+
+    //   previous = this;
+    // });
+
+    // console.log(Date.parse(action_target.children().find('.date').text().toString()));
+
+  });
 });

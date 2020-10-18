@@ -34,14 +34,13 @@ $page404-slider-container-margins: (
   }
 
   &__image {
-    position: absolute;
+    position: relative;
     top: 0;
-    left: 75%;
-    transform: translate(-50%, 0);
-    width: 100%;
-    height: 100%;
+    left: 0;
     z-index: 5;
-    display: none;
+    height: 200px;
+    width: auto;
+    transform: scale(2) translateX(-11%);
   } 
 
   &__back-link-block {
@@ -70,7 +69,18 @@ $page404-slider-container-margins: (
 @media (min-width: 375px) {
   .page404 {
     &__image {
-      display: block;
+      transform: scale(1.35) translateX(-12.5%);
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .page404 {
+    &__image {
+      position: absolute;
+      height: 100%;
+      width: auto;
+      transform: scale(1) translateX(0);
     }
 
     &__back-link-block {
@@ -81,16 +91,6 @@ $page404-slider-container-margins: (
           width: auto;
         }
       }
-    }
-  }
-}
-
-@media (min-width: 450px) {
-  .page404 {
-    &__image {
-      top: 0;
-      left: 0;
-      transform: translate(0, 0);
     }
   }
 }

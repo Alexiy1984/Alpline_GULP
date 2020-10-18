@@ -8108,8 +8108,7 @@ p {
 }
 
 .menu_main__open-button {
-  margin-top: 20px;
-  flex: 1;
+  margin-top: 15px;
   display: flex;
   align-items: center;
   color: black;
@@ -8136,11 +8135,11 @@ p {
 }
 
 .menu_main__logo {
-  margin-top: 20px;
+  margin: 15px 30px 0 0;
   flex: 1;
   text-decoration: none;
   position: relative;
-  text-align: right;
+  text-align: center;
   font-size: 24px;
   font-weight: 600;
   line-height: 30px;
@@ -8156,7 +8155,7 @@ p {
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin: 15px 0 20px;
+  margin: 10px 0 15px;
 }
 
 .menu_main__user-block-item, .menu_main__user-block-item-search {
@@ -8554,6 +8553,7 @@ p {
   }
   .menu_main__open-button {
     margin: 0;
+    flex: 1;
   }
   .menu_main__open-button p {
     display: block;
@@ -9172,7 +9172,7 @@ p {
 
 @media (min-width: 600px) {
   .subscribe_block__form label {
-    width: calc(100% - 110px);
+    width: calc(100% - 115px);
     margin-bottom: 20px;
   }
   .subscribe_block__form input[type=submit] {
@@ -9224,8 +9224,11 @@ p {
   .subscribe_block__form {
     width: 60%;
   }
+  .subscribe_block__form label {
+    width: 462px;
+  }
   .subscribe_block__form label input {
-    min-width: 462px;
+    width: 462px;
   }
   .subscribe_block__image {
     width: 40%;
@@ -9309,6 +9312,7 @@ p {
   transition: background-color 0.15s ease-in;
   color: #fff;
   cursor: pointer;
+  font-weight: 500;
 }
 
 .subscribe-input_button:hover {

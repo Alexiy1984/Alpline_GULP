@@ -36,14 +36,13 @@
 }
 
 .page404__image {
-  position: absolute;
+  position: relative;
   top: 0;
-  left: 75%;
-  transform: translate(-50%, 0);
-  width: 100%;
-  height: 100%;
+  left: 0;
   z-index: 5;
-  display: none;
+  height: 200px;
+  width: auto;
+  transform: scale(2) translateX(-11%);
 }
 
 .page404__back-link-block {
@@ -82,20 +81,21 @@
 
 @media (min-width: 375px) {
   .page404__image {
-    display: block;
+    transform: scale(1.35) translateX(-12.5%);
+  }
+}
+
+@media (min-width: 600px) {
+  .page404__image {
+    position: absolute;
+    height: 100%;
+    width: auto;
+    transform: scale(1) translateX(0);
   }
   .page404__back-link-block > * {
     text-align: left;
   }
   .page404__back-link-block > *:nth-child(3) {
     width: auto;
-  }
-}
-
-@media (min-width: 450px) {
-  .page404__image {
-    top: 0;
-    left: 0;
-    transform: translate(0, 0);
   }
 }

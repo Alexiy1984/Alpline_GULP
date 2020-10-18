@@ -186,7 +186,7 @@ var pages_data = {
     {
       imgUrl: 'images/cards/card_medium_2.jpg',
       author: 'Dianne Russell',  
-      date: '3 Aug 20',
+      date: '7 Jun 20',
       title: '7 Hip-Hop Fashion Brands That Make Us Most Nostalgic, Ranked', 
       text: 'It’s a ’90s streetwear time capsule — back when sizing started at XXXL Tall',
       categories: ['Food', 'Health'],
@@ -196,7 +196,7 @@ var pages_data = {
     {
       imgUrl: 'images/cards/card_medium_3.jpg',
       author: 'Michael Thompson',  
-      date: '3 Aug 20',
+      date: '12 May 20',
       title: '11 Things Socially Aware People Don’t Say', 
       text: 'What we choose not to say is just as important as what we decide to say',
       categories: ['Life', 'Relationships'],
@@ -206,7 +206,7 @@ var pages_data = {
     {
       imgUrl: 'images/cards/card_medium_4.jpg',
       author: 'Michael Thompson',  
-      date: '3 Aug 20',
+      date: '2 Apr 20',
       title: 'Making Peace With Your Body Is a Mighty Act of Revolution', 
       text: 'What we choose not to say is just as important as what we decide to saysay',
       categories: ['Life', 'Relationships'],
@@ -216,7 +216,7 @@ var pages_data = {
     {
       imgUrl: 'images/cards/card_medium_5.jpg',
       author: 'Annette Black',  
-      date: '3 Aug 20',
+      date: '7 Jul 20',
       title: 'How Marketing Made ‘Oil-Free’ A Thing', 
       text: 'Experts say “oil-free” skincare is scam that benefits beauty brands more than it benefits your skin.',
       categories: ['Art', 'Design'],
@@ -226,7 +226,7 @@ var pages_data = {
     {
       imgUrl: 'images/cards/card_medium_6.jpg',
       author: 'Michael Thompson',  
-      date: '3 Aug 20',
+      date: '3 Sep 20',
       title: '11 Things Socially Aware People Don’t Say', 
       text: 'What we choose not to say is just as important as what we decide to say',
       categories: ['Life', 'Relationships'],
@@ -236,7 +236,7 @@ var pages_data = {
     {
       imgUrl: 'images/cards/card_medium_7.jpg',
       author: 'Dianne Russell',  
-      date: '3 Aug 20',
+      date: '22 Aug 20',
       title: '7 Hip-Hop Fashion Brands That Make Us Most Nostalgic, Ranked', 
       text: 'It’s a ’90s streetwear time capsule — back when sizing started at XXXL Tall',
       categories: ['Food', 'Health'],

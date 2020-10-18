@@ -44,7 +44,7 @@ $(function() {
     ]
   });
 
-  $('.slick-active').prev('.slick-cloned').css({opacity: 0});
+  $('.slick-active').prevAll('.slick-cloned').css({opacity: 0});
 
   $('.rounded-button_controls__prev, .noborder_controls__prev').each(function() {
     $(this).on('click', function(){

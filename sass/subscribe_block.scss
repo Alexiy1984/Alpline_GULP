@@ -67,7 +67,7 @@ $input-font-sizes: (
   .subscribe_block {
     &__form {
       label {
-        width: calc(100% - 110px);
+        width: calc(100% - 115px);
         margin-bottom: 20px;
       }
 
@@ -130,8 +130,10 @@ $input-font-sizes: (
       width: 60%;
 
       label {
+        width: 462px;
+
         input {
-          min-width: 462px;
+          width: 462px;
         }
       }
     }
@@ -207,6 +209,7 @@ $input-font-sizes: (
     transition: background-color 0.15s ease-in;
     color: #fff;
     cursor: pointer;
+    font-weight: 500;
 
     &:hover {
       background-color: nth($accent1, 3);
