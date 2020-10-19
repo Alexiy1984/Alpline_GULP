@@ -25,31 +25,48 @@ $(function() {
 
   $('.show-more-trigger').on('click', function () {
     $($(this).attr('data-target')).find('.card_hidden').slideToggle(300);
+
+    if ($(this).text() === 'Show more') {
+      $(this).text('Hide last');
+    } else {
+      $(this).text('Show more');
+      $('html, body').animate({
+        scrollTop: $($(this).attr('data-target')).offset().top
+      }, 300);
+    }
   });
 
-  var previous = null;
   $('.filter').on('click', function () {
     var action_target = $($(this).attr('data-target'));
-
-    action_target.children().sort(function(a,b){
-      console.log($(a).find('.date').text());
-      console.log($(b).find('.date').text());
-      return new Date($(a).find('.date').text()) > new Date($(b).find('.date').text());
-    }).each(function(){
-        $(action_target).prepend(this);
-    });
-
-    // action_target.children().each(function (index) {
-    //   if (previous) {
-    //     if (Date.parse($(previous).find('.date').text()) > Date.parse($(this).find('.date').text())) {
-    //       $(this).insertBefore($(previous));
-    //     }
-    //   }
-
-    //   previous = this;
-    // });
-
-    // console.log(Date.parse(action_target.children().find('.date').text().toString()));
-
+   
+    if($(this).attr('data-dir') === 'flth') {
+      $(this).find('svg').css({ 
+        'transform-origin': 'center',
+        'transform': 'rotateX(180deg) translateY(50%)',
+      });
+      action_target.children().sort(function(a, b){
+        var first = new Date($(a).find('.date').text());
+        var second = new Date($(b).find('.date').text());
+  
+        return second - first;
+      }).each(function(){
+          $(action_target).prepend(this);
+      });
+      $(this).attr('data-dir', 'fhtl');
+    } else {
+      $(this).find('svg').css({
+        'transform-origin': 'center',
+        'transform': 'rotateX(0deg) translateY(-50%)',
+      });
+      action_target.children().sort(function(a, b){
+        var first = new Date($(a).find('.date').text());
+        var second = new Date($(b).find('.date').text());
+  
+        return first - second;
+      }).each(function(){
+          $(action_target).prepend(this);
+      });
+      $(this).attr('data-dir', 'flth');
+    }
   });
 });

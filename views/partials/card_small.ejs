@@ -1,4 +1,12 @@
-<div class="card_small">
+<% var card_class = ['card_small']; %>
+<div 
+  <% if (locals.index && locals.show) { %>
+    <% if ( index > show - 1) { %>
+     style="display: none;"
+     <% card_class.push('card_hidden'); %>
+    <% } %>  
+  <% } %>
+  class="<%= card_class.join(' '); %>">
   <a href="#" class="card_small__img">
     <picture>
       <% var bigUrl = imgUrl.split('.').join('@2.') %>
