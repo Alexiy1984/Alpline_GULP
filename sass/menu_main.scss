@@ -16,13 +16,12 @@ $menu-main-text: (
   opacity: 1;
 
   &.scrolled {
-    opacity: 0.3;
+    opacity: 0.5;
   }
 
   &__container {
     position: relative; 
     display: flex;
-    flex-wrap: wrap;
     padding: 0 32px;
     justify-content: space-between;
     align-items: center;
@@ -42,7 +41,7 @@ $menu-main-text: (
   } 
   
   &__open-button {
-    margin-top: 15px;
+    margin-right: 15px;
     display: flex;
     align-items: center;
     color: nth($grey-dark, 6);
@@ -65,16 +64,19 @@ $menu-main-text: (
   }
   
   &__logo {
-    margin: 15px 30px 0 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     flex: 1;
     text-decoration: none;
-    position: relative;
     text-align: center;
     font-size: 24px;
     font-weight: 600;
     line-height: 30px;
     letter-spacing: -0.5px;
     color: nth($grey-dark, 6);
+    z-index: 10;
 
     &:visited,
     &:active {
@@ -83,17 +85,20 @@ $menu-main-text: (
   }
   
   &__user-block {
-    width: 100%;
+    position: relative;
     display: flex;
     justify-content: flex-end;
     margin: 10px 0 15px;
+    overflow: hidden;
+    z-index: 11;
+    background-color: #fff;
 
     &-item {
-      display: flex;
+      display: none;
       flex-direction: column;
       justify-content: center;
       height: 50px;
-      margin-right: 27px;
+      margin-right: 15px;
 
       &:last-child {
         margin-right: 0;
@@ -107,11 +112,19 @@ $menu-main-text: (
       border-radius: 30px;
       border: 1.5px solid rgba(0, 0, 0, 0); 
       padding-right: 34px;
-      overflow: show;
       width: 0;
       max-width: 100%;
       transition: width 0.3s ease-in-out, border-color 0.3s ease-in-out;
 
+      /* clears the ‘X’ from Internet Explorer */
+      input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+      input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+      /* clears the ‘X’ from Chrome */
+      input[type="search"]::-webkit-search-decoration,
+      input[type="search"]::-webkit-search-cancel-button,
+      input[type="search"]::-webkit-search-results-button,
+      input[type="search"]::-webkit-search-results-decoration { display: none; }
+      
       input {
         color: nth($grey-dark, 3);
         border: none;
@@ -180,7 +193,7 @@ $menu-main-text: (
       flex-wrap: wrap;
       overflow:hidden;
       max-width: 1290px;
-      margin: 30px auto 40px;
+      margin: 10px auto 10px;
       flex: 1;
       transition: flex 0.5s ease-in-out;
       height: auto;
@@ -193,6 +206,12 @@ $menu-main-text: (
     flex-wrap: wrap;
     width: 100%;
     margin-right: 0;
+
+    .lead, .lead_medium {
+      font-size: 17px;
+      line-height: 20px;
+      letter-spacing: -0.3px;
+    }
 
     .row {
       width: 100%;
@@ -219,6 +238,12 @@ $menu-main-text: (
       display: none;
       flex-grow: 1;
       margin-top: 10px;
+
+      .lead, .lead_medium {
+        font-size: 18px;
+        line-height: 20px;
+        letter-spacing: -0.4px;
+      }
     }
 
     &-link {
@@ -241,8 +266,19 @@ $menu-main-text: (
   }
   
   &__list-title {
-    margin-bottom: 10px;
+    display: block;
+    margin-bottom: 5px;
     position: relative;
+    color: $primary-color;
+    transition: color 0.15s ease-in;
+    text-decoration: none;
+
+    &:not(.disable):visited, 
+    &:not(.disable):active {
+      color: $primary-color;
+      cursor: pointer;
+      text-decoration: none;
+    }
 
     &:not(.disable):hover {
       color: $hover-color;
@@ -252,8 +288,8 @@ $menu-main-text: (
     &:after {
       @include delimiter;
       left: 0;
-      bottom: -5px;
-    }
+      bottom: -2.5px;
+    } 
   }
 
   ul#{&}__list {
@@ -372,6 +408,48 @@ $menu-main-text: (
   }
 }
 
+@media (min-width: 576px) {
+  .menu_main {
+    &__user-block {
+       &-item {
+         display: flex;
+         margin-right: 27px;
+       } 
+    }
+
+    &__mobile-item {
+      display: none;
+    }
+
+    &__list-title {
+      margin-bottom: 10px;
+
+      &::after {
+        bottom: -5px;
+      }
+    }
+  }
+}
+
+@media (min-width: 680px) {
+  .menu_main {
+    &__dropdown {
+      &-inner {
+        margin: 20px auto 30px;
+      }
+    }
+
+    &__main-section,
+    &__articles-section {
+      .lead, .lead_medium {
+        font-size: 18px;
+        line-height: 20px;
+        letter-spacing: -0.4px;
+      } 
+    }
+  }
+}
+
 @media (min-width: 768px) {
   .menu_main {
     &__container {
@@ -379,16 +457,14 @@ $menu-main-text: (
     }
    
     &__dropdown {
-      padding: 0 80px;
-
-      &_inner {
+      &-inner {
         flex-direction: row;
+        margin: 30px auto 40px;
       }
     }
 
     &__open-button {
       margin: 0;
-      flex: 1;
 
       p {
         display: block;
@@ -401,7 +477,6 @@ $menu-main-text: (
     }
 
     &__user-block {
-      flex: 1;
       margin: 0;
     }
 
@@ -436,8 +511,6 @@ $menu-main-text: (
 @media (min-width: 992px) {
   .menu_main {
     &__dropdown {
-      padding: 0 100px;
-
       &-inner {
         flex-wrap: nowrap;
       }
@@ -447,6 +520,20 @@ $menu-main-text: (
       flex-direction: row;
       width: calc(80% - 30px);
       margin-right: 30px;
+
+      .lead, .lead_medium {
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: -0.5px;
+      }  
+    }
+
+    &__articles-section {
+      .lead, .lead_medium {
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: -0.5px;
+      } 
     }
 
     &__list-title {

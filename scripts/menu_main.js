@@ -71,19 +71,25 @@ document.addEventListener('DOMContentLoaded', function(){
   [].forEach.call(main_menu_buttons, function(m_btn) {
     m_btn.onclick = function(e) {
       if (window.innerWidth < 992) {
-        var children = e.currentTarget.parentElement.children;
+        if (!m_btn.classList.contains('menu_main__mobile-item')) {
+          var children = e.currentTarget.parentElement.children;
         var elts = document.getElementsByClassName('menu_main__list');
+        var mobile_items = document.getElementsByClassName('menu_main__mobile-item');
         [].forEach.call(elts, function(elt) {
           if (!elt.isSameNode(children[1])) {
             elt.classList.remove('open');
             elt.closest('.col').classList.remove('order-1');
             elt.closest('.col').classList.add('order-2');
             elt.closest('.col').classList.toggle('hidden');
+            [].forEach.call(mobile_items, function(mob_item) {
+              mob_item.classList.toggle('hidden');
+            });
           }
         });
         children[1].classList.toggle('open');
         e.currentTarget.closest('.col').classList.toggle('order-1');
         e.currentTarget.closest('.col').classList.toggle('order-2');
+        }
       };
     };
   });
@@ -132,6 +138,7 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   var login_button = document.getElementById('main_menu__login');
+  var accout_link = document.getElementById('account_link');
   var user_window = document.getElementById('user_window');
 
   login_button.addEventListener('click', function () {
@@ -154,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function(){
       document.getElementById('main_menu__search').classList.remove('open');
     }
 
-    if(!e.target.closest('#main_menu__login') && !e.target.closest('#user_window')) {
+    if(!e.target.closest('#main_menu__login') && !e.target.closest('#user_window') && !e.target.closest('#account_link')) {
       user_window.classList.remove('open');
     }
 
@@ -162,6 +169,18 @@ document.addEventListener('DOMContentLoaded', function(){
       search_results.classList.remove('open');
     }
     
+  });
+
+  accout_link.addEventListener('click', function () {
+    var section = document.querySelector('#menu_main__dropdown.collapsible');
+    var isCollapsed = section.getAttribute('data-collapsed') === 'true';
+
+    user_window.classList.toggle('open');
+
+    if (!isCollapsed) {
+      collapseSection(section);
+      section.setAttribute('data-collapsed', 'true');
+    }
   });
 
   var isScrolling;

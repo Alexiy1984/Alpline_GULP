@@ -30,6 +30,16 @@ $author-heading-paddings: (
   &__avatar {
     margin-right: auto;
     margin-left: auto;
+
+    img {
+      transition: filter 0.15s ease-in;
+    }
+     
+    &:hover {
+      img {
+        filter: brightness(90%) grayscale(10%);
+      }
+    }
   }
 
   &__info {

@@ -32,6 +32,17 @@ $author-block-container-margins: (
 
   &__avatar {
     margin-right: 20px;
+    border-radius: 50%;
+
+    img {
+      transition: filter 0.15s ease-in;
+    }
+     
+    &:hover {
+      img {
+        filter: brightness(90%) grayscale(10%);
+      }
+    }
   }
 
   &__name {

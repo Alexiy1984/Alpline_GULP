@@ -513,7 +513,7 @@ function uglifyJS(cb) {
     ])
     .pipe(babel()) 
     // .pipe(dest('public/javascripts'))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(concat('index.js'))
     .pipe(dest('public/javascripts'))
     .pipe(sync.stream());
