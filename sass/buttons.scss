@@ -261,6 +261,7 @@
 
     &:hover {
       background-color: nth($accent3, 2);
+      color: nth($accent3, 4);
       cursor: pointer;
     }
   
@@ -350,11 +351,49 @@
   }
 
   &_controls {
+    $rbctls: &;
     @extend .rounded-button;
     width: 110px;
     display: flex;
     padding: 0;
     color: nth($grey-dark, 4);
+    border: none;
+
+    & .before {
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      content: '';
+      width: 100%;
+      height: 100%;
+      border-radius: 60px;
+      border: 1.5px solid #f2f2f2;
+      transition: width 0.35s ease-in-out;
+
+      &_prev {
+        animation: controls_hover 0.35s ease-in-out forwards;
+      }
+
+      &_next {
+        left: auto;
+        right: 0;
+        animation: controls_hover 0.35s ease-in-out forwards;
+      }
+
+      &_redraw_prev {
+        transition: width 0.35s ease-in-out;
+        animation: controls_unhover 0.35s ease-in-out forwards;
+      }
+
+      &_redraw_next {
+        left: auto;
+        right: 0;
+        transition: width 0.35s ease-in-out;
+        animation: controls_unhover 0.35s ease-in-out forwards;
+      }
+    }
 
     svg {
       path {
@@ -373,11 +412,11 @@
     }
 
     %controls {
-      position: relative;
       display: inline-block;
       width: 50%;
       height: 100%;
       cursor: pointer;
+      transition: color 0.15s ease-in-out;
       
       svg {
         position: absolute;
@@ -390,11 +429,23 @@
       }
 
       &:hover {
+        &::after {
+          width: 55%;
+          border: 1.5px solid #f2f2f2;
+          opacity: 1;
+        }
+
         svg {
           path {
             fill: nth($grey-dark, 6);
           }
         }  
+      }
+
+      &.noborder {
+        &::after {
+          opacity: 0;
+        }
       }
     }
 
@@ -460,5 +511,21 @@
 
   &__next {
     @extend %rouded-controls;
+  }
+}
+
+@keyframes controls_hover {
+  from {
+    width: 100%;
+  } to {
+    width: 55%;
+  }
+}
+
+@keyframes controls_unhover {
+  from {
+    width: 55%;
+  } to {
+    width: 100%;
   }
 }

@@ -69,10 +69,11 @@ $card-medium-body-paddings: (
 
   &__title {
     margin-bottom: 15px;
-
+    
     a {
       color: nth($grey-dark, 6);
       transition: color 0.15s ease-in;
+      text-decoration: none;
 
       &:visited,
       &:active {

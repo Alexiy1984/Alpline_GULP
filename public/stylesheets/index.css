@@ -7407,6 +7407,7 @@ p {
 .card_medium__title a {
   color: black;
   transition: color 0.15s ease-in;
+  text-decoration: none;
 }
 
 .card_medium__title a:visited, .card_medium__title a:active {
@@ -7963,6 +7964,7 @@ p {
 
 .footer__top a {
   text-decoration: none;
+  transition: color 0.15s ease-in;
 }
 
 .footer__top a:hover {
@@ -8127,7 +8129,9 @@ p {
 }
 
 .menu_main.scrolled {
-  opacity: 0.5;
+  opacity: 0.75;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
 }
 
 .menu_main__container {
@@ -9944,6 +9948,7 @@ p {
 
 .button_follow:hover {
   background-color: rgba(225, 29, 116, 0.3);
+  color: #e11d74;
   cursor: pointer;
 }
 
@@ -10039,6 +10044,47 @@ p {
   display: flex;
   padding: 0;
   color: rgba(0, 0, 0, 0.5);
+  border: none;
+}
+
+.rounded-button_controls .before {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 100%;
+  border-radius: 60px;
+  border: 1.5px solid #f2f2f2;
+  transition: width 0.35s ease-in-out;
+}
+
+.rounded-button_controls .before_prev {
+  -webkit-animation: controls_hover 0.35s ease-in-out forwards;
+          animation: controls_hover 0.35s ease-in-out forwards;
+}
+
+.rounded-button_controls .before_next {
+  left: auto;
+  right: 0;
+  -webkit-animation: controls_hover 0.35s ease-in-out forwards;
+          animation: controls_hover 0.35s ease-in-out forwards;
+}
+
+.rounded-button_controls .before_redraw_prev {
+  transition: width 0.35s ease-in-out;
+  -webkit-animation: controls_unhover 0.35s ease-in-out forwards;
+          animation: controls_unhover 0.35s ease-in-out forwards;
+}
+
+.rounded-button_controls .before_redraw_next {
+  left: auto;
+  right: 0;
+  transition: width 0.35s ease-in-out;
+  -webkit-animation: controls_unhover 0.35s ease-in-out forwards;
+          animation: controls_unhover 0.35s ease-in-out forwards;
 }
 
 .rounded-button_controls svg path {
@@ -10054,11 +10100,11 @@ p {
 }
 
 .rounded-button_controls .rounded-button_controls__prev, .rounded-button_controls .rounded-button_controls__next {
-  position: relative;
   display: inline-block;
   width: 50%;
   height: 100%;
   cursor: pointer;
+  transition: color 0.15s ease-in-out;
 }
 
 .rounded-button_controls .rounded-button_controls__prev svg, .rounded-button_controls .rounded-button_controls__next svg {
@@ -10071,8 +10117,18 @@ p {
   transition: fill-opacity 0.15s ease-in;
 }
 
+.rounded-button_controls .rounded-button_controls__prev:hover::after, .rounded-button_controls .rounded-button_controls__next:hover::after {
+  width: 55%;
+  border: 1.5px solid #f2f2f2;
+  opacity: 1;
+}
+
 .rounded-button_controls .rounded-button_controls__prev:hover svg path, .rounded-button_controls .rounded-button_controls__next:hover svg path {
   fill: black;
+}
+
+.rounded-button_controls .noborder.rounded-button_controls__prev::after, .rounded-button_controls .noborder.rounded-button_controls__next::after {
+  opacity: 0;
 }
 
 .rounded-button_controls__prev svg {
@@ -10118,6 +10174,42 @@ p {
   width: 120px;
   display: flex;
   height: 60px;
+}
+
+@-webkit-keyframes controls_hover {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 55%;
+  }
+}
+
+@keyframes controls_hover {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 55%;
+  }
+}
+
+@-webkit-keyframes controls_unhover {
+  from {
+    width: 55%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes controls_unhover {
+  from {
+    width: 55%;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 .tag, .tag_accent_1, .tag_accent_2, .tag_accent_3, .tag_accent_4, .tag_info, .tag_icon-left, .tag_icon-right {

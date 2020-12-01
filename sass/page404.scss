@@ -23,6 +23,7 @@ $page404-slider-container-margins: (
   &__header {
     position: relative;
     @include element-indent($page404-header-margins, 'margin');
+    overflow: hidden;
   }
 
   .menu_main {
@@ -70,6 +71,23 @@ $page404-slider-container-margins: (
   .page404 {
     &__image {
       transform: scale(1.35) translateX(-12.5%);
+      height: 200px;
+    }
+  }
+}
+
+@media (min-width: 460px) {
+  .page404 {
+    &__image {
+      height: 200px;
+    }
+  }
+}
+
+@media (min-width: 520px) {
+  .page404 {
+    &__image {
+      height: 250px;
     }
   }
 }

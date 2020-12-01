@@ -16,7 +16,8 @@ $menu-main-text: (
   opacity: 1;
 
   &.scrolled {
-    opacity: 0.5;
+    opacity: 0.75;
+    backdrop-filter: blur(5px);
   }
 
   &__container {

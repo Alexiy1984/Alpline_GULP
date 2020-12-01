@@ -69,4 +69,44 @@ $(function() {
       $(this).attr('data-dir', 'flth');
     }
   });
+
+  var before_elt = document.createElement('div');
+  $(before_elt).addClass('before');
+  $('.rounded-button_controls').append(before_elt);
+
+  $('.rounded-button_controls__prev, .rounded-button_controls__next').hover(function() {
+    // var before_elt = document.createElement('div');
+
+    if ($(this).hasClass('rounded-button_controls__prev')) {
+      $(this).siblings('.before').remove();
+      $(this).parent().append(before_elt);
+      $(this).siblings('.before')
+        .removeClass('before_next')
+        .removeClass('before_redraw_prev')
+        .removeClass('before_redraw_next')
+        .addClass('before_prev');
+    }
+
+    if ($(this).hasClass('rounded-button_controls__next')) {
+      $(this).siblings('.before').remove();
+      $(this).parent().append(before_elt);
+      $(this).siblings('.before')
+        .removeClass('before_prev')
+        .removeClass('before_redraw_prev')
+        .removeClass('before_redraw_next')
+        .addClass('before_next');
+    }
+
+  }, function() {
+    if ($(this).siblings('.before').hasClass('before_prev')) {
+      $(this).siblings('.before')
+        .removeClass('before_prev')
+        .addClass('before_redraw_prev');
+    }
+    if ($(this).siblings('.before').hasClass('before_next')) {
+      $(this).siblings('.before')
+        .removeClass('before_next')
+        .addClass('before_redraw_next');
+    }
+  });
 });
