@@ -9703,13 +9703,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.querySelector('#menu_main__button').addEventListener('click', function (e) {
     var section = document.querySelector('#menu_main__dropdown.collapsible');
+    var show_svg = document.getElementById('menu_main__button__show');
+    var close_svg = document.getElementById('menu_main__button__close');
     var isCollapsed = section.getAttribute('data-collapsed') === 'true';
 
     if (isCollapsed) {
       expandSection(section);
       section.setAttribute('data-collapsed', 'false');
+      show_svg.style.display = 'none';
+      close_svg.style.display = 'block';
     } else {
       collapseSection(section);
+      close_svg.style.display = 'none';
+      show_svg.style.display = 'block';
     }
   });
   var main_menu_buttons = document.querySelectorAll('.menu_main__main-section .menu_main__list-title');
@@ -9732,6 +9738,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
           });
           children[1].classList.toggle('open');
+          e.currentTarget.classList.toggle('open');
           e.currentTarget.closest('.col').classList.toggle('order-1');
           e.currentTarget.closest('.col').classList.toggle('order-2');
         }
@@ -9769,6 +9776,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var elts = document.getElementsByClassName('menu_main__list');
       [].forEach.call(elts, function (elt) {
         elt.classList.remove('open');
+        elt.closest('.col').children[0].classList.remove('open');
         elt.closest('.col').classList.remove('order-1');
         elt.closest('.col').classList.remove('hidden');
         elt.closest('.col').classList.add('order-2');
@@ -9837,12 +9845,10 @@ document.addEventListener('DOMContentLoaded', function () {
     search_results.classList.remove('open');
     window.clearTimeout(isScrolling);
     var section = document.querySelector('#menu_main__dropdown.collapsible');
-    var isCollapsed = section.getAttribute('data-collapsed') === 'true';
-
-    if (!isCollapsed) {
-      collapseSection(section);
-      section.setAttribute('data-collapsed', 'true');
-    }
+    var isCollapsed = section.getAttribute('data-collapsed') === 'true'; // if (!isCollapsed) {
+    //   collapseSection(section);
+    //   section.setAttribute('data-collapsed', 'true');
+    // }
 
     if (scroll_pos > 0) {
       document.querySelector('#menu_main').classList.add('scrolled');

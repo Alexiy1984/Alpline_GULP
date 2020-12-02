@@ -192,9 +192,8 @@ $menu-main-text: (
     &-inner {
       display: flex;
       flex-wrap: wrap;
-      overflow:hidden;
       max-width: 1290px;
-      margin: 10px auto 10px;
+      margin: 15px auto 10px;
       flex: 1;
       transition: flex 0.5s ease-in-out;
       height: auto;
@@ -268,11 +267,29 @@ $menu-main-text: (
   
   &__list-title {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     position: relative;
     color: $primary-color;
     transition: color 0.15s ease-in;
     text-decoration: none;
+
+    &.open {
+      &::before {
+        display: inline-block;
+        content: '';
+        width: 7px;
+        height: 7px;
+        border-style: solid;
+	      border-width: 2px 2px 0 0;
+	      display: inline-block;
+	      position: relative;
+	      transform: rotate(-135deg);
+        vertical-align: middle;
+        margin-right: 10px;
+        top: -1px;
+        left: 5px;
+      }
+    }
 
     &:not(.disable):visited, 
     &:not(.disable):active {
@@ -289,7 +306,7 @@ $menu-main-text: (
     &:after {
       @include delimiter;
       left: 0;
-      bottom: -2.5px;
+      bottom: -5px;
     } 
   }
 
@@ -343,6 +360,15 @@ $menu-main-text: (
 
   .collapsible {
     position: absolute;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: calc(100vh - 75px);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   &__article {
@@ -505,6 +531,10 @@ $menu-main-text: (
     &__list-title {
       font-size: 20px;
       line-height: 24px;
+    }
+
+    .collapsible {
+      max-height: auto;
     }
   }
 }

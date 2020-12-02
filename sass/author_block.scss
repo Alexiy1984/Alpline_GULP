@@ -63,6 +63,7 @@ $author-block-container-margins: (
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    color: nth($grey-dark, 3);
 
     & > * {
       margin-right: 10px;

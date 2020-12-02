@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function expandSection(element) {
     var sectionHeight = element.scrollHeight;
+
     element.style.height = sectionHeight + 'px';
 
     element.addEventListener('transitionend', function(e) {
@@ -56,13 +57,20 @@ document.addEventListener('DOMContentLoaded', function(){
 
   document.querySelector('#menu_main__button').addEventListener('click', function(e) {
     var section = document.querySelector('#menu_main__dropdown.collapsible');
+    var show_svg = document.getElementById('menu_main__button__show');
+    var close_svg = document.getElementById('menu_main__button__close');
     var isCollapsed = section.getAttribute('data-collapsed') === 'true';
+
 
     if(isCollapsed) {
       expandSection(section);
       section.setAttribute('data-collapsed', 'false');
+      show_svg.style.display = 'none';
+      close_svg.style.display = 'block';
     } else {
       collapseSection(section);
+      close_svg.style.display = 'none';
+      show_svg.style.display = 'block';
     }
   });
 
@@ -72,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function(){
     m_btn.onclick = function(e) {
       if (window.innerWidth < 992) {
         if (!m_btn.classList.contains('menu_main__mobile-item')) {
-          var children = e.currentTarget.parentElement.children;
+        var children = e.currentTarget.parentElement.children;
         var elts = document.getElementsByClassName('menu_main__list');
         var mobile_items = document.getElementsByClassName('menu_main__mobile-item');
         [].forEach.call(elts, function(elt) {
@@ -87,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function(){
           }
         });
         children[1].classList.toggle('open');
+        e.currentTarget.classList.toggle('open');
         e.currentTarget.closest('.col').classList.toggle('order-1');
         e.currentTarget.closest('.col').classList.toggle('order-2');
         }
@@ -117,6 +126,7 @@ document.addEventListener('DOMContentLoaded', function(){
       var elts = document.getElementsByClassName('menu_main__list');
       [].forEach.call(elts, function(elt) {
           elt.classList.remove('open');
+          elt.closest('.col').children[0].classList.remove('open');
           elt.closest('.col').classList.remove('order-1');
           elt.closest('.col').classList.remove('hidden');
           elt.closest('.col').classList.add('order-2');
@@ -195,10 +205,10 @@ document.addEventListener('DOMContentLoaded', function(){
     var section = document.querySelector('#menu_main__dropdown.collapsible');
     var isCollapsed = section.getAttribute('data-collapsed') === 'true';
 
-    if (!isCollapsed) {
-      collapseSection(section);
-      section.setAttribute('data-collapsed', 'true');
-    }
+    // if (!isCollapsed) {
+    //   collapseSection(section);
+    //   section.setAttribute('data-collapsed', 'true');
+    // }
 
     if (scroll_pos > 0) {
       document.querySelector('#menu_main').classList.add('scrolled');

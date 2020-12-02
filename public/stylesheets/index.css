@@ -497,7 +497,7 @@ input:focus, textarea:focus, select:focus {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 15px 18px;
-  color: rgba(0, 0, 0, 0.3);
+  color: black;
   height: 50px;
   font-size: 17px;
   line-height: 18px;
@@ -8331,9 +8331,8 @@ p {
 .menu_main__dropdown-inner {
   display: flex;
   flex-wrap: wrap;
-  overflow: hidden;
   max-width: 1290px;
-  margin: 10px auto 10px;
+  margin: 15px auto 10px;
   flex: 1;
   transition: flex 0.5s ease-in-out;
   height: auto;
@@ -8415,11 +8414,27 @@ p {
 
 .menu_main__list-title {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   position: relative;
   color: #000000;
   transition: color 0.15s ease-in;
   text-decoration: none;
+}
+
+.menu_main__list-title.open::before {
+  display: inline-block;
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-style: solid;
+  border-width: 2px 2px 0 0;
+  display: inline-block;
+  position: relative;
+  transform: rotate(-135deg);
+  vertical-align: middle;
+  margin-right: 10px;
+  top: -1px;
+  left: 5px;
 }
 
 .menu_main__list-title:not(.disable):visited, .menu_main__list-title:not(.disable):active {
@@ -8444,7 +8459,7 @@ p {
   background: rgba(0, 0, 0, 0.05);
   border-radius: 2px;
   left: 0;
-  bottom: -2.5px;
+  bottom: -5px;
 }
 
 .menu_main ul.menu_main__list {
@@ -8561,6 +8576,15 @@ p {
 
 .menu_main .collapsible {
   position: absolute;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-height: calc(100vh - 75px);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.menu_main .collapsible::-webkit-scrollbar {
+  display: none;
 }
 
 .menu_main__article {
@@ -8704,6 +8728,9 @@ p {
   .menu_main__list-title {
     font-size: 20px;
     line-height: 24px;
+  }
+  .menu_main .collapsible {
+    max-height: auto;
   }
 }
 
@@ -9383,7 +9410,7 @@ p {
   padding: 15px 18px;
   border-radius: 5px;
   background-color: #fff;
-  color: rgba(0, 0, 0, 0.3);
+  color: black;
   border: none;
   margin-right: -4px;
 }
@@ -10391,6 +10418,7 @@ p {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .author-block__followers > * {
