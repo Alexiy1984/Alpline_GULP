@@ -9463,19 +9463,12 @@
 $(function () {
   $('.card_medium__category, .card_small__category, .card_big__category').each(function () {
     switch ($(this).text()) {
-      case 'Food':
-        $(this).addClass('notify_success');
-        break;
-
-      case 'Technology':
+      case 'Promo':
         $(this).addClass('notify_warning');
         break;
 
-      case 'Book':
-        $(this).addClass('notify_error');
-        break;
-
       default:
+        break;
     }
   });
   localStorage.setItem('user', JSON.stringify({
@@ -9631,7 +9624,6 @@ $(function () {
   $(before_elt).addClass('before');
   $('.rounded-button_controls').append(before_elt);
   $('.rounded-button_controls__prev, .rounded-button_controls__next').hover(function () {
-    // var before_elt = document.createElement('div');
     if ($(this).hasClass('rounded-button_controls__prev')) {
       $(this).siblings('.before').remove();
       $(this).parent().append(before_elt);
@@ -9845,10 +9837,7 @@ document.addEventListener('DOMContentLoaded', function () {
     search_results.classList.remove('open');
     window.clearTimeout(isScrolling);
     var section = document.querySelector('#menu_main__dropdown.collapsible');
-    var isCollapsed = section.getAttribute('data-collapsed') === 'true'; // if (!isCollapsed) {
-    //   collapseSection(section);
-    //   section.setAttribute('data-collapsed', 'true');
-    // }
+    var isCollapsed = section.getAttribute('data-collapsed') === 'true';
 
     if (scroll_pos > 0) {
       document.querySelector('#menu_main').classList.add('scrolled');

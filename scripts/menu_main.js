@@ -205,11 +205,6 @@ document.addEventListener('DOMContentLoaded', function(){
     var section = document.querySelector('#menu_main__dropdown.collapsible');
     var isCollapsed = section.getAttribute('data-collapsed') === 'true';
 
-    // if (!isCollapsed) {
-    //   collapseSection(section);
-    //   section.setAttribute('data-collapsed', 'true');
-    // }
-
     if (scroll_pos > 0) {
       document.querySelector('#menu_main').classList.add('scrolled');
       isScrolling = setTimeout(function() {

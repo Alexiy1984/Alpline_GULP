@@ -87,7 +87,7 @@ var pages_data = {
       date: '3 Aug 20',
       title: 'Making Peace With Your Body Is a Mighty Act of Revolution', 
       text: 'The three tenets of radical self-love',
-      categories: ['Book', 'Story'],
+      categories: ['Book', 'Promo'],
       ttr: 8,
       views: '12,851'
     },
@@ -209,7 +209,7 @@ var pages_data = {
       date: '2 Apr 20',
       title: 'Making Peace With Your Body Is a Mighty Act of Revolution', 
       text: 'What we choose not to say is just as important as what we decide to saysay',
-      categories: ['Life', 'Relationships'],
+      categories: ['Life', 'Promo'],
       ttr: 5,
       views: '12,851'
     },
@@ -291,7 +291,7 @@ var pages_data = {
       date: '3 Aug 20',
       title: '11 Things Socially Aware People Don’t Say', 
       text: 'What we choose not to say is just as important as what we decide to say',
-      categories: ['Life', 'Relationships'],
+      categories: ['Life', 'Promo'],
       ttr: 5,
       views: '12,851'
     },

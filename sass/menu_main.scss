@@ -21,13 +21,16 @@ $menu-main-text: (
   }
 
   &__container {
+    @include for-collapsed-content;
+
     position: relative; 
     display: flex;
     padding: 0 32px;
     justify-content: space-between;
     align-items: center;
     height: auto;
-    @include for-collapsed-content;
+    z-index: 150;
+    background-color: #fff;
   
     &::after {
       position: absolute;

@@ -737,8 +737,6 @@ input:focus, textarea:focus, select:focus {
   overflow: hidden;
   max-width: 430px;
   width: 100%;
-  -webkit-animation: animatetop 0.5s ease-in-out;
-          animation: animatetop 0.5s ease-in-out;
   top: calc(50% - 30px);
   left: 50%;
   transform: translate(-50%, -50%);
@@ -775,6 +773,10 @@ input:focus, textarea:focus, select:focus {
   .modal__heading {
     margin: 0 0 23px 0;
   }
+}
+
+.modal__heading p {
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .modal__heading a {
@@ -7496,6 +7498,10 @@ p {
   transition: fill-opacity 0.15s ease-in, color 0.15s ease-in;
 }
 
+.card_medium__bookmark:hover {
+  cursor: pointer;
+}
+
 .card_medium__bookmark:hover svg path {
   fill-opacity: 1;
   fill: #e11d74;
@@ -8135,14 +8141,16 @@ p {
 }
 
 .menu_main__container {
+  overflow: hidden;
+  transition: height 0.15s ease-out;
   position: relative;
   display: flex;
   padding: 0 32px;
   justify-content: space-between;
   align-items: center;
   height: auto;
-  overflow: hidden;
-  transition: height 0.15s ease-out;
+  z-index: 150;
+  background-color: #fff;
 }
 
 .menu_main__container::after {

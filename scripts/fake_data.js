@@ -1,16 +1,11 @@
 $(function() {
   $('.card_medium__category, .card_small__category, .card_big__category').each(function(){
     switch($(this).text()) {
-      case 'Food':
-        $(this).addClass('notify_success');
-        break;
-      case 'Technology':
+      case 'Promo':
         $(this).addClass('notify_warning');
         break;
-      case 'Book':
-        $(this).addClass('notify_error');
-        break;
       default:
+        break;
     }
   });
 

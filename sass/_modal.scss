@@ -76,7 +76,6 @@ $modal-greetinhs-photo-margins: (
     overflow: hidden;
     max-width: 430px;
     width: 100%;
-    animation: animatetop 0.5s ease-in-out;
     top: calc(50% - 30px);
     left: 50%;
     transform: translate(-50%, -50%);
@@ -89,6 +88,10 @@ $modal-greetinhs-photo-margins: (
     align-items: center;
     justify-content: flex-start;
     flex-wrap: wrap;
+
+    p {
+      color: nth($grey-dark, 4);
+    }
 
     a {
      margin-left: 5px;

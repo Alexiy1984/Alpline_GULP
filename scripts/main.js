@@ -75,7 +75,6 @@ $(function() {
   $('.rounded-button_controls').append(before_elt);
 
   $('.rounded-button_controls__prev, .rounded-button_controls__next').hover(function() {
-    // var before_elt = document.createElement('div');
 
     if ($(this).hasClass('rounded-button_controls__prev')) {
       $(this).siblings('.before').remove();

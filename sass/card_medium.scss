@@ -124,6 +124,7 @@ $card-medium-body-paddings: (
     }
 
     &:hover {
+      cursor: pointer;
       svg {
         path {
           fill-opacity: 1;
