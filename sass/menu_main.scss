@@ -238,9 +238,8 @@ $menu-main-text: (
 
   &__articles {
     &-section {
-      display: none;
       flex-grow: 1;
-      margin-top: 10px;
+      margin-top: 25px;
 
       .lead, .lead_medium {
         font-size: 18px;
@@ -270,7 +269,7 @@ $menu-main-text: (
   
   &__list-title {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     position: relative;
     color: $primary-color;
     transition: color 0.15s ease-in;
@@ -309,7 +308,7 @@ $menu-main-text: (
     &:after {
       @include delimiter;
       left: 0;
-      bottom: -5px;
+      bottom: -10px;
     } 
   }
 
@@ -322,6 +321,7 @@ $menu-main-text: (
 
     &.open {
       height: auto;
+      margin-bottom: 15px;
       
       li {
         transform: translateX(0);
@@ -365,7 +365,6 @@ $menu-main-text: (
     position: absolute;
     overflow-x: hidden;
     overflow-y: scroll;
-    max-height: calc(100vh - 75px);
     -ms-overflow-style: none;
     scrollbar-width: none;
 
@@ -378,6 +377,7 @@ $menu-main-text: (
     display: flex;
     position: relative;
     margin-bottom: 20px;
+    padding: 10px 0 15px;
 
     &:first-of-type {
       margin-top: 20px;
@@ -390,7 +390,7 @@ $menu-main-text: (
     }
 
     img {
-      display: block;
+      display: none;
       width: 80px;
       height: 60px;
       margin-right: 20px;
@@ -425,15 +425,19 @@ $menu-main-text: (
     }
 
     &-title {
-      font-size: 18px;
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: -0.5px;
       font-weight: 500;
-      line-height: 25px;
-      letter-spacing: -0.3px;
       transition: color 0.15s ease-out;
 
       &:hover {
         @include text-hover-effect;
       }
+    }
+
+    &-content {
+      width: 100%;
     }
   }
 }
@@ -449,14 +453,6 @@ $menu-main-text: (
 
     &__mobile-item {
       display: none;
-    }
-
-    &__list-title {
-      margin-bottom: 10px;
-
-      &::after {
-        bottom: -5px;
-      }
     }
   }
 }
@@ -516,18 +512,17 @@ $menu-main-text: (
     }
 
     &__articles-section {
-      display: block;
       width: calc(50% - 15px);
       margin-top: 0;
     }
 
     &__article {
-      &:first-of-type {
-        margin-top: 0;
-      }
+      padding: 0;
 
-      img {
-        display: none;
+      &-title {
+        font-size: 18px;
+        line-height: 25px;
+        letter-spacing: -0.3px;
       }
     }
 
@@ -572,10 +567,17 @@ $menu-main-text: (
 
     &__list-title {
       cursor: auto;
+      margin-bottom: 48.5px;
+      font-size: 24px;
+      line-height: 30px;
 
       &:not(.disable):hover {
         color: inherit;
         cursor: auto;
+      }
+
+      &:after {
+        bottom: -25px
       }
     }
 
@@ -602,6 +604,7 @@ $menu-main-text: (
 
       li {
         transition: unset;
+        margin-bottom: 10px;
         transform: translateX(0);
         opacity: 1;
       }
@@ -632,12 +635,6 @@ $menu-main-text: (
 
       &:after {
         bottom: -25px
-      }
-    }
-
-    ul#{&}__list {
-      li {
-        margin-bottom: 10px;
       }
     }
 
