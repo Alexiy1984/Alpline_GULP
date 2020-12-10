@@ -66,12 +66,7 @@ $card-hero-title-font-sizes: (
 
     margin-bottom: 15px;
 
-    a,
-    a:hover,
-    a:active {
-      text-decoration: none;
-      color: inherit;
-    }
+    @include title_link;
   }
 
   &__description {

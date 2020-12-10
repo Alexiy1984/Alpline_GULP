@@ -70,22 +70,7 @@ $card-medium-body-paddings: (
   &__title {
     margin-bottom: 15px;
     
-    a {
-      color: nth($grey-dark, 6);
-      transition: color 0.15s ease-in;
-      text-decoration: none;
-
-      &:visited,
-      &:active {
-        color: nth($grey-dark, 6);
-      }
-
-      &:hover {
-        cursor: pointer;
-        color: nth($accent3, 4);
-      }
-    }
-   
+    @include title_link;
   }
 
   &__description {

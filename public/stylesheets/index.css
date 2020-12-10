@@ -7194,6 +7194,21 @@ p {
   margin-bottom: 15px;
 }
 
+.card_small__title a {
+  color: black;
+  transition: color 0.15s ease-in;
+  text-decoration: none;
+}
+
+.card_small__title a:visited, .card_small__title a:active {
+  color: black;
+}
+
+.card_small__title a:hover {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.8);
+}
+
 .card_small__description {
   margin-bottom: 25px;
 }
@@ -7418,7 +7433,7 @@ p {
 
 .card_medium__title a:hover {
   cursor: pointer;
-  color: #e11d74;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .card_medium__description {
@@ -7631,6 +7646,21 @@ p {
   margin-bottom: 15px;
 }
 
+.card_big__title a {
+  color: black;
+  transition: color 0.15s ease-in;
+  text-decoration: none;
+}
+
+.card_big__title a:visited, .card_big__title a:active {
+  color: black;
+}
+
+.card_big__title a:hover {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.8);
+}
+
 .card_big__description {
   margin-bottom: 28px;
 }
@@ -7812,11 +7842,19 @@ p {
   }
 }
 
-.card_hero__title a,
-.card_hero__title a:hover,
-.card_hero__title a:active {
+.card_hero__title a {
+  color: black;
+  transition: color 0.15s ease-in;
   text-decoration: none;
-  color: inherit;
+}
+
+.card_hero__title a:visited, .card_hero__title a:active {
+  color: black;
+}
+
+.card_hero__title a:hover {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .card_hero__description {
@@ -9207,6 +9245,21 @@ p {
   margin-bottom: 15px;
 }
 
+.card_slide__title a {
+  color: black;
+  transition: color 0.15s ease-in;
+  text-decoration: none;
+}
+
+.card_slide__title a:visited, .card_slide__title a:active {
+  color: black;
+}
+
+.card_slide__title a:hover {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.8);
+}
+
 .card_slide__description {
   margin-bottom: 28px;
 }
@@ -10278,6 +10331,7 @@ p {
   border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 20px;
   display: inline-block;
+  transition: color 0.15s ease-in, background-color 0.15s ease-in;
 }
 
 @media screen and (min-width: 768px) {

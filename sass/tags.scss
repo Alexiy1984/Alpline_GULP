@@ -17,6 +17,7 @@ $tag-font-sizes: (
   border: 1px solid rgba(0, 0, 0 ,0);
   border-radius: 20px;
   display: inline-block;
+  transition: color 0.15s ease-in, background-color 0.15s ease-in;
 
   &:visited {
     color: nth($grey-dark, 3);

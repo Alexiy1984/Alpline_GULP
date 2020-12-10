@@ -62,6 +62,8 @@
 
   &__title {
     margin-bottom: 15px;
+
+    @include title_link;
   }
 
   &__description {
