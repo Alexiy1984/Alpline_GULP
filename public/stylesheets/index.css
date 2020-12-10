@@ -7790,7 +7790,26 @@ p {
 }
 
 .card_hero__title {
+  font-size: 26px;
+  line-height: 30px;
+  letter-spacing: -0.9px;
   margin-bottom: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .card_hero__title {
+    font-size: 32px;
+    line-height: 36px;
+    letter-spacing: -1.4px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .card_hero__title {
+    font-size: 48px;
+    line-height: 54px;
+    letter-spacing: -1.6px;
+  }
 }
 
 .card_hero__title a,
@@ -7886,7 +7905,7 @@ p {
   fill: #e11d74;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 768px) {
   .card_hero {
     flex-wrap: nowrap;
   }
