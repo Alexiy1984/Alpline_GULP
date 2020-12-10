@@ -1,19 +1,11 @@
 $(function() {
   $.fn.toggleFollow = function(t1, t2, cl) {
-    if (this.text() == t1) {
-      this.text(t2);
-      this.removeClass(cl);
-    } else {
-      this.text(t1);
-      this.addClass(cl);
-    }
-
+    if (this.text() == t1) { this.text(t2); this.removeClass(cl);
+    } else { this.text(t1); this.addClass(cl); }
     return this;
   };
 
-  $('.button_follow').on('click', function() {
-    $(this).toggleFollow('Following', 'Follow', 'followed');
-  });
+  $('.button_follow').on('click', function() { $(this).toggleFollow('Following', 'Follow', 'followed'); });
 
   $('#comment-new').on('keyup input', function() {
     if (!($.trim($(this).val())==="")) {
@@ -24,16 +16,16 @@ $(function() {
   });
 
   $('.show-more-trigger').on('click', function () {
-    $($(this).attr('data-target')).find('.card_hidden').slideToggle(300);
-
-    if ($(this).text() === 'Show more') {
-      $(this).text('Hide last');
+    var hidden_cards = $($(this).attr('data-target')).find('.card_hidden').slice(0, 3);
+    if (hidden_cards.length) {
+      hidden_cards.slideDown(300);
+      hidden_cards.removeClass('card_hidden');
+      if (!$($(this).attr('data-target')).find('.card_hidden').slice(0, 1).length) {
+        $(this).hide();
+      }
     } else {
-      $(this).text('Show more');
-      $('html, body').animate({
-        scrollTop: $($(this).attr('data-target')).offset().top
-      }, 300);
-    }
+      $(this).hide();
+    };
   });
 
   $('.filter').on('click', function () {
