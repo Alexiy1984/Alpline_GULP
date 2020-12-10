@@ -9797,11 +9797,15 @@ document.addEventListener('DOMContentLoaded', function () {
     var is_search = document.getElementById('main_menu__search-input');
     var section = document.querySelector('#menu_main__dropdown.collapsible');
     var isCollapsed = section.getAttribute('data-collapsed') === 'true';
+    var show_svg = document.getElementById('menu_main__button__show');
+    var close_svg = document.getElementById('menu_main__button__close');
 
     if (!e.target.closest('#menu_main__dropdown') && !e.target.closest('#menu_main__button')) {
       if (!isCollapsed) {
         collapseSection(section);
         section.setAttribute('data-collapsed', 'true');
+        close_svg.style.display = 'none';
+        show_svg.style.display = 'block';
       }
     }
 
@@ -9825,47 +9829,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!isCollapsed) {
       collapseSection(section);
       section.setAttribute('data-collapsed', 'true');
-    }
-  });
-  var isScrolling;
-  var windowscroll_position = 0;
-  var ticking = false;
-  var footer = document.getElementsByClassName('footer')[0];
-
-  function scrollActions(scroll_pos) {
-    user_window.classList.remove('open');
-    search_results.classList.remove('open');
-    window.clearTimeout(isScrolling);
-    var section = document.querySelector('#menu_main__dropdown.collapsible');
-    var isCollapsed = section.getAttribute('data-collapsed') === 'true';
-
-    if (scroll_pos > 0) {
-      document.querySelector('#menu_main').classList.add('scrolled');
-      isScrolling = setTimeout(function () {
-        document.querySelector('#menu_main').classList.remove('scrolled');
-      }, 300);
-    } else {
-      document.querySelector('#menu_main').classList.remove('scrolled');
-    }
-
-    if (window.innerWidth < 992) {
-      if (scroll_pos > footer.offsetTop - 150) {
-        document.querySelector('#menu_main').style.top = '-150px';
-      } else {
-        document.querySelector('#menu_main').style.top = null;
-      }
-    }
-  }
-
-  window.addEventListener('scroll', function (e) {
-    windowscroll_position = window.scrollY;
-
-    if (!ticking) {
-      window.requestAnimationFrame(function () {
-        scrollActions(windowscroll_position);
-        ticking = false;
-      });
-      ticking = true;
     }
   });
 }, false);

@@ -8182,8 +8182,7 @@ p {
 @charset "UTF-8";
 .menu_main {
   top: 0;
-  position: -webkit-sticky;
-  position: sticky;
+  position: relative;
   margin-bottom: 30px;
   background-color: #fff;
   z-index: 100;
