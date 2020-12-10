@@ -9762,9 +9762,7 @@ document.addEventListener('DOMContentLoaded', function () {
       [].forEach.call(elts, function (elt) {
         elt.classList.remove('open');
         elt.closest('.col').children[0].classList.remove('open');
-        elt.closest('.col').classList.remove('order-1');
         elt.closest('.col').classList.remove('hidden');
-        elt.closest('.col').classList.add('order-2');
       });
     }
 
