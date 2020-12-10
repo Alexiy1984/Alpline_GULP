@@ -10267,16 +10267,17 @@ p {
 }
 
 .tag, .tag_accent_1, .tag_accent_2, .tag_accent_3, .tag_accent_4, .tag_info, .tag_icon-left, .tag_icon-right {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.4px;
   cursor: pointer;
   text-decoration: none;
   padding: 2px 10px;
   background-color: rgba(0, 0, 0, 0.04);
   color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 20px;
   display: inline-block;
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: -0.4px;
 }
 
 @media screen and (min-width: 768px) {
@@ -10291,12 +10292,23 @@ p {
   color: rgba(0, 0, 0, 0.3);
 }
 
+.tag:hover, .tag_accent_1:hover, .tag_accent_2:hover, .tag_accent_3:hover, .tag_accent_4:hover, .tag_info:hover, .tag_icon-left:hover, .tag_icon-right:hover {
+  cursor: pointer;
+  background-color: rgba(225, 29, 116, 0.1);
+  color: #e11d74;
+}
+
 .tag_accent_1 {
   background-color: rgba(93, 140, 255, 0.1);
   color: #547ee6;
 }
 
 .tag_accent_1:visited {
+  color: #547ee6;
+}
+
+.tag_accent_1:hover {
+  background-color: rgba(93, 140, 255, 0.3);
   color: #547ee6;
 }
 
@@ -10309,12 +10321,22 @@ p {
   color: #82bc7d;
 }
 
+.tag_accent_2:hover {
+  background-color: rgba(145, 209, 139, 0.3);
+  color: #82bc7d;
+}
+
 .tag_accent_3 {
   background-color: rgba(225, 29, 116, 0.1);
   color: #ca1a68;
 }
 
 .tag_accent_3:visited {
+  color: #ca1a68;
+}
+
+.tag_accent_3:hover {
+  background-color: rgba(225, 29, 116, 0.3);
   color: #ca1a68;
 }
 
@@ -10327,9 +10349,20 @@ p {
   color: #db7b24;
 }
 
+.tag_accent_4:hover {
+  background-color: rgba(243, 137, 40, 0.3);
+  color: #db7b24;
+}
+
 .tag_info {
   background-color: #fff;
   border: 1px rgba(0, 0, 0, 0.05) solid;
+}
+
+.tag_info:hover {
+  cursor: default;
+  color: rgba(0, 0, 0, 0.3);
+  background-color: #fff;
 }
 
 .tag_icon-left {

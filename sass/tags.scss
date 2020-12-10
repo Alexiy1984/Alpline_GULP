@@ -7,17 +7,25 @@ $tag-font-sizes: (
 );
 
 .tag {
+  @include font-size($tag-font-sizes);
+
   cursor: pointer;
   text-decoration: none;
   padding: 2px 10px;
   background-color: $tag-bg;
   color: nth($grey-dark, 3);
+  border: 1px solid rgba(0, 0, 0 ,0);
   border-radius: 20px;
   display: inline-block;
-  @include font-size($tag-font-sizes);
 
   &:visited {
     color: nth($grey-dark, 3);
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: nth($accent3, 1); 
+    color:  nth($accent3, 4);
   }
 
   &_accent_1 {
@@ -27,6 +35,11 @@ $tag-font-sizes: (
 
     &:visited {
       color: nth($accent1, 5);
+    }
+
+    &:hover {
+      background-color: nth($accent1, 2); 
+      color:  nth($accent1, 5);
     }
   }
 
@@ -38,6 +51,11 @@ $tag-font-sizes: (
     &:visited {
       color: nth($accent2, 5);
     }
+
+    &:hover {
+      background-color: nth($accent2, 2); 
+      color:  nth($accent2, 5);
+    }
   }
 
   &_accent_3 {
@@ -47,6 +65,11 @@ $tag-font-sizes: (
 
     &:visited {
       color: nth($accent3, 5);
+    }
+
+    &:hover {
+      background-color: nth($accent3, 2); 
+      color:  nth($accent3, 5);
     }
   }
 
@@ -58,12 +81,23 @@ $tag-font-sizes: (
     &:visited {
       color: nth($accent4, 5);
     }
+
+    &:hover {
+      background-color: nth($accent4, 2); 
+      color:  nth($accent4, 5);
+    }
   }
 
   &_info {
     @extend .tag;
     background-color: #fff;
     border: 1px nth($grey-dark, 1) solid;
+
+    &:hover {
+      cursor: default;
+      color: nth($grey-dark, 3);
+      background-color: #fff;
+    }
   }
 
   &_icon-left {
