@@ -7134,7 +7134,7 @@ p {
 
 .card_small__title a:hover {
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .card_small__description {
@@ -7361,7 +7361,7 @@ p {
 
 .card_medium__title a:hover {
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .card_medium__description {
@@ -7586,7 +7586,7 @@ p {
 
 .card_big__title a:hover {
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .card_big__description {
@@ -7698,7 +7698,6 @@ p {
 .card_hero picture {
   width: 100%;
   height: auto;
-  overflow: hidden;
 }
 
 .card_hero img {
@@ -7706,12 +7705,6 @@ p {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  transform: scale(1, 1);
-  transition: transform 0.2s ease-in;
-}
-
-.card_hero img:hover {
-  transform: scale(1.025, 1.025);
 }
 
 .card_hero__body {
@@ -7789,7 +7782,7 @@ p {
 
 .card_hero__title a:hover {
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .card_hero__description {
@@ -9194,7 +9187,7 @@ p {
 
 .card_slide__title a:hover {
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .card_slide__description {

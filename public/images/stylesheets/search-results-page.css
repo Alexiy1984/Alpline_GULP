@@ -1,0 +1,43 @@
+.search-results-page .breadcrumbs {
+  margin: 0 0 20px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .search-results-page .breadcrumbs {
+    margin: 0 0 30px 0;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .search-results-page .breadcrumbs {
+    margin: 0 0 30px 0;
+  }
+}
+
+.search-results-page__input {
+  margin: 0 0 30px 0;
+}
+
+@media screen and (min-width: 992px) {
+  .search-results-page__input {
+    margin: 0 0 40px 0;
+  }
+}
+
+.search-results-page__show-articles {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .search-results-page__show-articles {
+    margin: 40px 0 60px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .search-results-page__show-articles {
+    margin: 50px 0 100px;
+  }
+}
