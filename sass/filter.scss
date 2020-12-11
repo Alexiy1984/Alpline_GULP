@@ -1,0 +1,51 @@
+@import '_mixins.scss';
+@import '_variables.scss';
+
+$filter-dropdown-font-sizes: (
+  null: (16px, 28px, normal),
+  small: (18px, 20px, normal),
+);
+
+.filter {
+  position: relative;
+
+  &__trigger {
+    svg {
+      transform-origin: center;
+      transform: rotateX(0deg) translateY(-50%);
+    }
+
+    &.open {
+      svg {
+        transform-origin: center;
+        transform: rotateX(180deg) translateY(50%);
+      }
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    z-index: 100;
+    min-width: 100%;
+    border-radius: 20px;
+    border: 1px solid nth($grey-dark, 1);
+    background-color: #fff;
+
+    ul {
+      list-style: none;
+      padding: 0 33px;
+
+      li {
+        margin: 20px 0 20px 0;
+        @include font-size($filter-dropdown-font-sizes);
+        transition: color 0.15s ease-in;
+
+        &:hover {
+          cursor: pointer;
+          color: $hover-color;
+        }
+      }
+    }
+  }
+}

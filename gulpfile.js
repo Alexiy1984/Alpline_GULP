@@ -353,6 +353,7 @@ function generateIndexCSS(cb) {
           './sass/tags.scss',
           './sass/author_block.scss',
           './sass/author_heading.scss',
+          './sass/filter.scss',
         ])
         .pipe(sass(sassOptions).on('error', sass.logError))
         .pipe(autoprefixer(prefixerOptions))

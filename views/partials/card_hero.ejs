@@ -1,9 +1,11 @@
 <div class="card_hero">
-  <picture>
-    <% var bigUrl = imgUrl.split('.').join('@2.') %>
-    <source srcset="<%= bigUrl %> 2x, <%= imgUrl %> 1x" />
-    <img src="<%= imgUrl %>" alt="<%= title %>">
-  </picture>
+  <a href="post.html" class="card_hero__img">
+    <picture>
+      <% var bigUrl = imgUrl.split('.').join('@2.') %>
+      <source srcset="<%= bigUrl %> 2x, <%= imgUrl %> 1x" />
+      <img src="<%= imgUrl %>" alt="<%= title %>">
+    </picture>
+  </a>
   <div class="card_hero__body">
     <div class="card_hero__header">
       <a href="<%= authorLink %>" class="card_hero__author"><%= author %></a>

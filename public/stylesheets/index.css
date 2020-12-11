@@ -7695,13 +7695,13 @@ p {
   overflow: hidden;
 }
 
-.card_hero picture {
+.card_hero__img {
   width: 100%;
   height: auto;
   overflow: hidden;
 }
 
-.card_hero img {
+.card_hero__img img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
@@ -7710,7 +7710,8 @@ p {
   transition: transform 0.2s ease-in;
 }
 
-.card_hero img:hover {
+.card_hero__img img:hover {
+  cursor: pointer;
   transform: scale(1.025, 1.025);
 }
 
@@ -7882,14 +7883,14 @@ p {
   .card_hero {
     flex-wrap: nowrap;
   }
-  .card_hero picture {
+  .card_hero__img {
     min-width: 50%;
     height: auto;
   }
 }
 
 @media (min-width: 1320px) {
-  .card_hero picture {
+  .card_hero__img {
     width: 50%;
     min-height: 550px;
     min-width: 630px;
@@ -10624,4 +10625,54 @@ p {
   .author-heading__button {
     margin: 0 0 0 auto;
   }
+}
+
+.filter {
+  position: relative;
+}
+
+.filter__trigger svg {
+  transform-origin: center;
+  transform: rotateX(0deg) translateY(-50%);
+}
+
+.filter__trigger.open svg {
+  transform-origin: center;
+  transform: rotateX(180deg) translateY(50%);
+}
+
+.filter__dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  z-index: 100;
+  min-width: 100%;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+}
+
+.filter__dropdown ul {
+  list-style: none;
+  padding: 0 33px;
+}
+
+.filter__dropdown ul li {
+  margin: 20px 0 20px 0;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: normal;
+  transition: color 0.15s ease-in;
+}
+
+@media screen and (min-width: 768px) {
+  .filter__dropdown ul li {
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: normal;
+  }
+}
+
+.filter__dropdown ul li:hover {
+  cursor: pointer;
+  color: #e11d74;
 }
