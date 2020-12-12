@@ -8169,19 +8169,25 @@ p {
   display: none;
 }
 
-.menu_main__open-button svg {
+.menu_main__open-button span {
   margin-right: 10px;
+  min-width: 24px;
 }
 
-.menu_main__open-button svg path {
+.menu_main__open-button span svg {
+  margin: auto;
+  display: block;
+}
+
+.menu_main__open-button span svg path {
   transition: fill 0.15s ease-in;
 }
 
-.menu_main__open-button svg:hover {
+.menu_main__open-button span svg:hover {
   cursor: pointer;
 }
 
-.menu_main__open-button svg:hover path {
+.menu_main__open-button span svg:hover path {
   fill: #e11d74;
 }
 

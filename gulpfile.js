@@ -9,13 +9,14 @@ mocha = require('gulp-mocha'),
 sync = require('browser-sync').create(),
 htmlmin = require('gulp-htmlmin'),
 babel = require("gulp-babel"),
-// uglify = require('gulp-uglify'),
 uglify = require('gulp-uglify-es').default;
 uglifycss = require('gulp-uglifycss'),
 concat = require('gulp-concat'),
 del = require('del'),
 removeEmptyLines = require('gulp-remove-empty-lines'),
-formatHtml = require('gulp-format-html');
+formatHtml = require('gulp-format-html'),
+strip = require('gulp-strip-comments'),
+sourcemaps = require('gulp-sourcemaps');
 
 var prefixerOptions = {
   browserlist: ['last 3 versions']
@@ -509,15 +510,18 @@ function minifyHTML(cb) {
 
 function uglifyJS(cb) {
   src([
-      'node_modules/velocity-animate/velocity.js',
-      'node_modules/velocity-animate/velocity.ui.js',
       'node_modules/jquery/dist/jquery.js',
       './scripts/*.js'
     ])
-    .pipe(babel()) 
-    // .pipe(dest('public/javascripts'))
-    .pipe(uglify())
     .pipe(concat('index.js'))
+    .pipe(babel()) 
+    .pipe(dest('public/javascripts'))
+    .pipe(sourcemaps.init())
+    .pipe(strip())
+    .pipe(uglify())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(dest('public/javascripts'))
+    .pipe(sourcemaps.write('.'))
     .pipe(dest('public/javascripts'))
     .pipe(sync.stream());
   cb();
