@@ -97,24 +97,6 @@
     margin-left: auto;
     margin-right: 5px;
 
-    svg {
-      height: 100%;
-      width: auto;
-
-      path {
-        transition: fill-opacity 0.15s ease-in, color 0.15s ease-in;
-      }
-    }
-
-    &:hover {
-      cursor: pointer;
-
-      svg {
-        path {
-          fill-opacity: 1;
-          fill: nth($accent3, 4);
-        }
-      }
-    }
+    @include bookmark_svg;
   }
 }

@@ -509,6 +509,8 @@ function minifyHTML(cb) {
 
 function uglifyJS(cb) {
   src([
+      'node_modules/velocity-animate/velocity.js',
+      'node_modules/velocity-animate/velocity.ui.js',
       'node_modules/jquery/dist/jquery.js',
       './scripts/*.js'
     ])

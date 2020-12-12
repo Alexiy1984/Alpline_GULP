@@ -7208,10 +7208,12 @@ p {
 .card_small__bookmark svg {
   height: 100%;
   width: auto;
+  fill: rgba(0, 0, 0, 0.3);
+  fill-opacity: 1;
 }
 
 .card_small__bookmark svg path {
-  transition: fill-opacity 0.15s ease-in, color 0.15s ease-in;
+  transition: fill 0.15s ease-in;
 }
 
 .card_small__bookmark:hover {
@@ -7219,7 +7221,6 @@ p {
 }
 
 .card_small__bookmark:hover svg path {
-  fill-opacity: 1;
   fill: #e11d74;
 }
 
@@ -7435,10 +7436,12 @@ p {
 .card_medium__bookmark svg {
   height: 100%;
   width: auto;
+  fill: rgba(0, 0, 0, 0.3);
+  fill-opacity: 1;
 }
 
 .card_medium__bookmark svg path {
-  transition: fill-opacity 0.15s ease-in, color 0.15s ease-in;
+  transition: fill 0.15s ease-in;
 }
 
 .card_medium__bookmark:hover {
@@ -7446,7 +7449,6 @@ p {
 }
 
 .card_medium__bookmark:hover svg path {
-  fill-opacity: 1;
   fill: #e11d74;
 }
 
@@ -7660,10 +7662,12 @@ p {
 .card_big__bookmark svg {
   height: 100%;
   width: auto;
+  fill: rgba(0, 0, 0, 0.3);
+  fill-opacity: 1;
 }
 
 .card_big__bookmark svg path {
-  transition: fill-opacity 0.15s ease-in, color 0.15s ease-in;
+  transition: fill 0.15s ease-in;
 }
 
 .card_big__bookmark:hover {
@@ -7671,7 +7675,6 @@ p {
 }
 
 .card_big__bookmark:hover svg path {
-  fill-opacity: 1;
   fill: #e11d74;
 }
 
@@ -7864,10 +7867,12 @@ p {
 .card_hero__bookmark svg {
   height: 100%;
   width: auto;
+  fill: rgba(0, 0, 0, 0.3);
+  fill-opacity: 1;
 }
 
 .card_hero__bookmark svg path {
-  transition: fill-opacity 0.15s ease-in, color 0.15s ease-in;
+  transition: fill 0.15s ease-in;
 }
 
 .card_hero__bookmark:hover {
@@ -7875,7 +7880,6 @@ p {
 }
 
 .card_hero__bookmark:hover svg path {
-  fill-opacity: 1;
   fill: #e11d74;
 }
 
@@ -8133,8 +8137,6 @@ p {
 }
 
 .menu_main__container {
-  overflow: hidden;
-  transition: height 0.15s ease-out;
   position: relative;
   display: flex;
   padding: 0 32px;
@@ -8319,8 +8321,6 @@ p {
 }
 
 .menu_main__dropdown {
-  overflow: hidden;
-  transition: height 0.15s ease-out;
   width: 100%;
   background-color: #fff;
   padding: 0 30px;
@@ -8697,6 +8697,9 @@ p {
   }
   .menu_main__open-button {
     margin: 0;
+    min-width: 71px;
+    display: flex;
+    justify-content: space-between;
   }
   .menu_main__open-button p {
     display: block;
@@ -9269,10 +9272,12 @@ p {
 .card_slide__bookmark svg {
   height: 100%;
   width: auto;
+  fill: rgba(0, 0, 0, 0.3);
+  fill-opacity: 1;
 }
 
 .card_slide__bookmark svg path {
-  transition: fill-opacity 0.15s ease-in, color 0.15s ease-in;
+  transition: fill 0.15s ease-in;
 }
 
 .card_slide__bookmark:hover {
@@ -9280,7 +9285,6 @@ p {
 }
 
 .card_slide__bookmark:hover svg path {
-  fill-opacity: 1;
   fill: #e11d74;
 }
 
@@ -10644,7 +10648,7 @@ p {
 .filter__dropdown {
   position: absolute;
   top: calc(100% + 10px);
-  z-index: 100;
+  z-index: 99;
   min-width: 100%;
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.05);

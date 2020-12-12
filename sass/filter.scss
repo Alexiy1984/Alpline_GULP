@@ -26,7 +26,7 @@ $filter-dropdown-font-sizes: (
   &__dropdown {
     position: absolute;
     top: calc(100% + 10px);
-    z-index: 100;
+    z-index: 99;
     min-width: 100%;
     border-radius: 20px;
     border: 1px solid nth($grey-dark, 1);

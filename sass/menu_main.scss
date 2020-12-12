@@ -21,8 +21,6 @@ $menu-main-text: (
   }
 
   &__container {
-    @include for-collapsed-content;
-
     position: relative; 
     display: flex;
     padding: 0 32px;
@@ -185,7 +183,6 @@ $menu-main-text: (
   }
   
   &__dropdown {
-    @include for-collapsed-content;
     width: 100%;
     background-color: #fff;
     padding: 0 30px;
@@ -491,6 +488,9 @@ $menu-main-text: (
 
     &__open-button {
       margin: 0;
+      min-width: 71px;
+      display: flex;
+      justify-content: space-between;
 
       p {
         display: block;
